@@ -44,7 +44,9 @@ public class DayManager : MonoBehaviour
     // TO DO : bad name
     private void ChangeDayType()
     {
+        Debug.Log("ChangeDayType");
         m_AllowedToMove = false;
+        m_Planet.transform.position = m_StartPoint;
     }
 
 }
