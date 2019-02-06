@@ -6,10 +6,8 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField] private float m_MoveSpeed;     
-
     private Rigidbody2D m_RigidBody;
 
-    // Start is called before the first frame update
     void Start()
     {
         m_RigidBody = GetComponent<Rigidbody2D>();
@@ -17,13 +15,18 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             m_RigidBody.velocity = new Vector2(m_MoveSpeed, m_RigidBody.velocity.y);
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             m_RigidBody.velocity = new Vector2(-m_MoveSpeed, m_RigidBody.velocity.y);
         }
+    }
+
+    void OnBecameInvisible()
+    {
+        Debug.Log("Player Invisable");
     }
 }
