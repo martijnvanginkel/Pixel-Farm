@@ -8,7 +8,6 @@ public class CameraController : MonoBehaviour
     public delegate void CameraMove(bool moving);
     public static event CameraMove OnCameraMove;
 
-
     [SerializeField] private Transform m_PlayerPosition;
     private Camera m_Camera;
 

@@ -5,9 +5,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    [SerializeField] private float m_MoveSpeed;     
+    public delegate void PlayerAction();
+    public static event PlayerAction OnPlayerAction;
+
     private Rigidbody2D m_RigidBody;
-    [SerializeField] private bool m_CanMove = true;
+
+    [SerializeField] private float m_MoveSpeed;     
+    [SerializeField] private bool m_AllowInput = true;
+
 
     void Start()
     {
@@ -33,12 +38,12 @@ public class PlayerController : MonoBehaviour
     // Allows the player to move when the camera is not moving
     private void DisablePlayer(bool moving)
     {
-        m_CanMove = !moving;
+        m_AllowInput = !moving;
     }
 
     private void GetInput()
     {
-        if (m_CanMove)
+        if (m_AllowInput) // needs a different name
         {
             if (Input.GetKey(KeyCode.RightArrow))
             {
@@ -48,7 +53,16 @@ public class PlayerController : MonoBehaviour
             {
                 m_RigidBody.velocity = new Vector2(-m_MoveSpeed, m_RigidBody.velocity.y);
             }
+            else if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Action();
+            }
         }
+    }
+
+    private void Action()
+    {
+        OnPlayerAction?.Invoke();
     }
 
 }
