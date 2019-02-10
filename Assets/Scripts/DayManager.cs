@@ -49,9 +49,9 @@ public class DayManager : MonoBehaviour
     // Rotates the planet and resets it once its at the endpoint
     private void RotatePlanet()
     {
-        m_Planet.transform.RotateAround(m_CentrePoint, m_zAxis, -m_Speed); // Makes the current planet rotate around the m_CentrePoint
+        m_Planet.transform.RotateAround(m_CentrePoint, m_zAxis, -m_Speed); // Makes the planet rotate around the m_CentrePoint
 
-        if (m_Planet.transform.eulerAngles.z < 180 && m_AllowedToMove) // End of day at this z axis
+        if (m_Planet.transform.eulerAngles.z < 180 && m_AllowedToMove) // If the planet reaches the endpoint and is still moving, reset the variables
         {
             m_AllowedToMove = false;
             m_Planet.transform.position = m_StartPoint;
@@ -61,7 +61,7 @@ public class DayManager : MonoBehaviour
         }
     }
 
-    // TO DO : bad name
+    // Reset day after 0.5s
     private IEnumerator NewDay()
     {
         yield return new WaitForSeconds(0.5f);         

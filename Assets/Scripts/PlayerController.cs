@@ -35,15 +35,16 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    // Allows the player to move when the camera is not moving
+    // Player cant move if the OnCameraMove event is active
     private void DisablePlayer(bool moving)
     {
         m_AllowInput = !moving;
     }
 
+    // Check for user input if its allowed
     private void GetInput()
     {
-        if (m_AllowInput) // needs a different name
+        if (m_AllowInput) 
         {
             if (Input.GetKey(KeyCode.RightArrow))
             {

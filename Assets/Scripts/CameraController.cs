@@ -16,7 +16,6 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] private float m_MoveSpeed;
 
-
     [SerializeField] private Vector3 m_LeftPosition;
     [SerializeField] private Vector3 m_CentrePosition;
     [SerializeField] private Vector3 m_RightPosition;
@@ -68,7 +67,7 @@ public class CameraController : MonoBehaviour
         float step = m_MoveSpeed * Time.deltaTime; 
         transform.position = Vector3.MoveTowards(transform.position, m_TargetPosition, step);    
 
-        if(transform.position == m_TargetPosition)
+        if(transform.position == m_TargetPosition) // If camera reaches the target position
         {
             OnCameraMove?.Invoke(false);
             m_CameraIsMoving = false;
