@@ -1,0 +1,2 @@
+/Users/Martijn/Games/the_balance_game/obj/Release/Assembly-CSharp.csprojAssemblyReference.cache
+/Users/Martijn/Games/the_balance_game/obj/Release/Assembly-CSharp.csproj.CoreCompileInputs.cache
