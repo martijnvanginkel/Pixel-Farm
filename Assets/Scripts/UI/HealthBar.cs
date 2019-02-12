@@ -20,12 +20,12 @@ public class HealthBar : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerController.OnPlayerAction += RemoveEnergy;
+        InteractableObject.OnPlayerAction += RemoveEnergy;
     }
 
     private void OnDisable()
     {
-        PlayerController.OnPlayerAction -= RemoveEnergy;
+        InteractableObject.OnPlayerAction -= RemoveEnergy;
     }
 
     private void RemoveEnergy()
@@ -60,9 +60,4 @@ public class HealthBar : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

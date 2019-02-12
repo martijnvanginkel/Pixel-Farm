@@ -6,10 +6,13 @@ using UnityEngine.UI;
 public abstract class InteractableObject : MonoBehaviour
 {
 
-    public delegate void PlayerOnObject(bool onObject);
-    public static event PlayerOnObject OnPlayerOnObject;
+    public delegate void PlayerAction();
+    public static event PlayerAction OnPlayerAction;
 
     [SerializeField] private GameObject m_ButtonPanel;
+    [SerializeField] private GameObject m_IconPrefab;
+
+    protected bool m_PlayerOnObject;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -17,18 +20,30 @@ public abstract class InteractableObject : MonoBehaviour
         m_ButtonPanel.SetActive(false);
     }
 
-    protected void OnTriggerEnter2D(Collider2D other)
+    // Doesnt need to be virtual right now
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Entered");
-        OnPlayerOnObject?.Invoke(true);
-        m_ButtonPanel.SetActive(true);
+        if (other.CompareTag("Player"))
+        {
+            m_PlayerOnObject = true;
+            m_ButtonPanel.SetActive(true);
+        }
     }
 
-    protected void OnTriggerExit2D(Collider2D other)
+    protected virtual void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("Entered");
-        OnPlayerOnObject?.Invoke(false);
-        m_ButtonPanel.SetActive(false);
+        if (other.CompareTag("Player"))
+        {
+            m_PlayerOnObject = false;
+            m_ButtonPanel.SetActive(false);
+        }
+    }
+
+    public void TakeItem()
+    {
+        OnPlayerAction?.Invoke();
+        Inventory.Instance.AddItem(m_IconPrefab);
+        Destroy(this.gameObject);
     }
 
 }

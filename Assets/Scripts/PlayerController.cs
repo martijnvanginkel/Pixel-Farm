@@ -5,9 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    public delegate void PlayerAction();
-    public static event PlayerAction OnPlayerAction;
-
     private Rigidbody2D m_RigidBody;
     private Animator m_Animator;
     private SpriteRenderer m_SpriteRenderer;
@@ -15,9 +12,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float m_MoveSpeed;     
     [SerializeField] private bool m_AllowInput = true;
     private bool m_FacingRight = true;
-
-    [SerializeField] private bool m_ActionAllowed;
-
 
     void Start()
     {
@@ -29,28 +23,19 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         CameraController.OnCameraMove += DisablePlayer;
-        InteractableObject.OnPlayerOnObject += AllowPlayer;
     }
     
     private void OnDisable()
     {
         CameraController.OnCameraMove -= DisablePlayer;
-        InteractableObject.OnPlayerOnObject -= AllowPlayer;
     }
 
     private void Update()
     {
         GetInput(); // Always check for input of the player
 
-        m_Animator.SetFloat("MoveSpeed", Mathf.Abs(m_RigidBody.velocity.x));
+        m_Animator.SetFloat("MoveSpeed", Mathf.Abs(m_RigidBody.velocity.x)); // Set float for run animation
     }
-
-    private void AllowPlayer(bool onInteractableObject) // TO DO : different name
-    {
-        m_ActionAllowed = onInteractableObject;
-        Debug.Log("Allow");
-    }
-
 
     // Player cant move if the OnCameraMove event is active
     private void DisablePlayer(bool moving)
@@ -66,33 +51,29 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 m_RigidBody.velocity = new Vector2(m_MoveSpeed, m_RigidBody.velocity.y);
+
                 if (!m_FacingRight)
                 {
-                    m_FacingRight = true;
-                    m_SpriteRenderer.flipX = false;
+                    FlipPlayerRight(true);
                 }
             }
-            else if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.LeftArrow))
             {
                 m_RigidBody.velocity = new Vector2(-m_MoveSpeed, m_RigidBody.velocity.y);
-                FlipPlayer(false);
-            }
-            else if (Input.GetKeyDown(KeyCode.Space) && m_ActionAllowed)
-            {
-                Action();
+
+                if (m_FacingRight)
+                {
+                    FlipPlayerRight(false);
+                }
             }
         }
     }
 
-    private void FlipPlayer(bool faceRight)
+    // Flips the player to the right direction and sets the bool so its only called 1 frame
+    private void FlipPlayerRight(bool faceRight)
     {
-        m_FacingRight = !faceRight;
+        m_FacingRight = faceRight;
         m_SpriteRenderer.flipX = !faceRight;
-    }
-
-    private void Action()
-    {
-        OnPlayerAction?.Invoke();
     }
 
 }

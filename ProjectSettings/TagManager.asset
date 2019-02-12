@@ -48,9 +48,15 @@ TagManager:
   - name: Tile
     uniqueID: 1641528539
     locked: 0
+  - name: House
+    uniqueID: 1776348131
+    locked: 0
   - name: Object
     uniqueID: 2423748563
     locked: 0
   - name: Player
     uniqueID: 2323612839
+    locked: 0
+  - name: TileOverlay
+    uniqueID: 3166791271
     locked: 0
