@@ -5,10 +5,10 @@
       <File FileName="Assets/Scripts/PlayerController.cs" Line="6" Column="2" />
       <File FileName="Assets/Scripts/UI/HealthBar.cs" Line="56" Column="1" />
       <File FileName="Assets/Scripts/UI/HealthItem.cs" Line="10" Column="18" />
-      <File FileName="Assets/Scripts/Objects/InteractableObject.cs" Line="37" Column="34" />
-      <File FileName="Assets/Scripts/Objects/Daisy.cs" Line="17" Column="6" />
-      <File FileName="Assets/Scripts/UI/Inventory.cs" Line="35" Column="93" />
-      <File FileName="Assets/Scripts/Navigation/Door.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Objects/InteractableObject.cs" Line="30" Column="10" />
+      <File FileName="Assets/Scripts/Objects/Daisy.cs" Line="8" Column="1" />
+      <File FileName="Assets/Scripts/UI/Inventory.cs" Line="32" Column="1" />
+      <File FileName="Assets/Scripts/Navigation/Door.cs" Line="7" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
