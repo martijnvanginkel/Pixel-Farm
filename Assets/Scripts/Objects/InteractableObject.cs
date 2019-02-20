@@ -10,14 +10,13 @@ public abstract class InteractableObject : MonoBehaviour
     public static event PlayerAction OnPlayerAction;
 
     [SerializeField] private GameObject m_ButtonPanel;
-    [SerializeField] private GameObject m_IconPrefab;
 
     protected bool m_PlayerOnObject;
 
     // Start is called before the first frame update
-    protected virtual void Start()
+    private void Start()
     {
-        m_ButtonPanel.SetActive(false);
+        //m_ButtonPanel.SetActive(false);
     }
 
     // Doesnt need to be virtual right now
@@ -39,11 +38,10 @@ public abstract class InteractableObject : MonoBehaviour
         }
     }
 
-    public void TakeItem()
+    // bad name needs to be changed
+    protected void PlayerActionEvent()
     {
         OnPlayerAction?.Invoke();
-        Inventory.Instance.AddItem(m_IconPrefab);
-        Destroy(this.gameObject);
     }
 
 }

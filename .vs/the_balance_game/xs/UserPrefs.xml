@@ -1,14 +1,16 @@
 ﻿<Properties StartupConfiguration="{5939ABBB-C06D-3999-1DA5-0EAC991E5E09}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Navigation/Door.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Objects/UI/InventorySlot.cs">
     <Files>
-      <File FileName="Assets/Scripts/DayManager.cs" Line="54" Column="150" />
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="6" Column="2" />
-      <File FileName="Assets/Scripts/UI/HealthBar.cs" Line="56" Column="1" />
-      <File FileName="Assets/Scripts/UI/HealthItem.cs" Line="10" Column="18" />
-      <File FileName="Assets/Scripts/Objects/InteractableObject.cs" Line="30" Column="10" />
-      <File FileName="Assets/Scripts/Objects/Daisy.cs" Line="8" Column="1" />
-      <File FileName="Assets/Scripts/UI/Inventory.cs" Line="32" Column="1" />
-      <File FileName="Assets/Scripts/Navigation/Door.cs" Line="7" Column="33" />
+      <File FileName="Assets/Scripts/Objects/InteractableObject.cs" Line="17" Column="12" />
+      <File FileName="Assets/Scripts/Objects/Daisy.cs" Line="5" Column="28" />
+      <File FileName="Assets/Scripts/Objects/ReceiveableObject.cs" Line="8" Column="1" />
+      <File FileName="Assets/Scripts/Objects/TradeableObject.cs" Line="9" Column="23" />
+      <File FileName="Assets/Scripts/Objects/Flower.cs" Line="8" Column="1" />
+      <File FileName="Assets/Scripts/Objects/Wife.cs" Line="6" Column="2" />
+      <File FileName="Assets/Scripts/Objects/NPC.cs" Line="8" Column="1" />
+      <File FileName="Assets/Scripts/Navigation/Door.cs" Line="15" Column="13" />
+      <File FileName="Assets/Scripts/Objects/UI/Inventory.cs" Line="69" Column="80" />
+      <File FileName="Assets/Scripts/Objects/UI/InventorySlot.cs" Line="28" Column="52" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

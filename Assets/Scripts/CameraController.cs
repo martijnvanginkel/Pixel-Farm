@@ -10,6 +10,9 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] private Transform m_PlayerPosition;
     private Camera m_Camera;
+    private Color m_BackgroundColor;
+    [SerializeField] private Vector3 m_DefaultPosition;
+    [SerializeField] private Vector3 m_InsideHousePosition;
 
     private Vector3 m_ScreenPosition;
     private bool m_CameraIsMoving = false;
@@ -25,20 +28,49 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         m_Camera = GetComponent<Camera>();
+        m_DefaultPosition = transform.position;
+        m_BackgroundColor = m_Camera.backgroundColor;
+    }
+
+    private void OnEnable()
+    {
+        Door.OnPlayerIsInside += MoveCameraInside;
+    }
+
+    private void OnDisable()
+    {
+        Door.OnPlayerIsInside -= MoveCameraInside;
+    }
+
+    private void MoveCameraInside(bool playerInside)
+    {
+        if (playerInside)
+        {
+            transform.position = m_InsideHousePosition;
+            m_Camera.backgroundColor = Color.black;
+        }
+        else
+        {
+            transform.position = m_DefaultPosition;
+            m_Camera.backgroundColor = m_BackgroundColor;
+        }
     }
 
     void Update()
     {
         // If the camera is not moving check for playerposition, otherwise move the camera
-        if (!m_CameraIsMoving) 
-        { 
-            CheckPlayerPosition();
-        }
-        else
-        {
-            MoveCamera();
-        }
+        //if (!m_CameraIsMoving) 
+        //{ 
+        //    CheckPlayerPosition();
+        //}
+        //else
+        //{
+        //    MoveCamera();
+        //}
     }
+
+
+
 
     private void CheckPlayerPosition()
     {
