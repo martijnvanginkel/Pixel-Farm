@@ -69,10 +69,11 @@
     <Compile Include="Assets\Scripts\HTTP\ManagedResource.cs" />
     <Compile Include="Assets\Scripts\HTTP\ManagedSession.cs" />
     <Compile Include="Assets\Scripts\Navigation\Door.cs" />
-    <Compile Include="Assets\Scripts\Objects\Daisy.cs" />
-    <Compile Include="Assets\Scripts\Objects\Flower.cs" />
+    <Compile Include="Assets\Scripts\Objects\Characters\NPC.cs" />
+    <Compile Include="Assets\Scripts\Objects\Flowers\Bluezy.cs" />
+    <Compile Include="Assets\Scripts\Objects\Flowers\Daisy.cs" />
+    <Compile Include="Assets\Scripts\Objects\Flowers\Flower.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableObject.cs" />
-    <Compile Include="Assets\Scripts\Objects\NPC.cs" />
     <Compile Include="Assets\Scripts\Objects\ReceiveableObject.cs" />
     <Compile Include="Assets\Scripts\Objects\TradeableObject.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\HealthBar.cs" />

@@ -37,4 +37,10 @@ public class InventoryItem : MonoBehaviour
         m_SlotAmount += amount;
         m_SlotAmountText.text = m_SlotAmount.ToString();
     }
+
+    public void DecreaseAmount(int amount)
+    {
+        m_SlotAmount -= amount;
+        m_SlotAmountText.text = m_SlotAmount.ToString();
+    }
 }

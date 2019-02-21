@@ -78,19 +78,32 @@ public class Inventory : MonoBehaviour
         {
             if (m_InventoryDictionary.ContainsKey(tradeableObject.ObjectName)) // If item is already in the inventory only change the amount
             {
-                ChangeSlotInfo(tradeableObject, amount);
+                AddSlotAmount(tradeableObject, amount);
             }
             else
             {
-                //m_InventoryDictionary.Add(tradeableObject.ObjectName, amount);
+                AddInventorySlot(tradeableObject, amount);
             }
         }
     }
 
-    private void ChangeSlotInfo(TradeableObject tradeableObject, int amount)
+    private void AddSlotAmount(TradeableObject tradeableObject, int amount)
     {
         InventoryItem invSlot = m_InventoryDictionary[tradeableObject.ObjectName];
 
         invSlot.IncreaseAmount(amount);
+    }
+
+    private void DecreaseSlotAmount(TradeableObject tradeableObject, int amount)
+    {
+        InventoryItem invSlot = m_InventoryDictionary[tradeableObject.ObjectName];
+
+        invSlot.IncreaseAmount(amount);
+    }
+
+    public void GetSelectedItem()
+    {
+        // This is bad, should be in a list form
+
     }
 }
