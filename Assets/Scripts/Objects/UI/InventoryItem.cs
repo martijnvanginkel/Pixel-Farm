@@ -5,6 +5,13 @@ using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour
 {
+    private string m_Name;
+    public string Name
+    {
+        get { return m_Name; }
+        set { m_Name = value; }
+    }
+
     private int m_SlotAmount;
     public int SlotAmount
     {

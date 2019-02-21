@@ -18,7 +18,7 @@ public class ReceiveableObject : InteractableObject
 
     public void ReceiveItem()
     {
-        Inventory.Instance.GetSelectedItem();
+        InventoryItem item = Inventory.Instance.GetSelectedItem();
     }
 
 }
