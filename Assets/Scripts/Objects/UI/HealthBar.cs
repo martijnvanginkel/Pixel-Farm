@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class HealthBar : MonoBehaviour
 {
+    public delegate void OutOfEnergy();
+    public static event OutOfEnergy OnOutOfEnergy;
+
     [SerializeField] private GameObject m_HealthItem; // Represents a 'health' in the healthbar
 
     [SerializeField] private int m_TotalHealth;
@@ -43,6 +46,7 @@ public class HealthBar : MonoBehaviour
         }
         else
         {
+            OnOutOfEnergy?.Invoke();
             Debug.Log("No Energy");
         }
     }

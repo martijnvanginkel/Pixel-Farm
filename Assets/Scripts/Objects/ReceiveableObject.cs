@@ -15,4 +15,10 @@ public class ReceiveableObject : InteractableObject
     {
         
     }
+
+    public void ReceiveItem()
+    {
+
+    }
+
 }

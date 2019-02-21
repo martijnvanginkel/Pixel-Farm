@@ -11,19 +11,17 @@ public class Inventory : MonoBehaviour
         get { return m_Instance; }
     }
 
-    private Dictionary<TradeableObject, int> m_InventoryList = new Dictionary<TradeableObject, int>();
-    public Dictionary<TradeableObject, int> InventoryList
+    // list met alleen tradeable objects en de counting op een andere manier
+    [SerializeField] private Dictionary<string, InventoryItem> m_InventoryDictionary = new Dictionary<string, InventoryItem>();
+    public Dictionary<string, InventoryItem> InventoryDictionary
     {
-        get { return m_InventoryList; }
-        set { m_InventoryList = value; }
+        get { return m_InventoryDictionary; }
+        set { m_InventoryDictionary = value; }
     }
 
-    [SerializeField] private GameObject m_InventorySlotPrefab;
+    [SerializeField] private GameObject m_InventoryItemPrefab;
 
-
-
-    // needs to be changed, bad name 
-    public int ScrollInt;
+    [SerializeField] private int m_SelectedItem;
 
     private void Awake()
     {
@@ -50,43 +48,49 @@ public class Inventory : MonoBehaviour
 
     private void CheckForScrolling()
     {
+        if(m_InventoryDictionary.Count > 0)
+        {
+            m_SelectedItem += Mathf.RoundToInt(Input.GetAxis("Mouse ScrollWheel"));
+            m_SelectedItem = Mathf.Clamp(m_SelectedItem, 1, m_InventoryDictionary.Count); //prevents value from exceeding specified range
+        }
+    }
 
-    
-        ScrollInt += Mathf.RoundToInt(Input.GetAxis("Mouse ScrollWheel"));
-        ScrollInt = Mathf.Clamp(ScrollInt, 0, 10);//prevents value from exceeding specified range
-        Debug.Log(ScrollInt);
+    private void AddInventorySlot(TradeableObject tradeableObject, int amount)
+    {
+        // Spawn new slotPrefab (empty image that holds the actual icon and amount)
+        GameObject slotPrefab = Instantiate(m_InventoryItemPrefab); 
+        slotPrefab.transform.SetParent(gameObject.transform, false); // false so it scales locally
 
+        InventoryItem item = slotPrefab.GetComponent<InventoryItem>();
+        item.SetAmount(amount);
+        item.SetImage(tradeableObject.Icon);
 
+        InventoryDictionary.Add(tradeableObject.ObjectName, item);
     }
 
     public void AddItem(TradeableObject tradeableObject, int amount)
     {
-        m_InventoryList.Add(tradeableObject, amount);
-
-        GameObject slotPrefab = Instantiate(m_InventorySlotPrefab);
-        slotPrefab.transform.SetParent(gameObject.transform, false); // false so it scales locally
-
-        InventorySlot inventorySlot = slotPrefab.GetComponent<InventorySlot>();
-        inventorySlot.SetImage(tradeableObject.Icon);
-        inventorySlot.SetAmount(amount);
-
-
-        //inventorySlot.SetImage(tradeableObject.Icon);
-        //inventorySlot.transform.SetParent(gameObject.transform, false); // false so it scales locally
-
-
-        foreach (var item in m_InventoryList)
+        if(m_InventoryDictionary.Count == 0) // If inventory is empty always add the item
         {
-            Debug.Log(item.Key);
-            Debug.Log(item.Value);
+            AddInventorySlot(tradeableObject, amount);
         }
-        //GameObject item = Instantiate(icon);
-        //item.transform.SetParent(gameObject.transform, false); // false so it scales locally
-
-        //m_InventoryList.Add(item.GetComponent<InteractableObject>(), 0);
-
-        //m_HealthItemList.Add(healthItem.GetComponent<HealthItem>());
-        Debug.Log("add item");
+        else
+        {
+            if (m_InventoryDictionary.ContainsKey(tradeableObject.ObjectName)) // If item is already in the inventory only change the amount
+            {
+                ChangeSlotInfo(tradeableObject, amount);
+            }
+            else
+            {
+                //m_InventoryDictionary.Add(tradeableObject.ObjectName, amount);
+            }
+        }
     }
 
+    private void ChangeSlotInfo(TradeableObject tradeableObject, int amount)
+    {
+        InventoryItem invSlot = m_InventoryDictionary[tradeableObject.ObjectName];
+
+        invSlot.IncreaseAmount(amount);
+    }
 }

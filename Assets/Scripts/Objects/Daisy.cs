@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Daisy : Flower
 {
-    // Start is called before the first frame update
-
 
     // Update is called once per frame
     void Update()
