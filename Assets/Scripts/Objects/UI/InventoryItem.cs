@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour
 {
-    private string m_Name;
-    public string Name
+    private ObjectData m_ObjectData;
+    public ObjectData ObjectData
     {
-        get { return m_Name; }
-        set { m_Name = value; }
+        get { return m_ObjectData; }
+        set { m_ObjectData = value; }
     }
 
     private int m_SlotAmount;
@@ -20,12 +20,34 @@ public class InventoryItem : MonoBehaviour
     }
 
     private Image m_SlotImage;
+    public Image SlotImage
+    {
+        get { return m_SlotImage; }
+        set { m_SlotImage = value; }
+    }
+
+    private Color m_SelectedColor;
+    private Color m_UnSelectedColor;
 
     [SerializeField] private TMPro.TextMeshProUGUI m_SlotAmountText;
 
     void Awake()
     {
         m_SlotImage = GetComponent<Image>();
+        m_SelectedColor = new Color(1f, 1f, 1f, 1f);
+        m_UnSelectedColor = new Color(1f, 1f, 1f, 0.5f);
+    }
+
+    // Makes the selected inventory item more bright
+    public void SetItemSelected()
+    {
+        m_SlotImage.color = m_SelectedColor;
+    }
+
+    // Makes an unselected inventory item less bright
+    public void SetItemUnselected()
+    {
+        m_SlotImage.color = m_UnSelectedColor;
     }
 
     public void SetImage(Sprite image)

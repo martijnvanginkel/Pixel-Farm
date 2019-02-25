@@ -9,13 +9,6 @@ public abstract class InteractableObject : MonoBehaviour
     public delegate void PlayerAction();
     public static event PlayerAction OnPlayerAction;
 
-    [SerializeField] private string m_ObjectName = "Name";
-    public string ObjectName
-    {
-        get { return m_ObjectName; }
-        set { m_ObjectName = value; }
-    }
-
     [SerializeField] private GameObject m_ButtonPanel;
 
     protected bool m_PlayerOnObject;

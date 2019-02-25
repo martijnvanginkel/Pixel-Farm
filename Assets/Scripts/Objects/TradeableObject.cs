@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class TradeableObject : InteractableObject
 {
-    [SerializeField] private Sprite m_Icon;
-    public Sprite Icon
-    {
-        get { return m_Icon; }
-        set { m_Icon = value; }
-    }
+    [SerializeField] protected ObjectData m_ObjectData; 
+
+    //[SerializeField] private Sprite m_Icon;
+    //public Sprite Icon
+    //{
+    //    get { return m_Icon; }
+    //    set { m_Icon = value; }
+    //}
 
     // Start is called before the first frame update
     //protected override void Start()
@@ -27,7 +29,7 @@ public class TradeableObject : InteractableObject
     public void TakeItem()
     {
         base.PlayerActionEvent();
-        Inventory.Instance.AddItem(this, 1);
+        Inventory.Instance.AddItem(m_ObjectData, 1);
         Destroy(this.gameObject);
     }
 }

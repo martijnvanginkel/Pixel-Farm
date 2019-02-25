@@ -10,15 +10,20 @@ public class ReceiveableObject : InteractableObject
     //    base.Start();
     //}
 
+    [SerializeField] private GameObject m_TextBalloon;
+
     // Update is called once per frame
     void Update()
     {
         
     }
 
-    public void ReceiveItem()
+    protected virtual void ReceiveItem()
     {
         InventoryItem item = Inventory.Instance.GetSelectedItem();
+
+        Inventory.Instance.RemoveItem(item, 1);
     }
+
 
 }

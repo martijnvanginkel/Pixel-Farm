@@ -560,8 +560,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5452082384582597597}
   - component: {fileID: 5452082384582597596}
-  - component: {fileID: 5452082384582597570}
   - component: {fileID: 5452082384582597571}
+  - component: {fileID: 1448832235408677898}
   m_Layer: 0
   m_Name: Daisy
   m_TagString: Interactable
@@ -632,7 +632,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5452082384582597570
+--- !u!114 &5452082384582597571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5452082384582597599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eceae510a9ee747d08c61aa153456b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ButtonPanel: {fileID: 5452082385093766341}
+  m_ObjectData: {fileID: 11400000, guid: a0785f3dd3e844c33b06fdc877d1579c, type: 2}
+--- !u!61 &1448832235408677898
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -656,23 +670,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.3125, y: 0.6875}
   m_EdgeRadius: 0
---- !u!114 &5452082384582597571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5452082384582597599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eceae510a9ee747d08c61aa153456b52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ObjectName: Daisy
-  m_ButtonPanel: {fileID: 5452082385093766341}
-  m_Icon: {fileID: 21300000, guid: 91390eae14a35426d8c63984dcaa2b6c, type: 3}
 --- !u!1 &5452082384885024851
 GameObject:
   m_ObjectHideFlags: 0

@@ -70,9 +70,11 @@
     <Compile Include="Assets\Scripts\HTTP\ManagedSession.cs" />
     <Compile Include="Assets\Scripts\Navigation\Door.cs" />
     <Compile Include="Assets\Scripts\Objects\Characters\NPC.cs" />
+    <Compile Include="Assets\Scripts\Objects\Characters\Wife.cs" />
     <Compile Include="Assets\Scripts\Objects\Flowers\Bluezy.cs" />
     <Compile Include="Assets\Scripts\Objects\Flowers\Daisy.cs" />
     <Compile Include="Assets\Scripts\Objects\Flowers\Flower.cs" />
+    <Compile Include="Assets\Scripts\Objects\Flowers\Yellowzy.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableObject.cs" />
     <Compile Include="Assets\Scripts\Objects\ReceiveableObject.cs" />
     <Compile Include="Assets\Scripts\Objects\TradeableObject.cs" />
@@ -80,8 +82,8 @@
     <Compile Include="Assets\Scripts\Objects\UI\HealthItem.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\Inventory.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\InventoryItem.cs" />
-    <Compile Include="Assets\Scripts\Objects\Wife.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\ObjectData.cs" />
     <Compile Include="Assets\Scripts\testmovement.cs" />
     <None Include="Assets\Packages\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Packages\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
