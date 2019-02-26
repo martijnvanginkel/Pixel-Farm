@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a2a93d55fe14bf7a99b4e79e7d977d, type: 3}
   m_Name: Yellowzy
   m_EditorClassIdentifier: 
-  Name: 
-  Description: 
-  Category: 
-  Icon: {fileID: 0}
-  DataValue: 0
+  Name: Yellowzy
+  Description: A yellow flower
+  Category: Social
+  Icon: {fileID: 21300000, guid: 66574569e5a244629b5e129206993873, type: 3}
+  DataValue: 2

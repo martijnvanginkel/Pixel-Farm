@@ -69,7 +69,6 @@
     <Compile Include="Assets\Scripts\HTTP\ManagedResource.cs" />
     <Compile Include="Assets\Scripts\HTTP\ManagedSession.cs" />
     <Compile Include="Assets\Scripts\Navigation\Door.cs" />
-    <Compile Include="Assets\Scripts\Objects\Characters\NPC.cs" />
     <Compile Include="Assets\Scripts\Objects\Characters\Wife.cs" />
     <Compile Include="Assets\Scripts\Objects\Flowers\Bluezy.cs" />
     <Compile Include="Assets\Scripts\Objects\Flowers\Daisy.cs" />

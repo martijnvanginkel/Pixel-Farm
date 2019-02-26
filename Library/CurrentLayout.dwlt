@@ -114,7 +114,7 @@ MonoBehaviour:
   m_MinSize: {x: 613, y: 498}
   m_MaxSize: {x: 18008, y: 14048}
   vertical: 0
-  controlID: 95
+  controlID: 126
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_MinSize: {x: 336, y: 498}
   m_MaxSize: {x: 14006, y: 14048}
   vertical: 1
-  controlID: 96
+  controlID: 127
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_MinSize: {x: 336, y: 274}
   m_MaxSize: {x: 14006, y: 10024}
   vertical: 0
-  controlID: 97
+  controlID: 15
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -353,7 +353,7 @@ MonoBehaviour:
   m_LastWindowPixelSize: {x: 2004, y: 705}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
-  m_LowResolutionForAspectRatios: 00000000000100000100
+  m_LowResolutionForAspectRatios: 01000000000100000100
   m_XRRenderMode: 0
 --- !u!114 &13
 MonoBehaviour:
@@ -386,9 +386,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.03189534, y: -0.713282, z: 1.4187084}
+    m_Target: {x: 2.8001623, y: -2.6145012, z: 1.7012485}
     speed: 2
-    m_Value: {x: -0.03189534, y: -0.713282, z: 1.4187084}
+    m_Value: {x: 2.8001623, y: -2.6145012, z: 1.7012485}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -420,9 +420,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 18.58662
+    m_Target: 13.960913
     speed: 2
-    m_Value: 18.58662
+    m_Value: 13.960913
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -457,8 +457,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 75
-    width: 887
-    height: 345
+    width: 2004
+    height: 705
   m_PersistentViewDataDictionary: {fileID: 0}
 --- !u!114 &15
 MonoBehaviour:
@@ -572,7 +572,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: d4fbffff
+      m_ExpandedIDs: 26bbffff30bbffff62c2ffffd4c5ffff2eefffffd4fbffff0a0d0000860d0000de0d0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -650,7 +650,7 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 3674
+  m_LastSelectedObjectID: -12176
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -689,19 +689,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Objects
+    - Assets/Scripts/Objects/UI
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/Objects
+  - Assets/Scripts/Objects/UI
   m_LastFoldersGridSize: -1
   m_LastProjectPath: /Users/Martijn/Games/the_balance_game
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 50}
-    m_SelectedIDs: c6090000
-    m_LastClickedID: 2502
+    m_SelectedIDs: 220a0000
+    m_LastClickedID: 2594
     m_ExpandedIDs: 00000000b0090000c6090000e2090000520a0000e80a0000440b00003a0c00008c0c000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -757,7 +757,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000000000008a32000070340000e4c00000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
