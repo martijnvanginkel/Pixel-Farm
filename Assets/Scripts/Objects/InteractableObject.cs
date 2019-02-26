@@ -9,7 +9,8 @@ public abstract class InteractableObject : MonoBehaviour
     public delegate void PlayerAction();
     public static event PlayerAction OnPlayerAction;
 
-    [SerializeField] private GameObject m_ButtonPanel;
+    [SerializeField] protected GameObject m_ButtonPanel;
+    protected bool m_CanShowPanel = true;
 
     protected bool m_PlayerOnObject;
 
@@ -25,7 +26,7 @@ public abstract class InteractableObject : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             m_PlayerOnObject = true;
-            m_ButtonPanel.SetActive(true);
+            ShowButtonPanel(true);
         }
     }
 
@@ -34,7 +35,15 @@ public abstract class InteractableObject : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             m_PlayerOnObject = false;
-            m_ButtonPanel.SetActive(false);
+            ShowButtonPanel(false);
+        }
+    }
+
+    protected void ShowButtonPanel(bool showPanel)
+    {
+        if (m_ButtonPanel)
+        {
+            m_ButtonPanel.SetActive(showPanel);
         }
     }
 

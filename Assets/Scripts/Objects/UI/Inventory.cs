@@ -189,6 +189,14 @@ public class Inventory : MonoBehaviour
     // Returns the item that is currently selected
     public InventoryItem GetSelectedItem()
     {
-        return m_InventoryList[m_SelectedItem];
+        if(m_InventoryList[m_SelectedItem] == null)
+        {
+            return null;
+        }
+        else
+        {
+            return m_InventoryList[m_SelectedItem];
+        }
+
     }
 }

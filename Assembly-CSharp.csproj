@@ -60,7 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\FlowerSpawner.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\DayManager.cs" />
     <Compile Include="Assets\Scripts\HTTP\ApiCall.cs" />
@@ -81,6 +80,7 @@
     <Compile Include="Assets\Scripts\Objects\UI\HealthItem.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\Inventory.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\InventoryItem.cs" />
+    <Compile Include="Assets\Scripts\Objects\UI\SocialBar.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\ObjectData.cs" />
     <Compile Include="Assets\Scripts\testmovement.cs" />

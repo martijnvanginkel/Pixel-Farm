@@ -16,4 +16,4 @@ MonoBehaviour:
   Description: A nice flower
   Category: Social
   Icon: {fileID: 21300000, guid: 91390eae14a35426d8c63984dcaa2b6c, type: 3}
-  DataValue: 3
+  DataValue: 10

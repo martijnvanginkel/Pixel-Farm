@@ -13,7 +13,15 @@ public class Wife : ReceiveableObject
 
     protected override void ReceiveItem()
     {
-        base.ReceiveItem();
-        base.StartCoroutine("OpenTextBalloon", "Thank you!");
+        if(Inventory.Instance.InventoryList.Count == 0)
+        {
+            base.StartCoroutine("OpenTextBalloon", "You dont have anything!");
+        }
+        else
+        {
+            base.ReceiveItem();
+            base.StartCoroutine("OpenTextBalloon", "Thank you!");
+        }
     }
+
 }
