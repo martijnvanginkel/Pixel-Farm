@@ -1,55 +1,73 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DayManager : MonoBehaviour
 {
-    [SerializeField] private GameObject m_Planet;
+    private Image m_Image;
+    private Animator m_Animator;
 
-    [SerializeField] private Vector3 m_StartPoint;
-    [SerializeField] private Vector3 m_EndPoint;
-    private Vector3 m_CentrePoint;
-    private Vector3 m_zAxis = new Vector3(0, 0, 1);
+    [SerializeField] private Image m_DarknessOverlay;
+    [SerializeField] private float m_FadeSpeed;
+    private Color m_DarknessColor;
+    private Color m_LightColor;
 
-    [SerializeField] private float m_Speed;
-    private bool m_AllowedToMove = true;
+    // 1f = 1 minute
+    private float m_AnimationSpeed = 1f;
+    private bool m_DayTime;
+    private bool m_Fading;
+
+
 
     void Start()
     {
-        m_Planet.transform.localPosition = m_StartPoint; // Start the planet at the start position
-        m_CentrePoint = (m_StartPoint + m_EndPoint) * 0.5f; // Define m_CentrePoint to rotate around
+        m_Image = GetComponent<Image>();
+        m_Animator = GetComponent<Animator>();
+        m_Animator.SetFloat("AnimationSpeed", m_AnimationSpeed);
+
+        m_DarknessOverlay.enabled = true;
+
+        m_DarknessColor = new Color(0f, 0f, 0f, 1f);
+        m_LightColor = new Color(0f, 0f, 0f, 0f);
     }
 
-
-    void Update()
+    private void Update()
     {
-        if (m_AllowedToMove)
+        if (m_DayTime)
         {
-            RotatePlanet();
-        }
+            m_DarknessOverlay.color = Color.Lerp(m_DarknessOverlay.color, m_LightColor, Time.deltaTime * m_FadeSpeed);
 
-    }
-
-    // Rotates the planet and resets it once its at the endpoint
-    private void RotatePlanet()
-    {
-        m_Planet.transform.RotateAround(m_CentrePoint, m_zAxis, -m_Speed); // Makes the planet rotate around the m_CentrePoint
-
-        if (m_Planet.transform.eulerAngles.z < 180 && m_AllowedToMove) // If the planet reaches the endpoint and is still moving, reset the variables
-        {
-            m_AllowedToMove = false;
-            m_Planet.transform.position = m_StartPoint;
-            m_Planet.transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
-
-            StartCoroutine("NewDay");
+            if(m_DarknessOverlay.color.a < 0.05f) // If its at the last 5% animation is done, lerping to exactly the same value takes too long
+            {
+                Debug.Log("its over");
+            }
         }
     }
 
-    // Reset day after 0.5s
-    private IEnumerator NewDay()
+    private void Fading()
     {
-        yield return new WaitForSeconds(0.5f);         
-        m_AllowedToMove = true;
+        if (m_DayTime)
+        {
+            m_DarknessOverlay.color = Color.Lerp(m_DarknessOverlay.color, m_LightColor, Time.deltaTime * m_FadeSpeed);
+
+            if (m_DarknessOverlay.color.a < 0.05f) // If its at the last 5% animation is done, lerping to exactly the same value takes too long
+            {
+                m_DayTime = false;
+                Debug.Log("its over");
+            }
+        }
+    }
+
+    private void FadeIn()
+    {
+        m_DayTime = true;
+    }
+
+
+    private void FadeOut()
+    {
+        m_DayTime = false;
     }
 
 }
