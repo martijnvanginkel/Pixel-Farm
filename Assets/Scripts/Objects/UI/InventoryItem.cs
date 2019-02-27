@@ -35,7 +35,7 @@ public class InventoryItem : MonoBehaviour
     {
         m_SlotImage = GetComponent<Image>();
         m_SelectedColor = new Color(1f, 1f, 1f, 1f);
-        m_UnSelectedColor = new Color(1f, 1f, 1f, 0.5f);
+        m_UnSelectedColor = new Color(1f, 1f, 1f, 0.25f);
     }
 
     // Makes the selected inventory item more bright

@@ -13,25 +13,9 @@ public class SocialBar : MonoBehaviour
 
     private float m_TransformScale = 0;
 
-    // Start is called before the first frame update
-    void Start()
+    public void GainPoints(ObjectData objectData)
     {
-        
-    }
-
-    private void OnEnable()
-    {
-        ReceiveableObject.OnReceivedItem += GainPoints;
-    }
-
-    private void OnDisable()
-    {
-        ReceiveableObject.OnReceivedItem -= GainPoints;
-    }
-
-    private void GainPoints(ObjectData objectData)
-    {
-        m_CurrentPoints += objectData.DataValue;
+        m_CurrentPoints += objectData.SocialValue;
         m_TransformScale = (float)m_CurrentPoints / (float)m_MaxPoints;
 
         m_BarSpriteTransform.localScale = new Vector3(1, m_TransformScale, 1);

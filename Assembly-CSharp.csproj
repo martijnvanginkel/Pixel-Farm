@@ -60,30 +60,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\DayManager.cs" />
+    <Compile Include="Assets\Scripts\General\CameraController.cs" />
+    <Compile Include="Assets\Scripts\General\DayManager.cs" />
+    <Compile Include="Assets\Scripts\General\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\General\testmovement.cs" />
     <Compile Include="Assets\Scripts\HTTP\ApiCall.cs" />
     <Compile Include="Assets\Scripts\HTTP\ApiCallPool.cs" />
     <Compile Include="Assets\Scripts\HTTP\ManagedJson.cs" />
     <Compile Include="Assets\Scripts\HTTP\ManagedResource.cs" />
     <Compile Include="Assets\Scripts\HTTP\ManagedSession.cs" />
     <Compile Include="Assets\Scripts\Navigation\Door.cs" />
+    <Compile Include="Assets\Scripts\Objects\Characters\Salesman.cs" />
     <Compile Include="Assets\Scripts\Objects\Characters\Wife.cs" />
     <Compile Include="Assets\Scripts\Objects\Flowers\Bluezy.cs" />
     <Compile Include="Assets\Scripts\Objects\Flowers\Daisy.cs" />
     <Compile Include="Assets\Scripts\Objects\Flowers\Flower.cs" />
     <Compile Include="Assets\Scripts\Objects\Flowers\Yellowzy.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableObject.cs" />
-    <Compile Include="Assets\Scripts\Objects\ReceiveableObject.cs" />
+    <Compile Include="Assets\Scripts\Objects\Npc.cs" />
     <Compile Include="Assets\Scripts\Objects\TradeableObject.cs" />
+    <Compile Include="Assets\Scripts\Objects\UI\DataManager.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\HealthBar.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\HealthItem.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\Inventory.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\InventoryItem.cs" />
+    <Compile Include="Assets\Scripts\Objects\UI\MoneyBar.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\SocialBar.cs" />
-    <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\ScriptableObjects\ObjectData.cs" />
-    <Compile Include="Assets\Scripts\testmovement.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\NpcData.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\ObjectData.cs" />
     <None Include="Assets\Packages\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Packages\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Packages\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
