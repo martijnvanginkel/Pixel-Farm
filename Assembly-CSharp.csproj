@@ -79,8 +79,8 @@
     <Compile Include="Assets\Scripts\Objects\Npc.cs" />
     <Compile Include="Assets\Scripts\Objects\TradeableObject.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\DataManager.cs" />
-    <Compile Include="Assets\Scripts\Objects\UI\HealthBar.cs" />
-    <Compile Include="Assets\Scripts\Objects\UI\HealthItem.cs" />
+    <Compile Include="Assets\Scripts\Objects\UI\EnergyBar.cs" />
+    <Compile Include="Assets\Scripts\Objects\UI\EnergyItem.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\Inventory.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\InventoryItem.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\MoneyBar.cs" />

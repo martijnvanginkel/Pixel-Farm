@@ -63,6 +63,9 @@ TagManager:
   - name: TileOverlay
     uniqueID: 3166791271
     locked: 0
+  - name: TextBalloon
+    uniqueID: 2692168041
+    locked: 0
   - name: CameraOverlay
     uniqueID: 2700999187
     locked: 0

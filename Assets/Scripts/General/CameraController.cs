@@ -7,21 +7,36 @@ public class CameraController : MonoBehaviour
     private Camera m_Camera;
     private Color m_BackgroundColor;
 
+    [SerializeField] private Camera m_IndoorCamera;
+
     [SerializeField] private Transform m_Player;
     [SerializeField] private float m_SmoothSpeed = 0.125f; // Between 0 and 1
 
     [SerializeField] private float m_CameraOffset;
 
-    private bool m_CameraMoving = false;
+    private bool m_CameraMoving;
+
 
     void Start()
     {
         m_Camera = GetComponent<Camera>();
+        m_IndoorCamera.enabled = false;
         m_BackgroundColor = m_Camera.backgroundColor;
+    }
+
+    private void OnEnable()
+    {
+        Door.OnPlayerIsInside += MoveCameraInside;
+    }
+
+    private void OnDisable()
+    {
+        Door.OnPlayerIsInside -= MoveCameraInside;
     }
 
     void LateUpdate()
     {
+
         CheckPlayerPosition();
 
         if (m_CameraMoving)
@@ -49,6 +64,20 @@ public class CameraController : MonoBehaviour
         if (m_Player.transform.position.x == transform.position.x)
         {
             m_CameraMoving = false;
+        }
+    }
+
+    private void MoveCameraInside(bool playerInside)
+    {
+        if (playerInside)
+        {
+            m_Camera.enabled = false;
+            m_IndoorCamera.enabled = true;
+        }
+        else
+        {
+            m_IndoorCamera.enabled = false;
+            m_Camera.enabled = true;
         }
     }
 }

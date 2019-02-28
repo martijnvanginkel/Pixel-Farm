@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Class to decide what kind of item is received by an npc and triggers the right databar
 public class DataManager : MonoBehaviour
 {
     [SerializeField] private SocialBar m_SocialBar;

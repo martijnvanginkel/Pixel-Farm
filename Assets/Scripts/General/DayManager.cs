@@ -5,20 +5,21 @@ using UnityEngine.UI;
 
 public class DayManager : MonoBehaviour
 {
+    public delegate void EndOfday();
+    public static event EndOfday OnEndOfDay;
+
     private Image m_Image;
     private Animator m_Animator;
 
     [SerializeField] private Image m_DarknessOverlay;
-    [SerializeField] private float m_FadeSpeed;
+    [SerializeField] private float m_FadeSpeed; // Not implemented right now
     private Color m_DarknessColor;
     private Color m_LightColor;
 
     // 1f = 1 minute
-    private float m_AnimationSpeed = 1f;
+    private float m_AnimationSpeed = 1.75f;
     private bool m_DayTime;
     private bool m_Fading;
-
-
 
     void Start()
     {
@@ -34,40 +35,64 @@ public class DayManager : MonoBehaviour
 
     private void Update()
     {
-        if (m_DayTime)
+        if (m_Fading)
         {
-            m_DarknessOverlay.color = Color.Lerp(m_DarknessOverlay.color, m_LightColor, Time.deltaTime * m_FadeSpeed);
-
-            if(m_DarknessOverlay.color.a < 0.05f) // If its at the last 5% animation is done, lerping to exactly the same value takes too long
+            if (m_DayTime)
             {
-                Debug.Log("its over");
+                FadeInOverlay();
+            }
+            else
+            {
+                FadeOutOverlay();
             }
         }
     }
 
-    private void Fading()
+    // Fades the black canvas its alpha value from 255 to 0
+    private void FadeInOverlay()
     {
-        if (m_DayTime)
-        {
-            m_DarknessOverlay.color = Color.Lerp(m_DarknessOverlay.color, m_LightColor, Time.deltaTime * m_FadeSpeed);
+        m_DarknessOverlay.color = Color.Lerp(m_DarknessOverlay.color, m_LightColor, Time.deltaTime);
 
-            if (m_DarknessOverlay.color.a < 0.05f) // If its at the last 5% animation is done, lerping to exactly the same value takes too long
-            {
-                m_DayTime = false;
-                Debug.Log("its over");
-            }
+        if (m_DarknessOverlay.color.a < 0.01f) // If its at the last 1% animation is done, lerping to exactly the same value takes too long
+        {
+            m_Fading = false;
+            m_DarknessOverlay.color = m_LightColor;
+            Debug.Log("its over");
         }
     }
 
-    private void FadeIn()
+    // Fades the black canvas its alpha value from 0 to 255
+    private void FadeOutOverlay()
     {
+        m_DarknessOverlay.color = Color.Lerp(m_DarknessOverlay.color, m_DarknessColor, Time.deltaTime);
+
+        if (m_DarknessOverlay.color.a > 0.99f) // If its at the last 1% animation is done, lerping to exactly the same value takes too long
+        {
+            m_Fading = false;
+            m_DarknessOverlay.color = m_DarknessColor;
+            Debug.Log("its over");
+        }
+    }
+
+    // Get triggered by the sun animation event
+    private void SunGoesUpTrigger()
+    {
+        m_Fading = true;
         m_DayTime = true;
     }
 
-
-    private void FadeOut()
+    // Gets trigger by the sun animation event
+    private void SunGoesDownTrigger()
     {
+        m_Fading = true;
         m_DayTime = false;
+    }
+
+    // Get triggered when the sun animation is at its last frame
+    private void EndOfDayTrigger()
+    {
+        Debug.Log("End of day");
+        OnEndOfDay?.Invoke();
     }
 
 }
