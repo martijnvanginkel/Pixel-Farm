@@ -14,4 +14,7 @@ public class ObjectData : ScriptableObject
     public int SocialValue;
     public int MoneyValue;
 
+    public int DefaultStoreAmount;
+    public int BuyingCost;
+
 }

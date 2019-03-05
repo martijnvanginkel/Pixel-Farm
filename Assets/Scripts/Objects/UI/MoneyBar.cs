@@ -20,4 +20,11 @@ public class MoneyBar : MonoBehaviour
 
         m_MoneyTextField.text = m_CurrentMoney.ToString();
     }
+
+    public void LoseMoney(ObjectData objectData)
+    {
+        m_CurrentMoney -= objectData.MoneyValue;
+
+        m_MoneyTextField.text = m_CurrentMoney.ToString();
+    }
 }

@@ -34,7 +34,7 @@ public class Npc : InteractableObject
         }
         else
         {
-            InventoryItem item = Inventory.Instance.GetSelectedItem(); // Get the currently selected item in the inventory       
+            DigitalItem item = Inventory.Instance.GetSelectedItem(); // Get the currently selected item in the inventory       
             Inventory.Instance.RemoveItem(item, 1); // Remove the item from the inventory
             OnReceivedItem?.Invoke(item.ObjectData, m_NpcData.ReceiveType); // Call an event to transfer the item into data
 

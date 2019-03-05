@@ -5,8 +5,6 @@ using UnityEngine;
 public class Salesman : Npc
 {
 
-    [SerializeField] private GameObject m_StoreCanvas;
-
     public override void ReceiveItem()
     {
         base.ReceiveItem();
@@ -14,7 +12,6 @@ public class Salesman : Npc
 
     public void OpenShop()
     {
-        Debug.Log("Open shop UI");
-        //m_StoreCanvas.SetActive(true);
+        Store.Instance.OpenStorePanel();
     }
 }

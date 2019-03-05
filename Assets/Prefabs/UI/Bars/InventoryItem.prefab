@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 6718401900915855507}
   - component: {fileID: 6718401900915855506}
   - component: {fileID: 6718401900915855505}
-  - component: {fileID: 386709086741056747}
+  - component: {fileID: 8671900782289970232}
   m_Layer: 5
   m_Name: InventoryItem
   m_TagString: Untagged
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &386709086741056747
+--- !u!114 &8671900782289970232
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6718401900915855511}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f8919dd2807e4c65b2434af5c70b80b, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e5954448478e47dba5e6f0be6dd8e9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_SlotAmountText: {fileID: 5223238531479527071}

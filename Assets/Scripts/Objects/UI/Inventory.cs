@@ -11,8 +11,8 @@ public class Inventory : MonoBehaviour
         get { return m_Instance; }
     }
 
-    [SerializeField] private List<InventoryItem> m_InventoryList = new List<InventoryItem>();
-    public List<InventoryItem> InventoryList
+    [SerializeField] private List<DigitalItem> m_InventoryList = new List<DigitalItem>();
+    public List<DigitalItem> InventoryList
     {
         get { return m_InventoryList; }
         set { m_InventoryList = value; }
@@ -99,7 +99,7 @@ public class Inventory : MonoBehaviour
     }
 
     // Function that gets called first when an item is being received
-    public void RemoveItem(InventoryItem item, int amount)
+    public void RemoveItem(DigitalItem item, int amount)
     {
         if(item.SlotAmount > 1) // If it has more than one, decrease the amount
         {
@@ -118,7 +118,7 @@ public class Inventory : MonoBehaviour
         GameObject itemPrefab = Instantiate(m_InventoryItemPrefab);
         itemPrefab.transform.SetParent(gameObject.transform, false); // false so it scales locally
 
-        InventoryItem item = itemPrefab.GetComponent<InventoryItem>();
+        DigitalItem item = itemPrefab.GetComponent<DigitalItem>();
         item.ObjectData = objectData;
         item.SetAmount(amount);
         item.SetImage(objectData.Icon);
@@ -127,7 +127,7 @@ public class Inventory : MonoBehaviour
     }
 
     // Remove an inventory slot 
-    private void RemoveInventorySlot(InventoryItem item)
+    private void RemoveInventorySlot(DigitalItem item)
     {
         if(m_SelectedItem != 0 && m_SelectedItem == m_InventoryList.Count - 1) // If the last item in the list is selected and its not the only item in the list, move the selected item one back
         {
@@ -161,13 +161,13 @@ public class Inventory : MonoBehaviour
     }
 
     // Add slotamount to a slot that already exists
-    private void AddSlotAmount(InventoryItem item, int amount)
+    private void AddSlotAmount(DigitalItem item, int amount)
     {
         item.IncreaseAmount(amount);
     }
 
     // Decrease slotamount to a slot that already exists
-    private void RemoveSlotAmount(InventoryItem item, int amount)
+    private void RemoveSlotAmount(DigitalItem item, int amount)
     {
         item.DecreaseAmount(amount);
     }
@@ -187,7 +187,7 @@ public class Inventory : MonoBehaviour
     }
 
     // Returns the item that is currently selected
-    public InventoryItem GetSelectedItem()
+    public DigitalItem GetSelectedItem()
     {
         if(m_InventoryList[m_SelectedItem] == null)
         {
