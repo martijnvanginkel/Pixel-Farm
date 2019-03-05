@@ -49,6 +49,7 @@ public class DigitalItem : MonoBehaviour
     public void SetItemUnselected()
     {
         m_SlotImage.color = m_UnSelectedColor;
+
     }
 
     public void SetImage(Sprite image)
@@ -77,5 +78,17 @@ public class DigitalItem : MonoBehaviour
     public void BuyItemFromStore()
     {
         Store.Instance.BuyItem(this);
+    }
+
+    public void SellItemToStore()
+    {
+        if (!Store.Instance.StoreIsOpen)
+        {
+            return;
+        }
+        else
+        {
+            Store.Instance.SellItem(this);
+        }
     }
 }

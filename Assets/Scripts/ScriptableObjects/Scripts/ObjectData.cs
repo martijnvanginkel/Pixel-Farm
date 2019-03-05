@@ -12,9 +12,9 @@ public class ObjectData : ScriptableObject
     public Sprite Icon;
 
     public int SocialValue;
-    public int MoneyValue;
 
     public int DefaultStoreAmount;
     public int BuyingCost;
+    public int SellingCost;
 
 }

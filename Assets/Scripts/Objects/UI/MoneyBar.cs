@@ -16,14 +16,14 @@ public class MoneyBar : MonoBehaviour
 
     public void GainMoney(ObjectData objectData)
     {
-        m_CurrentMoney += objectData.MoneyValue;
+        m_CurrentMoney += objectData.SellingCost;
 
         m_MoneyTextField.text = m_CurrentMoney.ToString();
     }
 
     public void LoseMoney(ObjectData objectData)
     {
-        m_CurrentMoney -= objectData.MoneyValue;
+        m_CurrentMoney -= objectData.SellingCost;
 
         m_MoneyTextField.text = m_CurrentMoney.ToString();
     }

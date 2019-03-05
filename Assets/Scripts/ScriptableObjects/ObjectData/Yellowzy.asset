@@ -17,6 +17,6 @@ MonoBehaviour:
   Category: Social
   Icon: {fileID: 21300000, guid: 66574569e5a244629b5e129206993873, type: 3}
   SocialValue: 10
-  MoneyValue: 30
   DefaultStoreAmount: 5
-  BuyingCost: 0
+  BuyingCost: 40
+  SellingCost: 20

@@ -14,12 +14,6 @@ public abstract class InteractableObject : MonoBehaviour
 
     protected bool m_PlayerOnObject;
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-        //m_ButtonPanel.SetActive(false);
-    }
-
     // Doesnt need to be virtual right now
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {

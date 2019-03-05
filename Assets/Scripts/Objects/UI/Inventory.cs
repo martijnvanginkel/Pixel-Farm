@@ -48,6 +48,29 @@ public class Inventory : MonoBehaviour
         CheckForScrolling();
     }
 
+    public void SetAllItemsSelected()
+    {
+        for (int i = 0; i < m_InventoryList.Count; i++)
+        {
+            m_InventoryList[i].SetItemSelected();
+        }
+    }
+
+    public void SetAllItemsUnselected()
+    {
+        for (int i = 0; i < m_InventoryList.Count; i++)
+        {
+            if(m_SelectedItem != i)
+            {
+                m_InventoryList[i].SetItemUnselected();
+            }
+            else
+            {
+                m_InventoryList[i].SetItemSelected();
+            }
+        }
+    }
+
     // Function to turn the background of the inventory on or off
     private void ToggleBackground(bool isOn)
     {
@@ -122,6 +145,11 @@ public class Inventory : MonoBehaviour
         item.ObjectData = objectData;
         item.SetAmount(amount);
         item.SetImage(objectData.Icon);
+
+        if (Store.Instance.StoreIsOpen) // Exception to make sure all items are selected when the store is open
+        {
+            item.SetItemSelected();
+        }
 
         m_InventoryList.Add(item);
     }

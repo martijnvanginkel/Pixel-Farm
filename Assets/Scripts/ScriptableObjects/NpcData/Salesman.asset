@@ -17,5 +17,5 @@ MonoBehaviour:
   Description: The Salesman
   GreetingText: Hello Sir
   ReceivedText: What a great deal
-  NothingReceivedText: You have no possession
+  NothingReceivedText: You have no possessions
   SurprisedText: Excuse me?

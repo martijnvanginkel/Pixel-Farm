@@ -7,12 +7,6 @@ public class TradeableObject : InteractableObject
 {
     [SerializeField] protected ObjectData m_ObjectData; 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void TakeItem()
     {
         base.PlayerActionEvent();

@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class Npc : InteractableObject
 {
-    // Start is called before the first frame update
-    //protected override void Start()
-    //{
-    //    base.Start();
-    //}
 
     public delegate void ReceivedItem(ObjectData objectData, string receiveType);
     public static event ReceivedItem OnReceivedItem;
@@ -54,6 +49,7 @@ public class Npc : InteractableObject
         m_TextBalloon.SetActive(false);
 
         base.m_CanShowPanel = true;
+        base.ShowButtonPanel(true);
     }
 
 }

@@ -12,6 +12,6 @@ public class Salesman : Npc
 
     public void OpenShop()
     {
-        Store.Instance.OpenStorePanel();
+        Store.Instance.OpenStorePanel(); // Open the store panel
     }
 }

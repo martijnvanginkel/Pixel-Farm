@@ -25,13 +25,17 @@ public class Store : MonoBehaviour
         set { m_StoreItemList = value; }
     }
 
-    [SerializeField] private GameObject m_StorePanel;
+    private bool m_StoreIsOpen = false;
+    public bool StoreIsOpen
+    {
+        get { return m_StoreIsOpen; }
+        set { m_StoreIsOpen = value; }
+    }
 
+    [SerializeField] private GameObject m_StorePanel;
     [SerializeField] private Transform m_StoreItemsParent;
     [SerializeField] private Transform m_InventoryItemsParent;
     [SerializeField] private GameObject m_StoreItemPrefab;
-
-
     [SerializeField] private MoneyBar m_MoneyBar;
 
     private void Awake()
@@ -46,11 +50,23 @@ public class Store : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        SetStoreItems();
-        
+        SetDefaultItems();
+    }
+
+    public void OpenStorePanel()
+    {
+        m_StorePanel.SetActive(true);
+        m_StoreIsOpen = true;
+        Inventory.Instance.SetAllItemsSelected();
+    }
+
+    public void CloseStorePanel()
+    {
+        m_StorePanel.SetActive(false);
+        m_StoreIsOpen = false;
+        Inventory.Instance.SetAllItemsUnselected(); 
     }
 
     public void BuyItem(DigitalItem item)
@@ -58,29 +74,86 @@ public class Store : MonoBehaviour
         if(item.SlotAmount > 1)
         {
             item.DecreaseAmount(1);
+            Inventory.Instance.AddItem(item.ObjectData, 1);
+            m_MoneyBar.LoseMoney(item.ObjectData);
         }
         else
         {
-            Destroy(item.gameObject);
+            Inventory.Instance.AddItem(item.ObjectData, 1);
+            m_MoneyBar.LoseMoney(item.ObjectData);
+            RemoveSlot(item);
         }
-
-        Inventory.Instance.AddItem(item.ObjectData, 1);
-        m_MoneyBar.LoseMoney(item.ObjectData);
     }
 
-    public void OpenStorePanel()
+    public void SellItem(DigitalItem item)
     {
-        SetInventoryItems();
-        m_StorePanel.SetActive(true);
+        Inventory.Instance.RemoveItem(item, 1);
+        m_MoneyBar.GainMoney(item.ObjectData);
+        AddItemToStore(item.ObjectData, 1);
     }
 
-    public void CloseStorePanel()
+    private void AddItemToStore(ObjectData objectData, int amount)
     {
-        m_StorePanel.SetActive(false);
+        if (m_StoreItemList.Count == 0) // If the store is empty always add the item
+        {
+            AddStoreSlot(objectData, amount);
+        }
+        else // If the store is not empty
+        {
+            if (!ItemInStore(objectData)) // Add new store slot if its not in the store already
+            {
+                AddStoreSlot(objectData, amount);
+            }
+        }
+    }
+
+    private void AddStoreSlot(ObjectData objectData, int amount)
+    {
+        GameObject itemPrefab = Instantiate(m_StoreItemPrefab);
+        itemPrefab.transform.SetParent(m_StoreItemsParent, false); // false so it scales locally
+
+        DigitalItem item = itemPrefab.GetComponent<DigitalItem>();
+        item.ObjectData = objectData;
+        item.SetAmount(amount);
+        item.SetImage(objectData.Icon);
+
+        m_StoreItemList.Add(item);
+    }
+
+    private void RemoveSlot(DigitalItem item)
+    {
+        m_StoreItemList.Remove(item);
+        Destroy(item.gameObject);
+    }
+
+    // Return a true or false value to check if the store
+    private bool ItemInStore(ObjectData objectData)
+    {
+        for (int i = 0; i < m_StoreItemList.Count; i++)
+        {
+            if (m_StoreItemList[i].ObjectData.Name == objectData.Name)
+            {
+                AddSlotAmount(m_StoreItemList[i], 1);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Add slotamount to a slot that already exists
+    private void AddSlotAmount(DigitalItem item, int amount)
+    {
+        item.IncreaseAmount(amount);
+    }
+
+    // Decrease slotamount to a slot that already exists
+    private void RemoveSlotAmount(DigitalItem item, int amount)
+    {
+        item.DecreaseAmount(amount);
     }
 
     // Set the default items from the start of the game in the store
-    private void SetStoreItems()
+    private void SetDefaultItems()
     {
         foreach (ObjectData objectData in m_StartObjects)
         {
@@ -94,19 +167,6 @@ public class Store : MonoBehaviour
             item.SetImage(objectData.Icon);
 
             m_StoreItemList.Add(item);
-        }
-    }
-
-    private void SetInventoryItems()
-    {
-        foreach (DigitalItem item in Inventory.Instance.InventoryList)
-        {
-            // Spawn new itemPrefab
-            GameObject itemPrefab = Instantiate(m_StoreItemPrefab);
-            itemPrefab.transform.SetParent(m_InventoryItemsParent, false); // false so it scales locally
-
-            item.SetAmount(item.SlotAmount);
-            item.SetImage(item.ObjectData.Icon);
         }
     }
 }
