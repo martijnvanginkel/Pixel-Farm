@@ -12,12 +12,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float m_MoveSpeed;     
     [SerializeField] private bool m_AllowInput = true;
     private bool m_FacingRight = true;
+    private bool m_IsSlashing = false;
+
+    private LayerMask m_TileLayer;
+
+
 
     void Start()
     {
         m_RigidBody = GetComponent<Rigidbody2D>();
         m_Animator = GetComponent<Animator>();
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
+
+        m_TileLayer = LayerMask.GetMask("Tile");
     }
 
 
@@ -26,6 +33,8 @@ public class PlayerController : MonoBehaviour
         GetInput(); // Always check for input of the player
 
         m_Animator.SetFloat("MoveSpeed", Mathf.Abs(m_RigidBody.velocity.x)); // Set float for run animation
+        m_Animator.SetBool("Slashing", m_IsSlashing);
+
     }
 
     // Check for user input if its allowed
@@ -51,6 +60,20 @@ public class PlayerController : MonoBehaviour
                     FlipPlayerRight(false);
                 }
             }
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                m_IsSlashing = true;
+
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, m_TileLayer);
+                Debug.DrawRay(transform.position, Vector2.down, Color.green);
+
+                if (hit.collider != null)
+                {
+                    //hit.collider.GetComponent<>
+                    Debug.Log(hit.collider.name);
+                }
+
+            }
         }
     }
 
@@ -59,6 +82,11 @@ public class PlayerController : MonoBehaviour
     {
         m_FacingRight = faceRight;
         m_SpriteRenderer.flipX = !faceRight;
+    }
+
+    private void PlayerDoneSlashing()
+    {
+        m_IsSlashing = false;
     }
 
 }
