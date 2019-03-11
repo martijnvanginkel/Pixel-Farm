@@ -10,12 +10,12 @@ public class DataManager : MonoBehaviour
 
     private void OnEnable()
     {
-        Npc.OnReceivedItem += DecideReceiveType;
+        ReceivableObject.OnReceivedItem += DecideReceiveType;
     }
 
     private void OnDisable()
     {
-        Npc.OnReceivedItem -= DecideReceiveType;
+        ReceivableObject.OnReceivedItem -= DecideReceiveType;
     }
 
     private void DecideReceiveType(ObjectData objectData, string receiveType)
@@ -25,8 +25,11 @@ public class DataManager : MonoBehaviour
             case "Social":
                 m_SocialBar.GainPoints(objectData);
                 break;
-            case "Money":
+            case "Economy":
                 m_MoneyBar.GainMoney(objectData); 
+                break;
+            case "Environment":
+                Debug.Log("Environment");
                 break;
             default:
                 Debug.Log("No Data Received");

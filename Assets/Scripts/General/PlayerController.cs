@@ -67,10 +67,11 @@ public class PlayerController : MonoBehaviour
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, m_TileLayer);
                 Debug.DrawRay(transform.position, Vector2.down, Color.green);
 
-                if (hit.collider != null)
+                if (hit.collider.tag == "GroundTile")
                 {
-                    //hit.collider.GetComponent<>
+                    hit.collider.gameObject.GetComponent<GroundTile>().Cut();
                     Debug.Log(hit.collider.name);
+                    
                 }
 
             }

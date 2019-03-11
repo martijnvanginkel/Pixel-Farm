@@ -19,10 +19,11 @@ public class Inventory : MonoBehaviour
     }
 
     [SerializeField] private GameObject m_InventoryItemPrefab;
+    [SerializeField] private Image m_SelectedPlayerCanvas;
     private Image m_InventoryBackground;
 
-    [SerializeField] private int m_SelectedItem;
-    [SerializeField] private int m_LastSelectedItem;
+    [SerializeField] private int m_SelectedItemInt;
+    [SerializeField] private int m_LastSelectedItemInt;
     private float m_ScrollValue; 
 
     private void Awake()
@@ -60,7 +61,7 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < m_InventoryList.Count; i++)
         {
-            if(m_SelectedItem != i)
+            if(m_SelectedItemInt != i)
             {
                 m_InventoryList[i].SetItemUnselected();
             }
@@ -84,9 +85,9 @@ public class Inventory : MonoBehaviour
         {
             m_ScrollValue += Input.GetAxis("Mouse ScrollWheel");
             m_ScrollValue = Mathf.Clamp(m_ScrollValue, 0f, (float)(m_InventoryList.Count - 1));
-            m_SelectedItem = Mathf.RoundToInt(m_ScrollValue); // Prevents value from exceeding specified range
+            m_SelectedItemInt = Mathf.RoundToInt(m_ScrollValue); // Prevents value from exceeding specified range
 
-            if(m_SelectedItem != m_LastSelectedItem)
+            if(m_SelectedItemInt != m_LastSelectedItemInt)
             {
                 SetSelectedItemColor();
             }
@@ -96,10 +97,11 @@ public class Inventory : MonoBehaviour
     // Set the color bright of the item that is currently selected
     private void SetSelectedItemColor()
     {
-        m_InventoryList[m_SelectedItem].SetItemSelected(); ;
-        m_InventoryList[m_LastSelectedItem].SetItemUnselected();
+        m_InventoryList[m_SelectedItemInt].SetItemSelected(); ;
+        m_InventoryList[m_LastSelectedItemInt].SetItemUnselected();
+        //m_SelectedPlayerCanvas.sprite = m_InventoryList[m_SelectedItem].ObjectData.Icon;  turn on selected item above player head
 
-        m_LastSelectedItem = m_SelectedItem;
+        m_LastSelectedItemInt = m_SelectedItemInt;
     }
 
     // Function that gets called when an item is being picked up
@@ -110,7 +112,7 @@ public class Inventory : MonoBehaviour
             ToggleBackground(true);
             AddInventorySlot(objectData, amount);
 
-            m_InventoryList[m_SelectedItem].SetItemSelected(); // Make the first item selected if the inventory was empty before
+            m_InventoryList[m_SelectedItemInt].SetItemSelected(); // Make the first item selected if the inventory was empty before
         }
         else // If inventory is not empty 
         {
@@ -157,11 +159,11 @@ public class Inventory : MonoBehaviour
     // Remove an inventory slot 
     private void RemoveInventorySlot(DigitalItem item)
     {
-        if(m_SelectedItem != 0 && m_SelectedItem == m_InventoryList.Count - 1) // If the last item in the list is selected and its not the only item in the list, move the selected item one back
+        if(m_SelectedItemInt != 0 && m_SelectedItemInt == m_InventoryList.Count - 1) // If the last item in the list is selected and its not the only item in the list, move the selected item one back
         {
-            m_SelectedItem--;
-            m_LastSelectedItem--;
-            m_InventoryList[m_SelectedItem].SetItemSelected();
+            m_SelectedItemInt--;
+            m_LastSelectedItemInt--;
+            m_InventoryList[m_SelectedItemInt].SetItemSelected();
         }
 
         if(m_InventoryList.Count == 1) // Turn off the background when its the last inventory item
@@ -171,18 +173,18 @@ public class Inventory : MonoBehaviour
 
         m_InventoryList.Remove(item);
 
-        if (m_SelectedItem == 0) // If the selected item is the first item
+        if (m_SelectedItemInt == 0) // If the selected item is the first item
         {
             if(m_InventoryList.Count != 0) // And its not the only item in the inventory, keep the first item selected
             {
-                m_SelectedItem = 0;
-                m_LastSelectedItem = 0;
-                m_InventoryList[m_SelectedItem].SetItemSelected();
+                m_SelectedItemInt = 0;
+                m_LastSelectedItemInt = 0;
+                m_InventoryList[m_SelectedItemInt].SetItemSelected();
             }
         }
         else // If its not the first item, make the item that falls in its place selected
         {
-            m_InventoryList[m_SelectedItem].SetItemSelected();
+            m_InventoryList[m_SelectedItemInt].SetItemSelected();
         }
 
         Destroy(item.gameObject);
@@ -217,13 +219,13 @@ public class Inventory : MonoBehaviour
     // Returns the item that is currently selected
     public DigitalItem GetSelectedItem()
     {
-        if(m_InventoryList[m_SelectedItem] == null)
+        if(m_InventoryList.Count == 0)
         {
-            return null;
+            return null; // this is not correct
         }
         else
         {
-            return m_InventoryList[m_SelectedItem];
+            return m_InventoryList[m_SelectedItemInt];
         }
 
     }

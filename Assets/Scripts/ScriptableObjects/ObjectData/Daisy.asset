@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Daisy
   Description: A nice flower
-  Category: Social
+  ItemCategory: Flowers
+  DataCategory: Social
   Icon: {fileID: 21300000, guid: 91390eae14a35426d8c63984dcaa2b6c, type: 3}
   SocialValue: 10
   DefaultStoreAmount: 3

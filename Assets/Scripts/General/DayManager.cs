@@ -16,8 +16,8 @@ public class DayManager : MonoBehaviour
     private Color m_DarknessColor;
     private Color m_LightColor;
 
-    // 1f = 1 minute
-    private float m_AnimationSpeed = 0.2f;
+    // 1f = 1 minute, 0.2f = 5 minutes, 3f = 20 seconds
+    private float m_AnimationSpeed = 3f;
     private bool m_DayTime;
     private bool m_Fading;
 
