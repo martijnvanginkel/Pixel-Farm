@@ -30,6 +30,7 @@ public class DigitalItem : MonoBehaviour
     private Color m_SelectedColor;
     private Color m_UnSelectedColor;
 
+    [SerializeField] private PlayerController m_Player;
     [SerializeField] private TMPro.TextMeshProUGUI m_SlotAmountText;
 
     void Awake()
@@ -37,6 +38,8 @@ public class DigitalItem : MonoBehaviour
         m_SlotImage = GetComponent<Image>();
         m_SelectedColor = new Color(1f, 1f, 1f, 1f);
         m_UnSelectedColor = new Color(1f, 1f, 1f, 0.25f);
+
+        m_Player = FindObjectOfType<PlayerController>(); // this is very bad needs to be fixed
     }
 
     // Makes the selected inventory item more bright
@@ -80,15 +83,29 @@ public class DigitalItem : MonoBehaviour
         Store.Instance.BuyItem(this);
     }
 
-    public void SellItemToStore()
+    public void ItemClicked()
     {
         if (!Store.Instance.StoreIsOpen)
         {
-            return;
+            DropItemOnGround();
         }
         else
         {
             Store.Instance.SellItem(this);
         }
+    }
+
+    private void DropItemOnGround()
+    {
+        Inventory.Instance.RemoveItem(this, 1);
+
+        GameObject tile = m_Player.FindStandingTile();
+
+        float height = tile.GetComponent<Renderer>().bounds.size.y;
+
+
+        Instantiate(ObjectData.Prefab, new Vector3(tile.transform.position.x, tile.transform.position.y + height / 2, tile.transform.position.z), transform.rotation);
+
+       // Instantiate(m_ObjectData.Prefab, new Vector3(standingTile.transform.x, standingTile));
     }
 }

@@ -194,10 +194,10 @@ RectTransform:
   m_Father: {fileID: 9049134676819987194}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 30.249998, y: -15}
-  m_SizeDelta: {x: 58.499996, y: 28}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 58.499996, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9049134676235660463
 CanvasRenderer:
@@ -384,10 +384,10 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0119555, y: 0}
+  m_Offset: {x: -0.0119555, y: 0.22377157}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 0.375, y: 0.4375}
     newSize: {x: 0.375, y: 0.4375}
     adaptiveTilingThreshold: 0.5
@@ -395,7 +395,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.053943872, y: 0.4375}
+  m_Size: {x: 0.053943872, y: 0.44408178}
   m_EdgeRadius: 0
 --- !u!114 &9049134676357329053
 MonoBehaviour:
@@ -445,10 +445,10 @@ RectTransform:
   m_Father: {fileID: 9049134676819987194}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 89.74999, y: -15}
-  m_SizeDelta: {x: 58.499996, y: 28}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 58.499996, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9049134676615663037
 CanvasRenderer:
@@ -703,6 +703,7 @@ GameObject:
   - component: {fileID: 9049134676819987195}
   - component: {fileID: 9049134676819987196}
   - component: {fileID: 9049134676819987197}
+  - component: {fileID: 8016420269243458261}
   m_Layer: 5
   m_Name: ButtonPanel
   m_TagString: Untagged
@@ -729,7 +730,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 70}
-  m_SizeDelta: {x: 120, y: 30}
+  m_SizeDelta: {x: 0, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9049134676819987195
 CanvasRenderer:
@@ -789,8 +790,22 @@ MonoBehaviour:
   m_Spacing: 1
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
+  m_ChildControlWidth: 0
   m_ChildControlHeight: 1
+--- !u!114 &8016420269243458261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9049134676819987198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1741964061, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 0
 --- !u!1 &9049134677502590847
 GameObject:
   m_ObjectHideFlags: 0

@@ -174,6 +174,7 @@ GameObject:
   - component: {fileID: 9069786255818172683}
   - component: {fileID: 146552573172982817}
   - component: {fileID: 9214420587765356338}
+  - component: {fileID: 5866717146348830447}
   m_Layer: 5
   m_Name: ButtonPanel
   m_TagString: Untagged
@@ -200,7 +201,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 70}
-  m_SizeDelta: {x: 120, y: 30}
+  m_SizeDelta: {x: 119.99999, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9069786255818172683
 CanvasRenderer:
@@ -260,8 +261,22 @@ MonoBehaviour:
   m_Spacing: 1
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
+  m_ChildControlWidth: 0
   m_ChildControlHeight: 1
+--- !u!114 &5866717146348830447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018495647601293833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1741964061, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 0
 --- !u!1 &1131921740964706149
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,10 +779,10 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0016362667, y: 0}
+  m_Offset: {x: -0.0016362667, y: 0.2808655}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 0.3125, y: 0.5625}
     newSize: {x: 0.3125, y: 0.5625}
     adaptiveTilingThreshold: 0.5
@@ -775,7 +790,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.03435278, y: 0.5625}
+  m_Size: {x: 0.03435278, y: 0.5625001}
   m_EdgeRadius: 0
 --- !u!114 &6480533037712739864
 MonoBehaviour:

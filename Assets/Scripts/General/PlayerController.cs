@@ -16,8 +16,6 @@ public class PlayerController : MonoBehaviour
 
     private LayerMask m_TileLayer;
 
-
-
     void Start()
     {
         m_RigidBody = GetComponent<Rigidbody2D>();
@@ -63,17 +61,14 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 m_IsSlashing = true;
+                GameObject standingTile = FindStandingTile();
 
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, m_TileLayer);
-                Debug.DrawRay(transform.position, Vector2.down, Color.green);
-
-                if (hit.collider.tag == "GroundTile")
+                if (standingTile.tag == "GroundTile")
                 {
-                    hit.collider.gameObject.GetComponent<GroundTile>().Cut();
-                    Debug.Log(hit.collider.name);
+                    standingTile.GetComponent<GrassTile>().Cut();
+                    Debug.Log(standingTile.name);
                     
                 }
-
             }
         }
     }
@@ -88,6 +83,15 @@ public class PlayerController : MonoBehaviour
     private void PlayerDoneSlashing()
     {
         m_IsSlashing = false;
+    }
+
+    // Finds the tile the player is currently standing on
+    public GameObject FindStandingTile()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, m_TileLayer);
+        //Debug.DrawRay(transform.position, Vector2.down, Color.green);
+
+        return hit.collider.gameObject;
     }
 
 }

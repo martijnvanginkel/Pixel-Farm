@@ -270,6 +270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5954448478e47dba5e6f0be6dd8e9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Player: {fileID: 7322581652779694448, guid: 2fdbe9b243b894471bb2a4ada1bf6320,
+    type: 3}
   m_SlotAmountText: {fileID: 5223238531479527071}
 --- !u!114 &64835189517299041
 MonoBehaviour:
@@ -312,7 +314,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8671900782289970232}
-        m_MethodName: SellItemToStore
+        m_MethodName: ItemClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
