@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 // A DigitalItem is an item that is in the inventory or in the store. It represents an item but is not physically in the scene
-public class DigitalItem : MonoBehaviour
+public class DigitalItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private ObjectData m_ObjectData;
     public ObjectData ObjectData
@@ -30,16 +31,30 @@ public class DigitalItem : MonoBehaviour
     private Color m_SelectedColor;
     private Color m_UnSelectedColor;
 
-    [SerializeField] private PlayerController m_Player;
     [SerializeField] private TMPro.TextMeshProUGUI m_SlotAmountText;
+    [SerializeField] private GameObject m_DescriptionBox;
+    [SerializeField] private TMPro.TextMeshProUGUI m_DescriptionText;
+
+    private bool m_MouseIsOver;
 
     void Awake()
     {
         m_SlotImage = GetComponent<Image>();
         m_SelectedColor = new Color(1f, 1f, 1f, 1f);
         m_UnSelectedColor = new Color(1f, 1f, 1f, 0.25f);
+    }
 
-        m_Player = FindObjectOfType<PlayerController>(); // this is very bad needs to be fixed
+    void Start()
+    {
+        SetObjectDescription();
+    }
+
+    void SetObjectDescription()
+    {
+        if(ObjectData.Description != null)
+        {
+            m_DescriptionText.text = ObjectData.Description;
+        }
     }
 
     // Makes the selected inventory item more bright
@@ -87,6 +102,7 @@ public class DigitalItem : MonoBehaviour
     {
         if (!Store.Instance.StoreIsOpen)
         {
+            Inventory.Instance.SetClickedItemSelected(this);
             DropItemOnGround();
         }
         else
@@ -97,15 +113,39 @@ public class DigitalItem : MonoBehaviour
 
     private void DropItemOnGround()
     {
-        Inventory.Instance.RemoveItem(this, 1);
-
-        GameObject tile = m_Player.FindStandingTile();
-
+        GameObject tile = PlayerController.Instance.FindStandingTile();
         float height = tile.GetComponent<Renderer>().bounds.size.y;
 
+        Instantiate(ObjectData.Prefab, new Vector3(PlayerController.Instance.GetPlayerPosition().position.x, tile.transform.position.y + height / 2, tile.transform.position.z), transform.rotation);
+        Inventory.Instance.RemoveItem(this, 1);
+    }
 
-        Instantiate(ObjectData.Prefab, new Vector3(tile.transform.position.x, tile.transform.position.y + height / 2, tile.transform.position.z), transform.rotation);
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        m_MouseIsOver = true;
+        StartCoroutine("WaitToShowDescription");
+        Debug.Log("Mouse enter");
+    }
 
-       // Instantiate(m_ObjectData.Prefab, new Vector3(standingTile.transform.x, standingTile));
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        m_MouseIsOver = false;
+        ShowDescription(false);
+        Debug.Log("Mouse exit");
+    }
+
+    private IEnumerator WaitToShowDescription()
+    {
+        yield return new WaitForSeconds(1f);
+        if (m_MouseIsOver)
+        {
+            ShowDescription(true);
+        }
+    }
+
+    private void ShowDescription(bool isOn)
+    {
+        m_DescriptionBox.SetActive(isOn);
+        Debug.Log("show description");
     }
 }

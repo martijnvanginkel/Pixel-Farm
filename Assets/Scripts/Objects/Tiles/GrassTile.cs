@@ -120,6 +120,7 @@ public class GrassTile : ReceivableObject
     {
         m_SpriteRenderer.sprite = m_PlowedSprite;
         m_CurrentState = State.Plowed;
+        ShowButtonPanel();
     }
 
     private void PlantSeed(ObjectData objectData)
@@ -139,17 +140,22 @@ public class GrassTile : ReceivableObject
         {
             if(m_CurrentState == State.Plowed)
             {
-                // In toekomst zoeken naar datacategory meteen en een switch statement voor elk soort category
-                DigitalItem selectedItem = Inventory.Instance.GetSelectedItem();
+                ShowButtonPanel();
+            }
+        }
+    }
 
-                if(Inventory.Instance.GetSelectedItem() != null)
-                {
-                    if (selectedItem.ObjectData.ItemCategory == "Seeds")
-                    {
-                        m_PlayerOnObject = true;
-                        ShowButtonPanel(true);
-                    }
-                }
+    // Button panel is being showed when the inventory is selecting a seedpackage
+    private void ShowButtonPanel()
+    {
+        DigitalItem selectedItem = Inventory.Instance.GetSelectedItem();
+
+        if (Inventory.Instance.GetSelectedItem() != null)
+        {
+            if (selectedItem.ObjectData.ItemCategory == "Seeds")
+            {
+                m_PlayerOnObject = true;
+                ShowButtonPanel(true);
             }
         }
     }

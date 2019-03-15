@@ -46,7 +46,10 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        CheckForScrolling();
+        if(Store.Instance.StoreIsOpen == false)
+        {
+            CheckForScrolling();
+        }
     }
 
     public void SetAllItemsSelected()
@@ -227,6 +230,17 @@ public class Inventory : MonoBehaviour
         {
             return m_InventoryList[m_SelectedItemInt];
         }
+    }
 
+    public void SetClickedItemSelected(DigitalItem item)
+    {
+        //item.SetItemSelected();
+
+        m_SelectedItemInt = m_InventoryList.IndexOf(item);
+
+        SetSelectedItemColor();
+        //m_InventoryList[m_SelectedItemInt].SetItemUnselected();
+        //m_SelectedItemInt = m_InventoryList.IndexOf(item);
+        //m_LastSelectedItemInt = m_InventoryList.IndexOf(item);
     }
 }

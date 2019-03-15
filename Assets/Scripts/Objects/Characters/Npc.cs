@@ -38,8 +38,12 @@ public class Npc : ReceivableObject
         yield return new WaitForSeconds(2f);
         m_TextBalloon.SetActive(false);
 
-        base.m_CanShowPanel = true;
-        base.ShowButtonPanel(true);
+        // Only if the player is still colliding with the npc open the buttonpanel again
+        if (m_PlayerOnObject)
+        {
+            base.m_CanShowPanel = true;
+            base.ShowButtonPanel(true);
+        }
     }
 
 }

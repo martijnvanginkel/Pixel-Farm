@@ -60,13 +60,15 @@ public class Store : MonoBehaviour
         m_StorePanel.SetActive(true);
         m_StoreIsOpen = true;
         Inventory.Instance.SetAllItemsSelected();
+        PlayerController.Instance.AllowInput = false;
     }
 
     public void CloseStorePanel()
     {
         m_StorePanel.SetActive(false);
         m_StoreIsOpen = false;
-        Inventory.Instance.SetAllItemsUnselected(); 
+        Inventory.Instance.SetAllItemsUnselected();
+        PlayerController.Instance.AllowInput = true;
     }
 
     public void BuyItem(DigitalItem item)

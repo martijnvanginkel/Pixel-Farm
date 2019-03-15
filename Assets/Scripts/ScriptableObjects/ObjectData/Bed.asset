@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a2a93d55fe14bf7a99b4e79e7d977d, type: 3}
   m_Name: Bed
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Bed
   Description: 
   Prefab: {fileID: 2606628118014638524, guid: 05689cc071327498f916d7ec0621fffc, type: 3}
   ItemCategory: 
-  DataCategory: 
+  DataCategory: Social
   Icon: {fileID: 21300000, guid: c0c5add95ae154977acc26d84b40b600, type: 3}
-  SocialValue: 0
+  SocialValue: 2
   DefaultStoreAmount: 3
   BuyingCost: 100
   SellingCost: 60

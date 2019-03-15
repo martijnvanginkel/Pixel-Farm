@@ -4,17 +4,41 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private static PlayerController m_Instance;
+    public static PlayerController Instance
+    {
+        get { return m_Instance; }
+    }
 
     private Rigidbody2D m_RigidBody;
     private Animator m_Animator;
     private SpriteRenderer m_SpriteRenderer;
 
-    [SerializeField] private float m_MoveSpeed;     
-    [SerializeField] private bool m_AllowInput = true;
+    [SerializeField] private float m_MoveSpeed;
+         
+    private bool m_AllowInput = true;
+    public bool AllowInput
+    {
+        get { return m_AllowInput; }
+        set { m_AllowInput = value; }
+    }
+
     private bool m_FacingRight = true;
     private bool m_IsSlashing = false;
 
     private LayerMask m_TileLayer;
+
+    private void Awake()
+    {
+        if (m_Instance != null && m_Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            m_Instance = this;
+        }
+    }
 
     void Start()
     {
@@ -67,7 +91,6 @@ public class PlayerController : MonoBehaviour
                 {
                     standingTile.GetComponent<GrassTile>().Cut();
                     Debug.Log(standingTile.name);
-                    
                 }
             }
         }
@@ -92,6 +115,11 @@ public class PlayerController : MonoBehaviour
         //Debug.DrawRay(transform.position, Vector2.down, Color.green);
 
         return hit.collider.gameObject;
+    }
+
+    public Transform GetPlayerPosition()
+    {
+        return this.transform;
     }
 
 }
