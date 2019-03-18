@@ -41,8 +41,9 @@ public class Inventory : MonoBehaviour
     private void Start()
     {
         m_InventoryBackground = GetComponent<Image>();
-        ToggleBackground(false);
+        //ToggleBackground(false);
     }
+
 
     private void Update()
     {
@@ -52,36 +53,13 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void SetAllItemsSelected()
-    {
-        for (int i = 0; i < m_InventoryList.Count; i++)
-        {
-            m_InventoryList[i].SetItemSelected();
-        }
-    }
-
-    public void SetAllItemsUnselected()
-    {
-        for (int i = 0; i < m_InventoryList.Count; i++)
-        {
-            if(m_SelectedItemInt != i)
-            {
-                m_InventoryList[i].SetItemUnselected();
-            }
-            else
-            {
-                m_InventoryList[i].SetItemSelected();
-            }
-        }
-    }
-
     // Function to turn the background of the inventory on or off
     private void ToggleBackground(bool isOn)
     {
         m_InventoryBackground.enabled = isOn;
     }
 
-    // Function that check if the player is scrolling selects current item
+    //// Function that check if the player is scrolling selects current item
     private void CheckForScrolling()
     {
         if(m_InventoryList.Count > 0)
@@ -90,7 +68,7 @@ public class Inventory : MonoBehaviour
             m_ScrollValue = Mathf.Clamp(m_ScrollValue, 0f, (float)(m_InventoryList.Count - 1));
             m_SelectedItemInt = Mathf.RoundToInt(m_ScrollValue); // Prevents value from exceeding specified range
 
-            if(m_SelectedItemInt != m_LastSelectedItemInt)
+            if (m_SelectedItemInt != m_LastSelectedItemInt)
             {
                 SetSelectedItemColor();
             }
@@ -102,7 +80,7 @@ public class Inventory : MonoBehaviour
     {
         m_InventoryList[m_SelectedItemInt].SetItemSelected(); ;
         m_InventoryList[m_LastSelectedItemInt].SetItemUnselected();
-        //m_SelectedPlayerCanvas.sprite = m_InventoryList[m_SelectedItem].ObjectData.Icon;  turn on selected item above player head
+        //m_SelectedPlayerCanvas.sprite = m_InventoryList[m_SelectedItemInt].ObjectData.Icon;  //turn on selected item above player head
 
         m_LastSelectedItemInt = m_SelectedItemInt;
     }
@@ -112,10 +90,7 @@ public class Inventory : MonoBehaviour
     {
         if(m_InventoryList.Count == 0) // If inventory is empty always add the item
         {
-            ToggleBackground(true);
             AddInventorySlot(objectData, amount);
-
-            m_InventoryList[m_SelectedItemInt].SetItemSelected(); // Make the first item selected if the inventory was empty before
         }
         else // If inventory is not empty 
         {
@@ -139,7 +114,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // Add a new inventory slot for an item that is not in the inventory
+    //// Add a new inventory slot for an item that is not in the inventory
     private void AddInventorySlot(ObjectData objectData, int amount)
     {
         // Spawn new itemPrefab
@@ -151,46 +126,68 @@ public class Inventory : MonoBehaviour
         item.SetAmount(amount);
         item.SetImage(objectData.Icon);
 
-        if (Store.Instance.StoreIsOpen) // Exception to make sure all items are selected when the store is open
+        if(m_InventoryList.Count == 0)
         {
             item.SetItemSelected();
         }
+        else
+        {
+            item.SetItemUnselected();
+        }
 
         m_InventoryList.Add(item);
+
     }
 
-    // Remove an inventory slot 
+
+    //// Remove an inventory slot 
     private void RemoveInventorySlot(DigitalItem item)
     {
-        if(m_SelectedItemInt != 0 && m_SelectedItemInt == m_InventoryList.Count - 1) // If the last item in the list is selected and its not the only item in the list, move the selected item one back
-        {
-            m_SelectedItemInt--;
-            m_LastSelectedItemInt--;
-            m_InventoryList[m_SelectedItemInt].SetItemSelected();
-        }
 
-        if(m_InventoryList.Count == 1) // Turn off the background when its the last inventory item
+        // kijk ook naar welke je op klikt, ook al is die niet geselecteerd
+        if (m_InventoryList.IndexOf(item) == m_SelectedItemInt)
         {
-            ToggleBackground(false);
-        }
 
-        m_InventoryList.Remove(item);
-
-        if (m_SelectedItemInt == 0) // If the selected item is the first item
-        {
-            if(m_InventoryList.Count != 0) // And its not the only item in the inventory, keep the first item selected
+            if (m_SelectedItemInt == 0) //  als de eerste geselecteerd is
             {
-                m_SelectedItemInt = 0;
-                m_LastSelectedItemInt = 0;
-                m_InventoryList[m_SelectedItemInt].SetItemSelected();
-            }
-        }
-        else // If its not the first item, make the item that falls in its place selected
-        {
-            m_InventoryList[m_SelectedItemInt].SetItemSelected();
-        }
+                m_InventoryList.Remove(item);
+                Destroy(item.gameObject);
 
-        Destroy(item.gameObject);
+                if (m_InventoryList.Count > 1) // en de lijst heeft meer dan 1 item
+                {
+                    m_InventoryList[m_SelectedItemInt].SetItemSelected();
+
+                }
+            }
+            else if (m_SelectedItemInt == m_InventoryList.Count - 1) // als de laatste geselecteerd is
+            {
+                m_InventoryList.Remove(item);
+                Destroy(item.gameObject);
+                m_SelectedItemInt--;
+                m_LastSelectedItemInt--;
+                m_InventoryList[m_SelectedItemInt].SetItemSelected();
+                return;
+            }
+            else
+            {
+                m_InventoryList.Remove(item);
+                Destroy(item.gameObject);
+                m_InventoryList[m_SelectedItemInt].SetItemSelected();
+                return;
+            }
+
+        }
+        else //  als je een ongeselecteerde weghaalt
+        {
+            if(m_SelectedItemInt != 0)
+            {
+                m_SelectedItemInt--;
+                m_LastSelectedItemInt--;
+            }
+
+            m_InventoryList.Remove(item);
+            Destroy(item.gameObject);
+        }
     }
 
     // Add slotamount to a slot that already exists
@@ -230,17 +227,5 @@ public class Inventory : MonoBehaviour
         {
             return m_InventoryList[m_SelectedItemInt];
         }
-    }
-
-    public void SetClickedItemSelected(DigitalItem item)
-    {
-        //item.SetItemSelected();
-
-        m_SelectedItemInt = m_InventoryList.IndexOf(item);
-
-        SetSelectedItemColor();
-        //m_InventoryList[m_SelectedItemInt].SetItemUnselected();
-        //m_SelectedItemInt = m_InventoryList.IndexOf(item);
-        //m_LastSelectedItemInt = m_InventoryList.IndexOf(item);
     }
 }

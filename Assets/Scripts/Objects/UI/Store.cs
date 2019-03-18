@@ -59,7 +59,6 @@ public class Store : MonoBehaviour
     {
         m_StorePanel.SetActive(true);
         m_StoreIsOpen = true;
-        Inventory.Instance.SetAllItemsSelected();
         PlayerController.Instance.AllowInput = false;
     }
 
@@ -67,7 +66,6 @@ public class Store : MonoBehaviour
     {
         m_StorePanel.SetActive(false);
         m_StoreIsOpen = false;
-        Inventory.Instance.SetAllItemsUnselected();
         PlayerController.Instance.AllowInput = true;
     }
 
@@ -89,9 +87,9 @@ public class Store : MonoBehaviour
 
     public void SellItem(DigitalItem item)
     {
-        Inventory.Instance.RemoveItem(item, 1);
         m_MoneyBar.GainMoney(item.ObjectData);
         AddItemToStore(item.ObjectData, 1);
+        Inventory.Instance.RemoveItem(item, 1);
     }
 
     private void AddItemToStore(ObjectData objectData, int amount)

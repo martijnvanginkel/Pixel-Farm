@@ -46,7 +46,7 @@ public class DigitalItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     void Start()
     {
-        SetObjectDescription();
+        //SetObjectDescription();
     }
 
     void SetObjectDescription()
@@ -102,7 +102,7 @@ public class DigitalItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         if (!Store.Instance.StoreIsOpen)
         {
-            Inventory.Instance.SetClickedItemSelected(this);
+            //Inventory.Instance.SetClickedItemSelected(this);
             DropItemOnGround();
         }
         else

@@ -10,7 +10,8 @@ public class TradeableObject : InteractableObject
     public void TakeItem()
     {
         base.PlayerActionEvent();
-        Inventory.Instance.AddItem(m_ObjectData, 1);
+        //Inventory.Instance.AddItem(m_ObjectData, 1);
+        BackPack.Instance.AddItem(m_ObjectData);
         Destroy(this.gameObject);
     }
 }

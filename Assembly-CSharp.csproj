@@ -81,6 +81,8 @@
     <Compile Include="Assets\Scripts\Objects\Tiles\GrassTile.cs" />
     <Compile Include="Assets\Scripts\Objects\Tiles\HouseTile.cs" />
     <Compile Include="Assets\Scripts\Objects\TradeableObject.cs" />
+    <Compile Include="Assets\Scripts\Objects\UI\BackPack.cs" />
+    <Compile Include="Assets\Scripts\Objects\UI\BackPackSlot.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\DataManager.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\DigitalItem.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\EnergyBar.cs" />
