@@ -81,13 +81,12 @@
     <Compile Include="Assets\Scripts\Objects\Tiles\GrassTile.cs" />
     <Compile Include="Assets\Scripts\Objects\Tiles\HouseTile.cs" />
     <Compile Include="Assets\Scripts\Objects\TradeableObject.cs" />
-    <Compile Include="Assets\Scripts\Objects\UI\BackPack.cs" />
-    <Compile Include="Assets\Scripts\Objects\UI\BackPackSlot.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\DataManager.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\DigitalItem.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\EnergyBar.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\EnergyItem.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Objects\UI\InventorySlot.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\MoneyBar.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\SocialBar.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\Store.cs" />

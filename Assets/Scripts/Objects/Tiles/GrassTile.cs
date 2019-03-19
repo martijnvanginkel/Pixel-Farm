@@ -78,7 +78,7 @@ public class GrassTile : ReceivableObject
 
     public override void ReceiveItem()
     {
-        DigitalItem item = BackPack.Instance.SelectedSlot; // Get the currently selected item
+        DigitalItem item = Inventory.Instance.SelectedSlot; // Get the currently selected item
 
         switch (item.ObjectData.ItemCategory) 
         {
@@ -148,7 +148,7 @@ public class GrassTile : ReceivableObject
     // Button panel is being showed when the inventory is selecting a seedpackage
     private void ShowButtonPanel()
     {
-        DigitalItem selectedItem = BackPack.Instance.SelectedSlot;
+        DigitalItem selectedItem = Inventory.Instance.SelectedSlot;
 
         if (selectedItem.ObjectData.ItemCategory == "Seeds")
         {

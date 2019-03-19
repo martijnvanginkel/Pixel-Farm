@@ -11,11 +11,8 @@ public class ReceivableObject : InteractableObject
 
     public virtual void ReceiveItem()
     {
-        BackPackSlot item = BackPack.Instance.SelectedSlot;
+        InventorySlot item = Inventory.Instance.SelectedSlot;
         OnReceivedItem?.Invoke(item.ObjectData, m_ObjectData.ReceiveType); // Call an event to transfer the item into data
-        BackPack.Instance.RemoveItem(item);
-        //StoreSlot item = Inventory.Instance.GetSelectedItem(); // Get the currently selected item in the inventory       
-        //Inventory.Instance.RemoveItem(item, 1); // Remove the item from the inventory
+        Inventory.Instance.RemoveItem(item);
     }
-
 }

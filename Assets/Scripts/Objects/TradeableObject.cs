@@ -9,10 +9,10 @@ public class TradeableObject : InteractableObject
 
     public void TakeItem()
     {
-        if (BackPack.Instance.CheckIfSpace(m_ObjectData))
+        if (Inventory.Instance.CheckIfSpace(m_ObjectData))
         {
             base.PlayerActionEvent();
-            BackPack.Instance.AddItem(m_ObjectData);
+            Inventory.Instance.AddItem(m_ObjectData);
             Destroy(this.gameObject);
         }
         else

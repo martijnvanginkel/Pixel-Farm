@@ -1,18 +1,13 @@
 ﻿<Properties StartupConfiguration="{5939ABBB-C06D-3999-1DA5-0EAC991E5E09}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Objects/UI/SocialBar.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Objects/UI/InventorySlot.cs">
     <Files>
-      <File FileName="Assets/Scripts/Objects/UI/Inventory.cs" Line="178" Column="1" />
       <File FileName="Assets/Scripts/Objects/UI/StoreSlot.cs" Line="36" Column="10" />
-      <File FileName="Assets/Scripts/Objects/UI/Store.cs" Line="115" Column="12" />
-      <File FileName="Assets/Scripts/Objects/ReceivableObject.cs" Line="14" Column="21" />
+      <File FileName="Assets/Scripts/Objects/ReceivableObject.cs" Line="15" Column="17" />
       <File FileName="Assets/Scripts/Objects/TradeableObject.cs" Line="14" Column="38" />
-      <File FileName="Assets/Scripts/Objects/UI/MoneyBar.cs" Line="19" Column="1" />
-      <File FileName="Assets/Scripts/Objects/UI/BackPack.cs" Line="70" Column="31" />
-      <File FileName="Assets/Scripts/Objects/UI/BackPackSlot.cs" Line="7" Column="2" />
-      <File FileName="Assets/Scripts/Objects/UI/DigitalItem.cs" Line="39" Column="72" />
-      <File FileName="Assets/Scripts/Objects/Tiles/GrassTile.cs" Line="83" Column="47" />
-      <File FileName="Assets/Scripts/Objects/Characters/Npc.cs" Line="17" Column="38" />
+      <File FileName="Assets/Scripts/Objects/UI/InventorySlot.cs" Line="6" Column="27" />
+      <File FileName="Assets/Scripts/Objects/Characters/Npc.cs" Line="22" Column="10" />
       <File FileName="Assets/Scripts/Objects/UI/SocialBar.cs" Line="18" Column="1" />
+      <File FileName="Assets/Scripts/Objects/UI/Inventory.cs" Line="10" Column="35" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
@@ -20,7 +15,7 @@
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/Martijn/Games/the_balance_game/Assets/Scripts/Objects/UI/DigitalItem.cs" relfile="Assets/Scripts/Objects/UI/DigitalItem.cs" line="87" column="1" />
+      <Breakpoint file="/Users/Martijn/Games/the_balance_game/Assets/Scripts/Objects/UI/DigitalItem.cs" relfile="Assets/Scripts/Objects/UI/DigitalItem.cs" line="88" column="1" />
       <Breakpoint file="/Users/Martijn/Games/the_balance_game/Assets/Scripts/Objects/UI/BackPack.cs" relfile="Assets/Scripts/Objects/UI/BackPack.cs" line="34" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

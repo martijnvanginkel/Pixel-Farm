@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Base class for storeslots and inventory slots
 public abstract class DigitalItem : MonoBehaviour
 {
     protected ObjectData m_ObjectData;

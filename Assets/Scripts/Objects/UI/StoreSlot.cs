@@ -26,7 +26,7 @@ public class StoreSlot : DigitalItem, IPointerEnterHandler, IPointerExitHandler
     public void BuyItemFromStore()
     {
 
-        if(BackPack.Instance.CheckIfSpace(this.ObjectData))
+        if(Inventory.Instance.CheckIfSpace(this.ObjectData))
         {
             Store.Instance.BuyItem(this);
         }

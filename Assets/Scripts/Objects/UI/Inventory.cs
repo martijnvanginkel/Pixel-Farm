@@ -1,231 +1,220 @@
-﻿//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using UnityEngine.UI;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-//public class Inventory : MonoBehaviour
-//{
-//    private static Inventory m_Instance;
-//    public static Inventory Instance
-//    {
-//        get { return m_Instance; }
-//    }
+public class Inventory : MonoBehaviour
+{
+    private static Inventory m_Instance;
+    public static Inventory Instance
+    {
+        get { return m_Instance; }
+    }
 
-//    [SerializeField] private List<StoreSlot> m_InventoryList = new List<StoreSlot>();
-//    public List<StoreSlot> InventoryList
-//    {
-//        get { return m_InventoryList; }
-//        set { m_InventoryList = value; }
-//    }
+    [SerializeField] private List<InventorySlot> m_SlotList = new List<InventorySlot>();
+    public List<InventorySlot> SlotList
+    {
+        get { return m_SlotList; }
+        set { m_SlotList = value; }
+    }
 
-//    [SerializeField] private GameObject m_InventoryItemPrefab;
-//    [SerializeField] private Image m_SelectedPlayerCanvas;
-//    private Image m_InventoryBackground;
+    private InventorySlot m_SelectedSlot;
+    public InventorySlot SelectedSlot
+    {
+        get { return m_SelectedSlot; }
+        set { m_SelectedSlot = value; }
+    }
 
-//    [SerializeField] private int m_SelectedItemInt;
-//    [SerializeField] private int m_LastSelectedItemInt;
-//    private float m_ScrollValue; 
+    private bool m_InventoryIsFull;
+    public bool InventoryIsFull
+    {
+        get { return m_InventoryIsFull; }
+        set { m_InventoryIsFull = value; }
+    }
 
-//    private void Awake()
-//    {
-//        if (m_Instance != null && m_Instance != this)
-//        {
-//            Destroy(this.gameObject);
-//        }
-//        else
-//        {
-//            m_Instance = this;
-//        }
-//    }
+    private KeyCode[] m_KeyCodes = 
+    {
+         KeyCode.Alpha1,
+         KeyCode.Alpha2,
+         KeyCode.Alpha3,
+         KeyCode.Alpha4,
+         //KeyCode.Alpha5,
+         //KeyCode.Alpha6,
+         //KeyCode.Alpha7,
+         //KeyCode.Alpha8,
+         //KeyCode.Alpha9,
+     };
 
-//    private void Start()
-//    {
-//        m_InventoryBackground = GetComponent<Image>();
-//        //ToggleBackground(false);
-//    }
+    private void Awake()
+    {
+        if (m_Instance != null && m_Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            m_Instance = this;
+        }
+    }
 
+    private void Start()
+    {
+        m_SelectedSlot = m_SlotList[0];
+        m_SelectedSlot.SelectSlot(true);
+    }
 
-//    private void Update()
-//    {
-//        if(Store.Instance.StoreIsOpen == false)
-//        {
-//            CheckForScrolling();
-//        }
-//    }
+    private void Update()
+    {
+        CheckForKeyInput();
+    }
 
-//    // Function to turn the background of the inventory on or off
-//    private void ToggleBackground(bool isOn)
-//    {
-//        m_InventoryBackground.enabled = isOn;
-//    }
+    private void CheckForKeyInput()
+    {
+        for (int i = 0; i < m_KeyCodes.Length; i++)
+        {
+            if (Input.GetKeyDown(m_KeyCodes[i]))
+            {
+                int numberPressed = i + 1;
 
-//    //// Function that check if the player is scrolling selects current item
-//    private void CheckForScrolling()
-//    {
-//        if(m_InventoryList.Count > 0)
-//        {
-//            m_ScrollValue += Input.GetAxis("Mouse ScrollWheel");
-//            m_ScrollValue = Mathf.Clamp(m_ScrollValue, 0f, (float)(m_InventoryList.Count - 1));
-//            m_SelectedItemInt = Mathf.RoundToInt(m_ScrollValue); // Prevents value from exceeding specified range
+                SetSlotSelected(m_SlotList[i]);
+            }
+        }
 
-//            if (m_SelectedItemInt != m_LastSelectedItemInt)
-//            {
-//                SetSelectedItemColor();
-//            }
-//        }
-//    }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            DropItem(m_SelectedSlot);
+        }
+    }
 
-//    // Set the color bright of the item that is currently selected
-//    private void SetSelectedItemColor()
-//    {
-//        m_InventoryList[m_SelectedItemInt].SetItemSelected(); ;
-//        m_InventoryList[m_LastSelectedItemInt].SetItemUnselected();
-//        //m_SelectedPlayerCanvas.sprite = m_InventoryList[m_SelectedItemInt].ObjectData.Icon;  //turn on selected item above player head
+    private void DropItem(InventorySlot slot)
+    {
+        if (!slot.SlotIsTaken)
+        {
+            return;
+        }
+        else
+        {
+            GameObject tile = PlayerController.Instance.FindStandingTile();
+            float height = tile.GetComponent<Renderer>().bounds.size.y;
 
-//        m_LastSelectedItemInt = m_SelectedItemInt;
-//    }
+            Instantiate(slot.ObjectData.Prefab, new Vector3(PlayerController.Instance.GetPlayerPosition().position.x, tile.transform.position.y + height / 2, tile.transform.position.z), transform.rotation);
+            RemoveItem(m_SelectedSlot);
+        }
+    }
 
-//    // Function that gets called when an item is being picked up
-//    public void AddItem(ObjectData objectData, int amount)
-//    {
-//        if(m_InventoryList.Count == 0) // If inventory is empty always add the item
-//        {
-//            AddInventorySlot(objectData, amount);
-//        }
-//        else // If inventory is not empty 
-//        {
-//            if (!ItemInList(objectData)) // Add new inventory slot if its not in the list
-//            {
-//                AddInventorySlot(objectData, amount);
-//            }
-//        }
-//    }
+    public void SetSlotSelected(InventorySlot slot)
+    {
+        m_SelectedSlot.SelectSlot(false); //  Deselect old slot
+        m_SelectedSlot = slot; // Set new slot
+        m_SelectedSlot.SelectSlot(true); // Select new slot
+    }
 
-//    // Function that gets called first when an item is being received
-//    public void RemoveItem(StoreSlot item, int amount)
-//    {
-//        if(item.SlotAmount > 1) // If it has more than one, decrease the amount
-//        {
-//            RemoveSlotAmount(item, amount);
-//        }
-//        else // If it has one, remove the inventoryslot with the item in it
-//        {
-//            RemoveInventorySlot(item);
-//        }
-//    }
+    public void AddItem(ObjectData objectData)
+    {
+        if (ItemInBackPack(objectData) == null) // If item not in the inventory fill a new slot
+        {
+            FillSlot(objectData);
+        }
+        else
+        {
+            ItemInBackPack(objectData).IncreaseAmount(1); // Increase amount if the item is already in the inventory
+        }
+    }
 
-//    //// Add a new inventory slot for an item that is not in the inventory
-//    private void AddInventorySlot(ObjectData objectData, int amount)
-//    {
-//        // Spawn new itemPrefab
-//        GameObject itemPrefab = Instantiate(m_InventoryItemPrefab);
-//        itemPrefab.transform.SetParent(gameObject.transform, false); // false so it scales locally
+    public void RemoveItem(InventorySlot item)
+    {
+        if (item.SlotAmount > 1) // If it has more than one, decrease the amount
+        {
+            item.DecreaseAmount(1);
+        }
+        else // If it has one, remove the inventoryslot with the item in it
+        {
+            EmptySlot(item);
+        }
+    }
 
-//        StoreSlot item = itemPrefab.GetComponent<StoreSlot>();
-//        item.ObjectData = objectData;
-//        item.SetAmount(amount);
-//        item.SetImage(objectData.Icon);
+    private void FillSlot(ObjectData objectData)
+    {
+        InventorySlot newSlot = FindFreeSlot();
 
-//        if(m_InventoryList.Count == 0)
-//        {
-//            item.SetItemSelected();
-//        }
-//        else
-//        {
-//            item.SetItemUnselected();
-//        }
+        newSlot.ObjectData = objectData;
+        newSlot.SlotImage.sprite = objectData.Icon;
+        newSlot.SetAmount(1);
+        newSlot.SlotIsTaken = true;
+    }
 
-//        m_InventoryList.Add(item);
+    private void EmptySlot(InventorySlot slot)
+    {
+        if (m_InventoryIsFull) // Backpack is not full anymore if a slot is emptied
+        {
+            m_InventoryIsFull = false;
+        }
 
-//    }
+        slot.ResetSlot();
+    }
 
+    // Finds a free slot and returns that slot
+    private InventorySlot FindFreeSlot()
+    {
+        InventorySlot freeSlot = null;
+        int takenSlots = 0;
 
-//    //// Remove an inventory slot 
-//    private void RemoveInventorySlot(StoreSlot item)
-//    {
+        for (int i = 0; i < m_SlotList.Count; i++) // Loop through all slots
+        {
 
-//        // kijk ook naar welke je op klikt, ook al is die niet geselecteerd
-//        if (m_InventoryList.IndexOf(item) == m_SelectedItemInt)
-//        {
+            if(m_SlotList[i].SlotIsTaken == false) // If the slot is not taken
+            {
+                if(freeSlot == null) // And theres not a new slot already found
+                {
+                    freeSlot = m_SlotList[i]; // Set this slot as the new inventory slot
+                }
+            }
+            else // If the slot is taken increment the takenSlots int
+            {
+                takenSlots++;
+            }
+        }
 
-//            if (m_SelectedItemInt == 0) //  als de eerste geselecteerd is
-//            {
-//                m_InventoryList.Remove(item);
-//                Destroy(item.gameObject);
+        if(takenSlots == m_SlotList.Count - 1) // If all the slots are taken set the inventory to full
+        {
+            m_InventoryIsFull = true;
+        }
 
-//                if (m_InventoryList.Count > 1) // en de lijst heeft meer dan 1 item
-//                {
-//                    m_InventoryList[m_SelectedItemInt].SetItemSelected();
+        return freeSlot; // Return the slot, also if its null
+    }
 
-//                }
-//            }
-//            else if (m_SelectedItemInt == m_InventoryList.Count - 1) // als de laatste geselecteerd is
-//            {
-//                m_InventoryList.Remove(item);
-//                Destroy(item.gameObject);
-//                m_SelectedItemInt--;
-//                m_LastSelectedItemInt--;
-//                m_InventoryList[m_SelectedItemInt].SetItemSelected();
-//                return;
-//            }
-//            else
-//            {
-//                m_InventoryList.Remove(item);
-//                Destroy(item.gameObject);
-//                m_InventoryList[m_SelectedItemInt].SetItemSelected();
-//                return;
-//            }
+    // Loop through the slotlist and checks if theres a slot with the same name as the given object, then returns that object
+    private InventorySlot ItemInBackPack(ObjectData objectData)
+    {
+        foreach (InventorySlot slot in m_SlotList)
+        {
+            if(slot.ObjectData != null)
+            {
+                if(slot.ObjectData.Name == objectData.Name)
+                {
+                    return slot;
+                }
+            }
+        }
+        return null;
+    }
 
-//        }
-//        else //  als je een ongeselecteerde weghaalt
-//        {
-//            if(m_SelectedItemInt != 0)
-//            {
-//                m_SelectedItemInt--;
-//                m_LastSelectedItemInt--;
-//            }
-
-//            m_InventoryList.Remove(item);
-//            Destroy(item.gameObject);
-//        }
-//    }
-
-//    // Add slotamount to a slot that already exists
-//    private void AddSlotAmount(StoreSlot item, int amount)
-//    {
-//        item.IncreaseAmount(amount);
-//    }
-
-//    // Decrease slotamount to a slot that already exists
-//    private void RemoveSlotAmount(StoreSlot item, int amount)
-//    {
-//        item.DecreaseAmount(amount);
-//    }
-
-//    // Return a true or false value to check if the item is in the list
-//    private bool ItemInList(ObjectData objectData)
-//    {
-//        for (int i = 0; i < m_InventoryList.Count; i++)
-//        {
-//            if (m_InventoryList[i].ObjectData.Name == objectData.Name)
-//            {
-//                AddSlotAmount(m_InventoryList[i], 1); // Add one to the slot amount before returning true
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-
-//    // Returns the item that is currently selected
-//    public StoreSlot GetSelectedItem()
-//    {
-//        if(m_InventoryList.Count == 0)
-//        {
-//            return null; // this is not correct
-//        }
-//        else
-//        {
-//            return m_InventoryList[m_SelectedItemInt];
-//        }
-//    }
-//}
+    // Checks in a full inventory if the given object is already in the inventory and returns true if it is
+    public bool CheckIfSpace(ObjectData objectData)
+    {
+        if (m_InventoryIsFull)
+        {
+            if (ItemInBackPack(objectData))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return true;
+        }
+    }
+}

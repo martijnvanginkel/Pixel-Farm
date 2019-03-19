@@ -71,57 +71,25 @@ public class Store : MonoBehaviour
 
     public void BuyItem(StoreSlot item)
     {
-
-
-
-        //if (BackPack.Instance.BackPackIsFull)
-        //{
-            //if (BackPack.Instance.ItemInBackPack(item.ObjectData))
-            //{
-                if (item.SlotAmount > 1)
-                {
-                    item.DecreaseAmount(1);
-                    BackPack.Instance.AddItem(item.ObjectData);
-                    m_MoneyBar.LoseMoney(item.ObjectData);
-                }
-                else
-                {
-                    BackPack.Instance.AddItem(item.ObjectData);
-                    m_MoneyBar.LoseMoney(item.ObjectData);
-                    RemoveSlot(item);
-                }
-        //    }
-        //    else
-        //    {
-        //        Debug.Log("backpack full");
-        //        return;
-        //    }
-        //}
-        //else
-        //{
-
-        //    if (item.SlotAmount > 1)
-        //    {
-        //        item.DecreaseAmount(1);
-        //        BackPack.Instance.AddItem(item.ObjectData);
-        //        m_MoneyBar.LoseMoney(item.ObjectData);
-        //    }
-        //    else
-        //    {
-        //        BackPack.Instance.AddItem(item.ObjectData);
-        //        m_MoneyBar.LoseMoney(item.ObjectData);
-        //        RemoveSlot(item);
-        //    }
-        //}
-
-
+        if (item.SlotAmount > 1)
+        {
+            item.DecreaseAmount(1);
+            Inventory.Instance.AddItem(item.ObjectData);
+            m_MoneyBar.LoseMoney(item.ObjectData);
+        }
+        else
+        {
+            Inventory.Instance.AddItem(item.ObjectData);
+            m_MoneyBar.LoseMoney(item.ObjectData);
+            RemoveSlot(item);
+        }
     }
 
-    public void SellItem(BackPackSlot item)
+    public void SellItem(InventorySlot item)
     {
         m_MoneyBar.GainMoney(item.ObjectData);
         AddItemToStore(item.ObjectData);
-        BackPack.Instance.RemoveItem(item);
+        Inventory.Instance.RemoveItem(item);
     }
 
     private void AddItemToStore(ObjectData objectData)

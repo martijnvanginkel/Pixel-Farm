@@ -14,13 +14,12 @@ public class Npc : ReceivableObject
     // Removes the received item from the inventory and triggers an event
     public override void ReceiveItem()
     {
-        if(BackPack.Instance.SlotList.Count == 0) // If the inventory is empty
+        if(Inventory.Instance.SlotList.Count == 0) // If the inventory is empty
         {
             StartCoroutine("OpenTextBalloon", m_NpcData.NothingReceivedText);
         }
         else
         {
-
             base.ReceiveItem();
 
             StartCoroutine("OpenTextBalloon", m_NpcData.ReceivedText);
