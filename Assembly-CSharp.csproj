@@ -91,6 +91,7 @@
     <Compile Include="Assets\Scripts\Objects\UI\MoneyBar.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\SocialBar.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\Store.cs" />
+    <Compile Include="Assets\Scripts\Objects\UI\StoreSlot.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\NpcData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\ObjectData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\ReceivableData.cs" />

@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 8848327137178039882}
   - component: {fileID: 3652237524441494262}
   - component: {fileID: 3555341248214416385}
-  - component: {fileID: 8336008966211311420}
+  - component: {fileID: 4066644216610448275}
   m_Layer: 5
   m_Name: StoreItem
   m_TagString: Untagged
@@ -189,7 +189,7 @@ RectTransform:
   m_GameObject: {fileID: 3433775348062507862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0772027, y: 1.0772027, z: 1.0772027}
   m_Children:
   - {fileID: 5248663230036039607}
   - {fileID: 2853778970940574713}
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8336008966211311420}
+      - m_Target: {fileID: 4066644216610448275}
         m_MethodName: BuyItemFromStore
         m_Mode: 1
         m_Arguments:
@@ -291,7 +291,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &8336008966211311420
+--- !u!114 &4066644216610448275
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -300,10 +300,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3433775348062507862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e5954448478e47dba5e6f0be6dd8e9c, type: 3}
+  m_Script: {fileID: 11500000, guid: 7866820d03fd14739b7789379ff00630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Player: {fileID: 0}
+  m_BackGroundImage: {fileID: 0}
   m_SlotAmountText: {fileID: 8717264057037672382}
   m_DescriptionBox: {fileID: 9011629040811636893}
   m_DescriptionText: {fileID: 2374016591057185569}

@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -439,8 +439,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ItemClicked
+      - m_Target: {fileID: 3697582907887660287}
+        m_MethodName: ClickedOnSlot
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -468,6 +468,10 @@ MonoBehaviour:
   m_SlotAmountText: {fileID: 3697582907266595628}
   m_DescriptionBox: {fileID: 0}
   m_DescriptionText: {fileID: 0}
+  m_SlotEmptySprite: {fileID: 21300004, guid: ea7d87c3006834d96a0cb7c9449beacc, type: 3}
+  m_SlotAvailableBorder: {fileID: 21300002, guid: ea7d87c3006834d96a0cb7c9449beacc,
+    type: 3}
+  m_SlotTakenBorder: {fileID: 21300000, guid: ea7d87c3006834d96a0cb7c9449beacc, type: 3}
 --- !u!1 &3697582907986362922
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,7 +538,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300002, guid: 4c3ff9fa80b0341448fd1dbe9a92d9b7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

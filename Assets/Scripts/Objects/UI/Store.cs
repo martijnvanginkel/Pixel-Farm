@@ -69,52 +69,60 @@ public class Store : MonoBehaviour
         PlayerController.Instance.AllowInput = true;
     }
 
-    public void BuyItem(DigitalItem item)
+    public void BuyItem(StoreSlot item)
     {
-        if(item.SlotAmount > 1)
+        if (BackPack.Instance.BackPackIsFull)
         {
-            item.DecreaseAmount(1);
-            Inventory.Instance.AddItem(item.ObjectData, 1);
-            m_MoneyBar.LoseMoney(item.ObjectData);
+            Debug.Log("Inventory is full");
         }
         else
         {
-            Inventory.Instance.AddItem(item.ObjectData, 1);
-            m_MoneyBar.LoseMoney(item.ObjectData);
-            RemoveSlot(item);
+            if (item.SlotAmount > 1)
+            {
+                item.DecreaseAmount(1);
+                BackPack.Instance.AddItem(item.ObjectData);
+                m_MoneyBar.LoseMoney(item.ObjectData);
+            }
+            else
+            {
+                BackPack.Instance.AddItem(item.ObjectData);
+                m_MoneyBar.LoseMoney(item.ObjectData);
+                RemoveSlot(item);
+            }
         }
+
     }
 
-    public void SellItem(DigitalItem item)
+    public void SellItem(BackPackSlot item)
     {
         m_MoneyBar.GainMoney(item.ObjectData);
-        AddItemToStore(item.ObjectData, 1);
-        Inventory.Instance.RemoveItem(item, 1);
+        AddItemToStore(item.ObjectData);
+        BackPack.Instance.RemoveItem(item);
     }
 
-    private void AddItemToStore(ObjectData objectData, int amount)
+    private void AddItemToStore(ObjectData objectData)
     {
         if (m_StoreItemList.Count == 0) // If the store is empty always add the item
         {
-            AddStoreSlot(objectData, amount);
+            AddStoreSlot(objectData);
         }
         else // If the store is not empty
         {
             if (!ItemInStore(objectData)) // Add new store slot if its not in the store already
             {
-                AddStoreSlot(objectData, amount);
+                AddStoreSlot(objectData);
             }
         }
     }
 
-    private void AddStoreSlot(ObjectData objectData, int amount)
+    private void AddStoreSlot(ObjectData objectData)
     {
         GameObject itemPrefab = Instantiate(m_StoreItemPrefab);
         itemPrefab.transform.SetParent(m_StoreItemsParent, false); // false so it scales locally
 
         DigitalItem item = itemPrefab.GetComponent<DigitalItem>();
         item.ObjectData = objectData;
-        item.SetAmount(amount);
+        item.SetAmount(1);
         item.SetImage(objectData.Icon);
 
         m_StoreItemList.Add(item);
@@ -133,7 +141,7 @@ public class Store : MonoBehaviour
         {
             if (m_StoreItemList[i].ObjectData.Name == objectData.Name)
             {
-                AddSlotAmount(m_StoreItemList[i], 1);
+                AddSlotAmount(m_StoreItemList[i]);
                 return true;
             }
         }
@@ -141,15 +149,15 @@ public class Store : MonoBehaviour
     }
 
     // Add slotamount to a slot that already exists
-    private void AddSlotAmount(DigitalItem item, int amount)
+    private void AddSlotAmount(DigitalItem item)
     {
-        item.IncreaseAmount(amount);
+        item.IncreaseAmount(1);
     }
 
     // Decrease slotamount to a slot that already exists
-    private void RemoveSlotAmount(DigitalItem item, int amount)
+    private void RemoveSlotAmount(DigitalItem item)
     {
-        item.DecreaseAmount(amount);
+        item.DecreaseAmount(1);
     }
 
     // Set the default items from the start of the game in the store
@@ -161,7 +169,7 @@ public class Store : MonoBehaviour
             GameObject itemPrefab = Instantiate(m_StoreItemPrefab);
             itemPrefab.transform.SetParent(m_StoreItemsParent, false); // false so it scales locally
 
-            DigitalItem item = itemPrefab.GetComponent<DigitalItem>();
+            StoreSlot item = itemPrefab.GetComponent<StoreSlot>();
             item.ObjectData = objectData;
             item.SetAmount(objectData.DefaultStoreAmount);
             item.SetImage(objectData.Icon);

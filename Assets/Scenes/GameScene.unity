@@ -1313,7 +1313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 1
+  m_ReferencePixelsPerUnit: 40
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
@@ -3383,6 +3383,16 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3697582907266595628, guid: d79b9d16f167b4fb4b7f2f9d3fb9dfcc,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697582907266595628, guid: d79b9d16f167b4fb4b7f2f9d3fb9dfcc,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d79b9d16f167b4fb4b7f2f9d3fb9dfcc, type: 3}
 --- !u!1 &567635943
@@ -3970,18 +3980,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 587473232}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &588354394 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7322581651572269561, guid: 2fdbe9b243b894471bb2a4ada1bf6320,
-    type: 3}
-  m_PrefabInstance: {fileID: 7322581652239469460}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &594859806 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4907351930151437132, guid: ea3df02fd69c44a30bd2ce0b8133eb09,
@@ -4971,12 +4969,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8b6e69498ec34544bc2ede7edf269e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InventoryList: []
-  m_InventoryItemPrefab: {fileID: 6718401900915855511, guid: 732975a3b772b480090ff6c86a4d6cfa,
-    type: 3}
-  m_SelectedPlayerCanvas: {fileID: 588354394}
-  m_SelectedItemInt: 0
-  m_LastSelectedItemInt: 0
 --- !u!114 &695656180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12488,8 +12480,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 5
-    m_Right: 5
+    m_Left: 8
+    m_Right: 8
     m_Top: 10
     m_Bottom: 5
   m_ChildAlignment: 0
@@ -12518,8 +12510,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 85a677f64aae0480091914757665818d, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: e7a222a8ef5fd491aa4f82d06f86f546, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
