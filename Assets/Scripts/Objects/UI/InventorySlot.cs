@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class InventorySlot : DigitalItem
 {
-
     private bool m_IsSelected;
     public bool IsSelected
     {
@@ -13,7 +12,13 @@ public class InventorySlot : DigitalItem
         set { m_IsSelected = value; }
     }
 
-    //[SerializeField] private Sprite m_SlotEmptySprite;
+    [SerializeField] private TMPro.TextMeshProUGUI m_HotKeyText;
+    public TMPro.TextMeshProUGUI HotKeyText
+    {
+        get { return m_HotKeyText; }
+        set { m_HotKeyText = value; }
+    }
+
     [SerializeField] private Sprite m_SlotUnselectedSprite;
     [SerializeField] private Sprite m_SlotSelectedSprite;
 
@@ -60,7 +65,6 @@ public class InventorySlot : DigitalItem
     {
         if (!Store.Instance.StoreIsOpen)
         {
-            Debug.Log("hoi");
             Inventory.Instance.SetSlotSelected(this);
         }
         else

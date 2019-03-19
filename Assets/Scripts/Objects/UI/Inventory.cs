@@ -10,6 +10,9 @@ public class Inventory : MonoBehaviour
         get { return m_Instance; }
     }
 
+    [SerializeField] private GameObject m_InventorySlotPrefab;
+    [SerializeField] private int m_InventorySlotAmount;
+
     [SerializeField] private List<InventorySlot> m_SlotList = new List<InventorySlot>();
     public List<InventorySlot> SlotList
     {
@@ -37,11 +40,10 @@ public class Inventory : MonoBehaviour
          KeyCode.Alpha2,
          KeyCode.Alpha3,
          KeyCode.Alpha4,
-         //KeyCode.Alpha5,
-         //KeyCode.Alpha6,
-         //KeyCode.Alpha7,
-         //KeyCode.Alpha8,
-         //KeyCode.Alpha9,
+         KeyCode.Alpha5,
+         KeyCode.Alpha6,
+         KeyCode.Alpha7,
+         KeyCode.Alpha8
      };
 
     private void Awake()
@@ -58,7 +60,21 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
-        m_SelectedSlot = m_SlotList[0];
+        SpawnInventorySlots();
+    }
+
+    private void SpawnInventorySlots()
+    {
+        for (int i = 0; i < m_InventorySlotAmount; i++)
+        {
+            GameObject slotPrefab = Instantiate(m_InventorySlotPrefab, this.transform);
+            InventorySlot inventorySlot = slotPrefab.transform.GetChild(0).GetComponent<InventorySlot>();
+
+            inventorySlot.HotKeyText.text = (i + 1).ToString();
+            m_SlotList.Add(inventorySlot);
+        }
+
+        m_SelectedSlot = m_SlotList[0]; // Select the first item
         m_SelectedSlot.SelectSlot(true);
     }
 
@@ -135,14 +151,6 @@ public class Inventory : MonoBehaviour
     private void FillSlot(ObjectData objectData)
     {
         InventorySlot newSlot = FindFreeSlot();
-
-
-
-        //newSlot.ObjectData = objectData;
-        ////newSlot.SlotImage.enabled = true;
-        //newSlot.SlotImage.sprite = objectData.Icon;
-        //newSlot.SetAmount(1);
-        //newSlot.SlotIsTaken = true;
 
         newSlot.FillSlot(objectData);
     }

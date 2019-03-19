@@ -1,15 +1,16 @@
 ﻿<Properties StartupConfiguration="{5939ABBB-C06D-3999-1DA5-0EAC991E5E09}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Objects/UI/InventorySlot.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Objects/UI/DigitalItem.cs">
     <Files>
       <File FileName="Assets/Scripts/Objects/UI/StoreSlot.cs" Line="29" Column="1" />
       <File FileName="Assets/Scripts/Objects/ReceivableObject.cs" Line="14" Column="62" />
       <File FileName="Assets/Scripts/Objects/TradeableObject.cs" Line="12" Column="1" />
-      <File FileName="Assets/Scripts/Objects/UI/InventorySlot.cs" Line="52" Column="47" />
+      <File FileName="Assets/Scripts/Objects/UI/InventorySlot.cs" Line="6" Column="41" />
       <File FileName="Assets/Scripts/Objects/Characters/Npc.cs" Line="22" Column="10" />
       <File FileName="Assets/Scripts/Objects/UI/SocialBar.cs" Line="18" Column="1" />
-      <File FileName="Assets/Scripts/Objects/UI/Inventory.cs" Line="82" Column="39" />
+      <File FileName="Assets/Scripts/Objects/UI/Inventory.cs" Line="73" Column="65" />
       <File FileName="Assets/Scripts/General/PlayerController.cs" Line="84" Column="14" />
       <File FileName="Assets/Scripts/Objects/Tiles/GrassTile.cs" Line="162" Column="10" />
+      <File FileName="Assets/Scripts/Objects/UI/DigitalItem.cs" Line="7" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
