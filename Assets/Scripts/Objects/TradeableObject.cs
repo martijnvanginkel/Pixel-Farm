@@ -9,9 +9,15 @@ public class TradeableObject : InteractableObject
 
     public void TakeItem()
     {
-        base.PlayerActionEvent();
-        //Inventory.Instance.AddItem(m_ObjectData, 1);
-        BackPack.Instance.AddItem(m_ObjectData);
-        Destroy(this.gameObject);
+        if (BackPack.Instance.CheckIfSpace(m_ObjectData))
+        {
+            base.PlayerActionEvent();
+            BackPack.Instance.AddItem(m_ObjectData);
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Debug.Log("Cant pick up backpack is full");
+        }
     }
 }

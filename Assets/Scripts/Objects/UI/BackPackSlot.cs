@@ -5,33 +5,6 @@ using UnityEngine.UI;
 
 public class BackPackSlot : DigitalItem
 {
-    //private ObjectData m_ObjectData;
-    //public ObjectData ObjectData
-    //{
-    //    get { return m_ObjectData; }
-    //    set { m_ObjectData = value; }
-    //}
-
-    //private bool m_SlotIsTaken = false;
-    //public bool SlotIsTaken
-    //{
-    //    get { return m_SlotIsTaken; }
-    //    set { m_SlotIsTaken = value; }
-    //}
-
-    //private int m_SlotAmount;
-    //public int SlotAmount
-    //{
-    //    get { return m_SlotAmount; }
-    //    set { m_SlotAmount = value; }
-    //}
-
-    //private Image m_SlotImage;
-    //public Image SlotImage
-    //{
-    //    get { return m_SlotImage; }
-    //    set { m_SlotImage = value; }
-    //}
 
     private bool m_IsSelected;
     public bool IsSelected
@@ -50,38 +23,6 @@ public class BackPackSlot : DigitalItem
         m_SlotImage = GetComponent<Image>();
         m_SlotImage.sprite = m_SlotEmptySprite;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    //public void SetAmount(int amount)
-    //{
-    //    m_SlotAmount = amount;
-
-    //    if(m_SlotAmount == 0)
-    //    {
-    //        m_SlotAmountText.text = "";
-    //    }
-    //    else
-    //    {
-    //        m_SlotAmountText.text = m_SlotAmount.ToString();
-    //    }
-    //}
-
-    //public void IncreaseAmount(int amount)
-    //{
-    //    m_SlotAmount += amount;
-    //    m_SlotAmountText.text = m_SlotAmount.ToString();
-    //}
-
-    //public void DecreaseAmount(int amount)
-    //{
-    //    m_SlotAmount -= amount;
-    //    m_SlotAmountText.text = m_SlotAmount.ToString();
-    //}
 
     public void SelectSlot(bool select)
     {

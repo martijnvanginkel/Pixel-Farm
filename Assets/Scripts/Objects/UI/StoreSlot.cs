@@ -25,7 +25,15 @@ public class StoreSlot : DigitalItem, IPointerEnterHandler, IPointerExitHandler
 
     public void BuyItemFromStore()
     {
-        Store.Instance.BuyItem(this);
+
+        if(BackPack.Instance.CheckIfSpace(this.ObjectData))
+        {
+            Store.Instance.BuyItem(this);
+        }
+        else
+        {
+            Debug.Log("Cant buy backpack is full");
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)

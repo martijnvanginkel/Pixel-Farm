@@ -57,6 +57,8 @@ public class BackPack : MonoBehaviour
         }
     }
 
+
+
     private void Start()
     {
         m_SelectedSlot = m_SlotList[0];
@@ -65,10 +67,10 @@ public class BackPack : MonoBehaviour
 
     private void Update()
     {
-        CheckForInput();
+        CheckForPlayerInput();
     }
 
-    private void CheckForInput()
+    private void CheckForPlayerInput()
     {
         for (int i = 0; i < m_KeyCodes.Length; i++)
         {
@@ -80,13 +82,12 @@ public class BackPack : MonoBehaviour
 
                 m_SelectedSlot = m_SlotList[i];
                 m_SelectedSlot.SelectSlot(true);
-
-                Debug.Log(numberPressed);
             }
         }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
+
             DropItem(m_SelectedSlot);
         }
     }
@@ -118,15 +119,13 @@ public class BackPack : MonoBehaviour
 
     public void AddItem(ObjectData objectData)
     {
-
-        if (ItemInBackPack(objectData) == false)
+        if (ItemInBackPack(objectData) == null)
         {
-            BackPackSlot newSlot = FindFreeSlot();
-
-            newSlot.ObjectData = objectData;
-            newSlot.SlotImage.sprite = objectData.Icon;
-            newSlot.SetAmount(1);
-            newSlot.SlotIsTaken = true;
+            FillSlot(objectData);
+        }
+        else
+        {
+            ItemInBackPack(objectData).IncreaseAmount(1);
         }
     }
 
@@ -142,6 +141,16 @@ public class BackPack : MonoBehaviour
         }
     }
 
+    private void FillSlot(ObjectData objectData)
+    {
+        BackPackSlot newSlot = FindFreeSlot();
+
+        newSlot.ObjectData = objectData;
+        newSlot.SlotImage.sprite = objectData.Icon;
+        newSlot.SetAmount(1);
+        newSlot.SlotIsTaken = true;
+    }
+
     private void EmptySlot(BackPackSlot slot)
     {
         if (m_BackPackIsFull)
@@ -154,6 +163,7 @@ public class BackPack : MonoBehaviour
 
     private BackPackSlot FindFreeSlot()
     {
+
         BackPackSlot freeSlot = null;
         int takenSlots = 0;
 
@@ -179,10 +189,9 @@ public class BackPack : MonoBehaviour
         }
 
         return freeSlot;
-
     }
 
-    private bool ItemInBackPack(ObjectData objectData)
+    private BackPackSlot ItemInBackPack(ObjectData objectData)
     {
         foreach (BackPackSlot slot in m_SlotList)
         {
@@ -190,11 +199,31 @@ public class BackPack : MonoBehaviour
             {
                 if(slot.ObjectData.Name == objectData.Name)
                 {
-                    slot.IncreaseAmount(1);
-                    return true;
+
+                    return slot;
                 }
             }
         }
-        return false;
+        return null;
+    }
+
+    public bool CheckIfSpace(ObjectData objectData)
+    {
+
+        if (m_BackPackIsFull)
+        {
+            if (ItemInBackPack(objectData))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return true;
+        }
     }
 }

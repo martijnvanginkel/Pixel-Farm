@@ -38,11 +38,6 @@ public abstract class DigitalItem : MonoBehaviour
     [SerializeField] protected GameObject m_DescriptionBox;
     [SerializeField] protected TMPro.TextMeshProUGUI m_DescriptionText;
 
-    private void Start()
-    {
-
-    }
-
     public void SetImage(Sprite image)
     {
         m_SlotImage.sprite = image;
@@ -74,22 +69,4 @@ public abstract class DigitalItem : MonoBehaviour
         m_SlotAmountText.text = m_SlotAmount.ToString();
     }
 
-    //private bool m_IsSelected;
-    //public bool IsSelected
-    //{
-    //    get { return m_IsSelected; }
-    //    set { m_IsSelected = value; }
-    //}
-
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-
-    //}
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-
-    //}
 }
