@@ -78,13 +78,13 @@ public class GrassTile : ReceivableObject
 
     public override void ReceiveItem()
     {
-        DigitalItem item = Inventory.Instance.SelectedSlot; // Get the currently selected item
+        InventorySlot item = Inventory.Instance.SelectedSlot; // Get the currently selected item
 
-        switch (item.ObjectData.ItemCategory) 
+        switch (item.ObjectData.ItemCategory)
         {
             case "Seeds": // Receive the item if its a seed and plant the seed
-                base.ReceiveItem();
                 PlantSeed(item.ObjectData);
+                base.ReceiveItem();
                 break;
             default:
                 print("-");
@@ -140,7 +140,9 @@ public class GrassTile : ReceivableObject
         {
             if(m_CurrentState == State.Plowed)
             {
-                ShowButtonPanel();
+        
+                    ShowButtonPanel();
+                
             }
         }
     }
@@ -148,13 +150,16 @@ public class GrassTile : ReceivableObject
     // Button panel is being showed when the inventory is selecting a seedpackage
     private void ShowButtonPanel()
     {
-        DigitalItem selectedItem = Inventory.Instance.SelectedSlot;
-
-        if (selectedItem.ObjectData.ItemCategory == "Seeds")
+        if (Inventory.Instance.SelectedSlot.SlotIsTaken)
         {
-            m_PlayerOnObject = true;
-            ShowButtonPanel(true);
-        }    
+            InventorySlot selectedItem = Inventory.Instance.SelectedSlot;
+
+            if (selectedItem.ObjectData.ItemCategory == "Seeds")
+            {
+                m_PlayerOnObject = true;
+                ShowButtonPanel(true);
+            }
+        }
     }
 
     protected override void OnTriggerExit2D(Collider2D other)

@@ -17,7 +17,7 @@ MonoBehaviour:
   Prefab: {fileID: 6480533037712739863, guid: d45c249b4579c43a4bc34af0405fbd3d, type: 3}
   ItemCategory: Flowers
   DataCategory: Social
-  Icon: {fileID: 21300000, guid: 2ac67a01e870a4c929e48a084fe1fc06, type: 3}
+  Icon: {fileID: 21300000, guid: 07d9cc964061b453385a7ffd96797ef6, type: 3}
   SocialValue: 10
   DefaultStoreAmount: 2
   BuyingCost: 20

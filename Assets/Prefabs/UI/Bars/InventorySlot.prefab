@@ -359,7 +359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 17.5, y: -17.500008}
+  m_AnchoredPosition: {x: 22.5, y: -22.5}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5575297105565676473
@@ -468,10 +468,10 @@ MonoBehaviour:
   m_SlotAmountText: {fileID: 5575297106709987009}
   m_DescriptionBox: {fileID: 5575297105977659581}
   m_DescriptionText: {fileID: 5575297105375666938}
-  m_SlotEmptySprite: {fileID: 21300004, guid: ea7d87c3006834d96a0cb7c9449beacc, type: 3}
-  m_SlotAvailableBorder: {fileID: 21300002, guid: ea7d87c3006834d96a0cb7c9449beacc,
+  m_SlotUnselectedSprite: {fileID: 21300004, guid: 7602fafd1a673474cbccc4d15fffdd1f,
     type: 3}
-  m_SlotTakenBorder: {fileID: 21300000, guid: ea7d87c3006834d96a0cb7c9449beacc, type: 3}
+  m_SlotSelectedSprite: {fileID: 21300002, guid: 7602fafd1a673474cbccc4d15fffdd1f,
+    type: 3}
 --- !u!1 &5575297105977659581
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 5575297106535664729}
   - component: {fileID: 5575297106535664734}
   m_Layer: 5
-  m_Name: BackPackSlot
+  m_Name: InventorySlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -652,7 +652,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300002, guid: 4c3ff9fa80b0341448fd1dbe9a92d9b7, type: 3}
+  m_Sprite: {fileID: 21300004, guid: 7602fafd1a673474cbccc4d15fffdd1f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

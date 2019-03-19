@@ -299,8 +299,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9049134676357329054}
   - component: {fileID: 9049134676357329055}
-  - component: {fileID: 9049134676357329024}
   - component: {fileID: 9049134676357329053}
+  - component: {fileID: 6625746847366503847}
   m_Layer: 0
   m_Name: Yellowzy
   m_TagString: Untagged
@@ -360,7 +360,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3f0ae58d52b604d33a610ef38214ef4f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 301004bd8babe46edb291c9e34b02fe6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -371,32 +371,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &9049134676357329024
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9049134676357329025}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0119555, y: 0.22377157}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.375, y: 0.4375}
-    newSize: {x: 0.375, y: 0.4375}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.053943872, y: 0.44408178}
-  m_EdgeRadius: 0
 --- !u!114 &9049134676357329053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,6 +385,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ButtonPanel: {fileID: 9049134676819987198}
   m_ObjectData: {fileID: 11400000, guid: c5f1ce7b05b6d4c03af2bd296b5b70de, type: 2}
+--- !u!61 &6625746847366503847
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9049134676357329025}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.21875}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.375, y: 0.4375}
+    newSize: {x: 0.375, y: 0.4375}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.4375}
+  m_EdgeRadius: 0
 --- !u!1 &9049134676615663009
 GameObject:
   m_ObjectHideFlags: 0

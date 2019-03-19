@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
     {
         if (m_AllowInput) 
         {
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.D))
             {
                 m_RigidBody.velocity = new Vector2(m_MoveSpeed, m_RigidBody.velocity.y);
 
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
                     FlipPlayerRight(true);
                 }
             }
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.A))
             {
                 m_RigidBody.velocity = new Vector2(-m_MoveSpeed, m_RigidBody.velocity.y);
 
@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
                     FlipPlayerRight(false);
                 }
             }
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.S))
             {
                 m_IsSlashing = true;
                 GameObject standingTile = FindStandingTile();

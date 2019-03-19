@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 1641528539
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f9aebf3e21785446093c150beee46a4a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 664c0ab4a30a24b05bc08fd069797881, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_ObjectData: {fileID: 11400000, guid: ad3ecf176352c4755a65a46e71833922, type: 2}
   m_GrassOverlay: {fileID: 59149564059652451}
   m_PlantedSeedOverlay: {fileID: 8383447346479009254}
-  m_PlowedSprite: {fileID: 21300000, guid: 30abb89fe2cd74a32b42089c1342b043, type: 3}
+  m_PlowedSprite: {fileID: 21300000, guid: be67c7efbc5bf44548894a4e09f3710e, type: 3}
 --- !u!61 &8465514921438914711
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -217,7 +217,7 @@ SpriteRenderer:
   m_SortingLayerID: -1128176025
   m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 307958626d7eb4bd7abbbd407e6566a0, type: 3}
+  m_Sprite: {fileID: 21300002, guid: 664c0ab4a30a24b05bc08fd069797881, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -803,7 +803,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.125, y: 0.25}
+  m_Size: {x: 0.02, y: 0.04}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

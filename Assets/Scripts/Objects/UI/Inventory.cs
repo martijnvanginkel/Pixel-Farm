@@ -79,7 +79,7 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             DropItem(m_SelectedSlot);
         }
@@ -136,10 +136,15 @@ public class Inventory : MonoBehaviour
     {
         InventorySlot newSlot = FindFreeSlot();
 
-        newSlot.ObjectData = objectData;
-        newSlot.SlotImage.sprite = objectData.Icon;
-        newSlot.SetAmount(1);
-        newSlot.SlotIsTaken = true;
+
+
+        //newSlot.ObjectData = objectData;
+        ////newSlot.SlotImage.enabled = true;
+        //newSlot.SlotImage.sprite = objectData.Icon;
+        //newSlot.SetAmount(1);
+        //newSlot.SlotIsTaken = true;
+
+        newSlot.FillSlot(objectData);
     }
 
     private void EmptySlot(InventorySlot slot)
