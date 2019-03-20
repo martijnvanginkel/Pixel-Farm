@@ -23,7 +23,7 @@ public class DataManager : MonoBehaviour
         switch (receiveType)
         {
             case "Social":
-                m_SocialBar.GainPoints(objectData);
+                m_SocialBar.IncreaseValue(objectData.SocialValue);
                 break;
             case "Economy":
                 m_MoneyBar.GainMoney(objectData); 
@@ -36,4 +36,5 @@ public class DataManager : MonoBehaviour
                 break;
         }
     }
+
 }

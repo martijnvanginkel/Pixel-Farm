@@ -18,7 +18,7 @@ MonoBehaviour:
   ItemCategory: 
   DataCategory: Social
   Icon: {fileID: 21300000, guid: c0c5add95ae154977acc26d84b40b600, type: 3}
-  SocialValue: 2
+  SocialValue: 10
   DefaultStoreAmount: 3
   BuyingCost: 100
   SellingCost: 60

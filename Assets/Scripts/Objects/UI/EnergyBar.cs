@@ -2,78 +2,90 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnergyBar : MonoBehaviour
+public class EnergyBar : Bar
 {
     public delegate void OutOfEnergy();
     public static event OutOfEnergy OnOutOfEnergy;
 
-    [SerializeField] private GameObject m_EnergyItem; // Represents a 'health' in the healthbar
+    //[SerializeField] private RectTransform m_BarTransform;
 
-    [SerializeField] private int m_TotalEnergy;
-    private int m_CurrentEnergy;
+    //private int m_TotalEnergy = 100;
+    //[SerializeField] private int m_CurrentEnergy = 100;
 
-    private List<EnergyItem> m_EnergyItemList = new List<EnergyItem>();
-
+    //private float m_SetHungerDecreaseTime;
+    //[SerializeField] private float m_HungerDecreaseTime;
+    //[SerializeField] private int m_HungerDecreaseAmount;
+    [SerializeField] private int m_ActionDecreaseAmount;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        SpawnHealthItems();
-    }
+    //void Start()
+    //{
+    //    m_SetHungerDecreaseTime = m_HungerDecreaseTime;
+    //}
 
     private void OnEnable()
     {
-        InteractableObject.OnPlayerAction += RemoveEnergy;
-        DayManager.OnEndOfDay += ResetEnergy;
+        InteractableObject.OnPlayerAction += ActionDecrease;
+        DayManager.OnEndOfDay += base.ResetEnergy;
     }
 
     private void OnDisable()
     {
-        InteractableObject.OnPlayerAction -= RemoveEnergy;
-        DayManager.OnEndOfDay -= ResetEnergy;
+        InteractableObject.OnPlayerAction -= ActionDecrease;
+        DayManager.OnEndOfDay -= base.ResetEnergy;
     }
 
-    private void RemoveEnergy()
+    //private void LateUpdate()
+    //{
+    //    CountDownTimer();
+    //}
+
+    //private void CountDownTimer()
+    //{
+    //    m_HungerDecreaseTime -= Time.deltaTime;
+
+    //    if (m_HungerDecreaseTime < 0f)
+    //    {
+    //        HungerDecrease();
+    //    }
+    //}
+
+    //private void HungerDecrease()
+    //{
+    //    m_HungerDecreaseTime = m_SetHungerDecreaseTime; // Set the time back to where it began
+
+    //    RemoveEnergy(m_HungerDecreaseAmount);
+    //}
+
+    private void ActionDecrease()
     {
-        if (m_CurrentEnergy > 0)
-        {
-            m_CurrentEnergy--;
-
-            int healthDiff = m_TotalEnergy - m_CurrentEnergy;
-
-            for (int i = 0; i < healthDiff; i++)
-            {
-                m_EnergyItemList[i].TurnOff();
-            }
-        }
-        else
-        {
-            OnOutOfEnergy?.Invoke();
-            Debug.Log("No Energy");
-        }
+        base.DecreaseValue(m_ActionDecreaseAmount);
     }
 
-    private void SpawnHealthItems()
-    {
-        m_CurrentEnergy = m_TotalEnergy;
+    //private void RemoveEnergy(int decreaseValue)
+    //{
+    //    if(m_CurrentEnergy > 0)
+    //    {
+    //        m_CurrentEnergy -= decreaseValue;
 
-        for (int i = 0; i < m_TotalEnergy; i++)
-        {
-            GameObject energyItem = Instantiate(m_EnergyItem);
-            energyItem.transform.SetParent(gameObject.transform, false); // false so it scales locally
+    //        if(m_CurrentEnergy < 0)
+    //        {
+    //            Debug.Log("Out of energy");
+    //        }
+    //        else
+    //        {
+    //            m_BarTransform.localScale = new Vector3(1, (float)m_CurrentEnergy / 100f, 1);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("No Energy");
+    //        OnOutOfEnergy?.Invoke();
+    //    }
+    //}
 
-            m_EnergyItemList.Add(energyItem.GetComponent<EnergyItem>());
-        }
-    }
-
-    private void ResetEnergy()
-    {
-        for (int i = 0; i < m_TotalEnergy; i++)
-        {
-            m_EnergyItemList[i].TurnOn();
-        }
-
-        m_CurrentEnergy = m_TotalEnergy;
-    }
-
+    //private void ResetEnergy()
+    //{
+    //    m_CurrentEnergy = m_TotalEnergy;
+    //}
 }

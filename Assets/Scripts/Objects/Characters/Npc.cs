@@ -20,9 +20,17 @@ public class Npc : ReceivableObject
         }
         else
         {
-            base.ReceiveItem();
 
-            StartCoroutine("OpenTextBalloon", m_NpcData.ReceivedText);
+            if(Inventory.Instance.SelectedSlot.SlotIsTaken == true)
+            {
+                base.ReceiveItem();
+
+                StartCoroutine("OpenTextBalloon", m_NpcData.ReceivedText);
+            }
+            else
+            {
+                StartCoroutine("OpenTextBalloon", m_NpcData.NothingReceivedText);
+            }
         }
     }
 

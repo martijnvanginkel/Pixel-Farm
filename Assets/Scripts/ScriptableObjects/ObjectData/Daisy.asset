@@ -18,7 +18,7 @@ MonoBehaviour:
   ItemCategory: Flowers
   DataCategory: Social
   Icon: {fileID: 21300000, guid: 6d2886c2c84e840baa472bbc176e8276, type: 3}
-  SocialValue: 10
+  SocialValue: 30
   DefaultStoreAmount: 3
   BuyingCost: 30
   SellingCost: 20
