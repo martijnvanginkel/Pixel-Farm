@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New ReceivableData", menuName = "ReceivableData")]
-public class ReceiveableData : ScriptableObject
+public class ReceiveableData : ObjectData
 {
     // Money / Social / Fullfillment
     public string ReceiveType;

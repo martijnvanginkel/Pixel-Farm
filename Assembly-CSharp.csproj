@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\HTTP\ManagedResource.cs" />
     <Compile Include="Assets\Scripts\HTTP\ManagedSession.cs" />
     <Compile Include="Assets\Scripts\Navigation\Door.cs" />
+    <Compile Include="Assets\Scripts\Objects\Characters\Chicken.cs" />
     <Compile Include="Assets\Scripts\Objects\Characters\Npc.cs" />
     <Compile Include="Assets\Scripts\Objects\Characters\Salesman.cs" />
     <Compile Include="Assets\Scripts\Objects\Characters\Wife.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Assets\Scripts\Objects\Flowers\Daisy.cs" />
     <Compile Include="Assets\Scripts\Objects\Flowers\Flower.cs" />
     <Compile Include="Assets\Scripts\Objects\Flowers\Yellowzy.cs" />
+    <Compile Include="Assets\Scripts\Objects\Food\Egg.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableObject.cs" />
     <Compile Include="Assets\Scripts\Objects\ReceivableObject.cs" />
     <Compile Include="Assets\Scripts\Objects\Tiles\GrassTile.cs" />

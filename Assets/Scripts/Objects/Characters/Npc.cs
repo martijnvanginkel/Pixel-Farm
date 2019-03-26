@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Npc : ReceivableObject
+public class Npc : TradeableObject 
 {
 
     [SerializeField] private GameObject m_TextBalloon;
     [SerializeField] private TMPro.TextMeshProUGUI m_Text;
 
     [SerializeField] private NpcData m_NpcData;
-
 
     // Removes the received item from the inventory and triggers an event
     public override void ReceiveItem()
@@ -52,5 +51,4 @@ public class Npc : ReceivableObject
             base.ShowButtonPanel(true);
         }
     }
-
 }

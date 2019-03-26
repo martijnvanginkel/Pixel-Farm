@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New NpcData", menuName = "NpcData")]
-public class NpcData : ReceiveableData
+public class NpcData : ObjectData
 {
     // Text
     public string GreetingText;

@@ -21,4 +21,6 @@ public class ObjectData : ScriptableObject
     public int DefaultStoreAmount;
     public int BuyingCost;
     public int SellingCost;
+
+    public string ReceiveType;
 }

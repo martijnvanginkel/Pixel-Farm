@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TradeableObject : InteractableObject
 {
-    [SerializeField] protected ObjectData m_ObjectData; 
+    //[SerializeField] protected ObjectData m_ObjectData; 
 
     public void TakeItem()
     {
