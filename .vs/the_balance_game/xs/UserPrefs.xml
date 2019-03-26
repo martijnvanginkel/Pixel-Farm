@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{5939ABBB-C06D-3999-1DA5-0EAC991E5E09}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Objects/TradeableObject.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Objects/Characters/Chicken.cs">
     <Files>
       <File FileName="Assets/Scripts/Objects/TradeableObject.cs" Line="16" Column="38" />
       <File FileName="Assets/Scripts/General/PlayerController.cs" Line="104" Column="6" />

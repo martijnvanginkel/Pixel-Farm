@@ -28,8 +28,8 @@ public class Chicken : Npc
         {
             FlipChicken();
         }
-        MoveChicken();
 
+        MoveChicken();
     }
 
     // Update is called once per frame
@@ -108,6 +108,7 @@ public class Chicken : Npc
 
     private void MoveChicken()
     {
+        Debug.Log("movechicken");
         m_Animator.SetBool("FacingRight", m_FacingRight);
         m_Animator.SetBool("ChickenMoving", true);
     }

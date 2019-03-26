@@ -61,8 +61,14 @@ TagManager:
   - name: Player
     uniqueID: 2323612839
     locked: 0
+  - name: Chicken
+    uniqueID: 2327181539
+    locked: 0
   - name: TileOverlay
     uniqueID: 3166791271
+    locked: 0
+  - name: Cow
+    uniqueID: 4165566181
     locked: 0
   - name: TextBalloon
     uniqueID: 2692168041
