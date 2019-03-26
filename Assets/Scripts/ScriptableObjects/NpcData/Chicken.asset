@@ -19,7 +19,7 @@ MonoBehaviour:
   DataCategory: 
   Icon: {fileID: 21300000, guid: 45380a43c409f441f92daf8cdf0f775f, type: 3}
   SocialValue: 0
-  DefaultStoreAmount: 0
+  DefaultStoreAmount: 10
   BuyingCost: 0
   SellingCost: 0
   ReceiveType: Environment

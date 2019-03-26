@@ -12897,26 +12897,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 96685330559518860, guid: 08e791efac5a34ea2a03d9bb3d8daf02,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 96685330559518860, guid: 08e791efac5a34ea2a03d9bb3d8daf02,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 96685330606184393, guid: 08e791efac5a34ea2a03d9bb3d8daf02,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 96685330606184393, guid: 08e791efac5a34ea2a03d9bb3d8daf02,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08e791efac5a34ea2a03d9bb3d8daf02, type: 3}
 --- !u!1001 &2099146734754685091
@@ -13336,11 +13316,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 7322581651572269565, guid: 2fdbe9b243b894471bb2a4ada1bf6320,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fdbe9b243b894471bb2a4ada1bf6320, type: 3}
 --- !u!1001 &8087348586943318608

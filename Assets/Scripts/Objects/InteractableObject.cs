@@ -26,7 +26,6 @@ public abstract class InteractableObject : MonoBehaviour
         Inventory.Instance.RemoveItem(item);
     }
 
-    // Doesnt need to be virtual right now
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -47,10 +46,10 @@ public abstract class InteractableObject : MonoBehaviour
 
     protected void ShowButtonPanel(bool showPanel)
     {
-        if (m_ButtonPanel)
-        {
+        //if (m_PlayerOnObject)
+        //{
             m_ButtonPanel.SetActive(showPanel);
-        }
+        //}
     }
 
     // bad name needs to be changed

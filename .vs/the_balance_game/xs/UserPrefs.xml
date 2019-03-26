@@ -1,21 +1,10 @@
 ﻿<Properties StartupConfiguration="{5939ABBB-C06D-3999-1DA5-0EAC991E5E09}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Objects/Characters/Chicken.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Objects/TradeableObject.cs">
     <Files>
       <File FileName="Assets/Scripts/Objects/TradeableObject.cs" Line="16" Column="38" />
-      <File FileName="Assets/Scripts/General/PlayerController.cs" Line="84" Column="14" />
-      <File FileName="Assets/Scripts/Objects/InteractableObject.cs" Line="30" Column="1" />
-      <File FileName="Assets/Scripts/Objects/Characters/Npc.cs" Line="53" Column="6" />
-      <File FileName="Assets/Scripts/Objects/Characters/Chicken.cs" Line="52" Column="31" />
-      <File FileName="Assets/Scripts/Objects/Flowers/Daisy.cs" Line="5" Column="28" />
-      <File FileName="Assets/Scripts/Objects/Flowers/Flower.cs" Line="5" Column="38" />
-      <File FileName="Assets/Scripts/ScriptableObjects/Scripts/ObjectData.cs" Line="25" Column="31" />
-      <File FileName="Assets/Scripts/ScriptableObjects/Scripts/NpcData.cs" Line="6" Column="34" />
-      <File FileName="Assets/Scripts/ScriptableObjects/Scripts/ReceivableData.cs" Line="16" Column="1" />
-      <File FileName="Assets/Scripts/Objects/UI/EnergyBar.cs" Line="5" Column="29" />
-      <File FileName="Assets/Scripts/Objects/UI/Bar.cs" Line="29" Column="1" />
-      <File FileName="Assets/Scripts/General/DayManager.cs" Line="60" Column="1" />
-      <File FileName="Assets/Scripts/Objects/Food/Egg.cs" Line="15" Column="6" />
-      <File FileName="Assets/Scripts/Objects/UI/Inventory.cs" Line="112" Column="1" />
+      <File FileName="Assets/Scripts/General/PlayerController.cs" Line="104" Column="6" />
+      <File FileName="Assets/Scripts/Objects/InteractableObject.cs" Line="49" Column="5" />
+      <File FileName="Assets/Scripts/Objects/Characters/Chicken.cs" Line="6" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

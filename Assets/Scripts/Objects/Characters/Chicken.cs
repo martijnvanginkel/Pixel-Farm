@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Chicken : Npc
 {
-
     [SerializeField] private GameObject m_EggPrefab;
 
     private Animator m_Animator;
@@ -24,6 +23,13 @@ public class Chicken : Npc
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
         m_SetAnimTime = m_NextAnimTime;
         m_FacingRight = false;
+
+        if (RandomBool(0.5f))
+        {
+            FlipChicken();
+        }
+        MoveChicken();
+
     }
 
     // Update is called once per frame
@@ -111,5 +117,4 @@ public class Chicken : Npc
     {
         m_Animator.SetBool("ChickenMoving", false);
     }
-
 }
