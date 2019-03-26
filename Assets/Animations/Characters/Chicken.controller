@@ -9,7 +9,7 @@ AnimatorController:
   m_Name: Chicken
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: ChickenMoving
+  - m_Name: AnimalMoving
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -43,7 +43,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: ChickenMoving
+    m_ConditionEvent: AnimalMoving
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102556494737096676}
@@ -68,7 +68,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: ChickenMoving
+    m_ConditionEvent: AnimalMoving
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: FacingRight
@@ -96,7 +96,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: ChickenMoving
+    m_ConditionEvent: AnimalMoving
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: FacingRight
@@ -124,7 +124,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: ChickenMoving
+    m_ConditionEvent: AnimalMoving
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102556494737096676}

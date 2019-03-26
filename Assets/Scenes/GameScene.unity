@@ -471,7 +471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &81401688
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8750,6 +8750,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e778f2b99e9e347bf96175de6c5727ce, type: 2}
   - {fileID: 11400000, guid: baf9a1b884d724d69b59306e98e068e9, type: 2}
   - {fileID: 11400000, guid: ded75d1b1c91c44aea9775cae48e9515, type: 2}
+  - {fileID: 11400000, guid: ec220be0d2e78439a8d2b9900b501783, type: 2}
   m_StorePanel: {fileID: 81401687}
   m_StoreItemsParent: {fileID: 447352389}
   m_InventoryItemsParent: {fileID: 0}
@@ -12914,12 +12915,12 @@ PrefabInstance:
     - target: {fileID: 2010277598730330517, guid: 3e744b8f3cb4d438fa1060b6a4691596,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.44
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2010277598730330517, guid: 3e744b8f3cb4d438fa1060b6a4691596,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.2625
+      value: -2.7
       objectReference: {fileID: 0}
     - target: {fileID: 2010277598730330517, guid: 3e744b8f3cb4d438fa1060b6a4691596,
         type: 3}
@@ -12965,6 +12966,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 292342232, guid: 3e744b8f3cb4d438fa1060b6a4691596, type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 292342232, guid: 3e744b8f3cb4d438fa1060b6a4691596, type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263399249, guid: 3e744b8f3cb4d438fa1060b6a4691596, type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263399249, guid: 3e744b8f3cb4d438fa1060b6a4691596, type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e744b8f3cb4d438fa1060b6a4691596, type: 3}

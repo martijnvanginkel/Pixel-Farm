@@ -69,7 +69,9 @@
     <Compile Include="Assets\Scripts\HTTP\ManagedResource.cs" />
     <Compile Include="Assets\Scripts\HTTP\ManagedSession.cs" />
     <Compile Include="Assets\Scripts\Navigation\Door.cs" />
+    <Compile Include="Assets\Scripts\Objects\Characters\Animal.cs" />
     <Compile Include="Assets\Scripts\Objects\Characters\Chicken.cs" />
+    <Compile Include="Assets\Scripts\Objects\Characters\Cow.cs" />
     <Compile Include="Assets\Scripts\Objects\Characters\Npc.cs" />
     <Compile Include="Assets\Scripts\Objects\Characters\Salesman.cs" />
     <Compile Include="Assets\Scripts\Objects\Characters\Wife.cs" />
