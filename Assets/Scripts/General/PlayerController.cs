@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // List to keep track of all the items the player is currently standing on
-    private List<InteractableObject> m_CollidingItems = new List<InteractableObject>();
+    [SerializeField] private List<InteractableObject> m_CollidingItems = new List<InteractableObject>();
     public List<InteractableObject> CollidingItems
     {
         get { return m_CollidingItems; }

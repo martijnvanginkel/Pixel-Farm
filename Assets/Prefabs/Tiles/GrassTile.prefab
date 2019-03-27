@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ButtonPanel: {fileID: 2355171681156344373}
-  m_ObjectData: {fileID: 11400000, guid: ad3ecf176352c4755a65a46e71833922, type: 2}
+  m_ObjectData: {fileID: 11400000, guid: aa48708ec835a4ceea1fa6a6179529d7, type: 2}
   m_GrassOverlay: {fileID: 59149564059652451}
   m_PlantedSeedOverlay: {fileID: 8383447346479009254}
   m_PlowedSprite: {fileID: 21300000, guid: be67c7efbc5bf44548894a4e09f3710e, type: 3}
@@ -215,7 +215,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1128176025
-  m_SortingLayer: 7
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: 664c0ab4a30a24b05bc08fd069797881, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

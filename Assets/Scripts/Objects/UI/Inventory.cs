@@ -46,6 +46,9 @@ public class Inventory : MonoBehaviour
          KeyCode.Alpha8
      };
 
+    private bool m_HoldingDropKeyDown;
+    private float m_HoldingDropKeyTime = 2f;
+
     private void Awake()
     {
         if (m_Instance != null && m_Instance != this)
@@ -81,6 +84,29 @@ public class Inventory : MonoBehaviour
     private void Update()
     {
         CheckForKeyInput();
+
+        if (m_HoldingDropKeyDown)
+        {
+        
+            if (Input.GetKey(KeyCode.E))
+            {
+                Debug.Log("holding down");
+                m_HoldingDropKeyTime -= Time.deltaTime;
+
+                if(m_HoldingDropKeyTime < 0f)
+                {
+                    m_HoldingDropKeyDown = false;
+                    Debug.Log("eat Item");
+                }
+            }
+            else
+            {
+                Debug.Log("released key");
+                m_HoldingDropKeyTime = 2f;
+                m_HoldingDropKeyDown = false;
+            }
+
+        }
     }
 
     private void CheckForKeyInput()
@@ -97,8 +123,13 @@ public class Inventory : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
+            //if(m_SelectedSlot.ObjectData.ItemCategory == "")
+
             DropItem(m_SelectedSlot);
+            m_HoldingDropKeyDown = true;
+            Debug.Log("single");
         }
+
     }
 
     private void DropItem(InventorySlot slot)

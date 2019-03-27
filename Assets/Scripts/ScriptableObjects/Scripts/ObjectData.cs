@@ -8,13 +8,11 @@ public class ObjectData : ScriptableObject
     public new string Name;
     public string Description;
 
-    // moeten nog veel meer opgedeeld worden, seeds hebben een flower en flowers weten hun eigen prefab
+    public Sprite Icon;
     public GameObject Prefab;
 
     public string ItemCategory;
     public string DataCategory;
-
-    public Sprite Icon;
 
     public int SocialValue;
 
@@ -23,4 +21,8 @@ public class ObjectData : ScriptableObject
     public int SellingCost;
 
     public string ReceiveType;
+
+    public GameObject PlantPrefab;
+
+    public int EatingValue;
 }

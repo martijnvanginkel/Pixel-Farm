@@ -6,7 +6,7 @@ using UnityEngine.UI;
 // Base class for storeslots and inventory slots
 public abstract class DigitalItem : MonoBehaviour
 {
-    protected ObjectData m_ObjectData;
+    [SerializeField] protected ObjectData m_ObjectData;
     public ObjectData ObjectData
     {
         get { return m_ObjectData; }

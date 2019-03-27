@@ -81,8 +81,8 @@
     <Compile Include="Assets\Scripts\Objects\Flowers\Yellowzy.cs" />
     <Compile Include="Assets\Scripts\Objects\Food\Egg.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableObject.cs" />
+    <Compile Include="Assets\Scripts\Objects\Seeds\DaisySeeds.cs" />
     <Compile Include="Assets\Scripts\Objects\Sky\Cloud.cs" />
-    <Compile Include="Assets\Scripts\Objects\Sky\CloudManager.cs" />
     <Compile Include="Assets\Scripts\Objects\Tiles\GrassTile.cs" />
     <Compile Include="Assets\Scripts\Objects\Tiles\HouseTile.cs" />
     <Compile Include="Assets\Scripts\Objects\TradeableObject.cs" />
@@ -96,9 +96,10 @@
     <Compile Include="Assets\Scripts\Objects\UI\SocialBar.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\Store.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\StoreSlot.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\FoodData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\NpcData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\ObjectData.cs" />
-    <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\ReceivableData.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\SeedData.cs" />
     <None Include="Assets\Packages\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Packages\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Packages\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />

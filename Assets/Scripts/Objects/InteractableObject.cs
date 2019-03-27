@@ -59,6 +59,7 @@ public abstract class InteractableObject : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             m_PlayerOnObject = false;
+            ShowButtonPanel(false);
             PlayerController.Instance.CollidingItems.Remove(this);
         }
     }
