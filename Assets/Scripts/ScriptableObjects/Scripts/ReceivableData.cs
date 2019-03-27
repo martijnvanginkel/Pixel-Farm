@@ -6,10 +6,10 @@ using UnityEngine;
 public class ReceiveableData : ObjectData
 {
     // Money / Social / Fullfillment
-    public string ReceiveType;
+    //public string ReceiveType;
 
     // Character info
-    public new string Name;
-    public string Description;
+    // public new string Name;
+   //public string Description;
 }
 

@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Animal : Npc
+public abstract class Animal : Npc
 {
     private Animator m_Animator;
-    private SpriteRenderer m_SpriteRenderer;
 
     private bool m_FacingRight;
 
@@ -15,10 +14,11 @@ public class Animal : Npc
     private int m_SameDirectionCounter;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+
         m_Animator = GetComponent<Animator>();
-        m_SpriteRenderer = GetComponent<SpriteRenderer>();
         m_SetAnimTime = m_NextAnimTime;
         m_FacingRight = false;
 

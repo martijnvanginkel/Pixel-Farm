@@ -5,12 +5,25 @@ using UnityEngine.UI;
 
 public abstract class InteractableObject : MonoBehaviour
 {
-
     public delegate void PlayerAction();
     public static event PlayerAction OnPlayerAction;
 
     public delegate void ReceivedItem(ObjectData objectData, string receiveType);
     public static event ReceivedItem OnReceivedItem;
+
+    protected SpriteRenderer m_SpriteRenderer;
+    public SpriteRenderer SpriteRenderer
+    {
+        get { return m_SpriteRenderer; }
+        set { m_SpriteRenderer = value; }
+    }
+
+    private int m_SortingLayerID;
+    public int SortingLayerID
+    {
+        get { return m_SortingLayerID; }
+        set { m_SortingLayerID = value; }
+    }
 
     [SerializeField] protected GameObject m_ButtonPanel;
     protected bool m_CanShowPanel = true;
@@ -18,6 +31,12 @@ public abstract class InteractableObject : MonoBehaviour
     protected bool m_PlayerOnObject;
 
     [SerializeField] protected ObjectData m_ObjectData;
+
+    protected virtual void Start()
+    {
+        m_SpriteRenderer = GetComponent<SpriteRenderer>();
+        m_SortingLayerID = SortingLayer.GetLayerValueFromID(m_SpriteRenderer.sortingLayerID);
+    }
 
     public virtual void ReceiveItem()
     {
@@ -31,7 +50,7 @@ public abstract class InteractableObject : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             m_PlayerOnObject = true;
-            ShowButtonPanel(true);
+            PlayerController.Instance.CollidingItems.Add(this);
         }
     }
 
@@ -40,19 +59,16 @@ public abstract class InteractableObject : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             m_PlayerOnObject = false;
-            ShowButtonPanel(false);
+            PlayerController.Instance.CollidingItems.Remove(this);
         }
     }
 
-    protected void ShowButtonPanel(bool showPanel)
+    public void ShowButtonPanel(bool showPanel)
     {
-        //if (m_PlayerOnObject)
-        //{
-            m_ButtonPanel.SetActive(showPanel);
-        //}
+        m_ButtonPanel.SetActive(showPanel);
     }
 
-    // bad name needs to be changed
+    // Function to trigger OnPlayerAction event
     protected void PlayerActionEvent()
     {
         OnPlayerAction?.Invoke();

@@ -5,9 +5,4 @@ using UnityEngine;
 public class Daisy : Flower
 {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -313,6 +313,7 @@
 "Assets/Scripts/Navigation/Door.cs"
 "Assets/Scripts/Objects/Characters/Animal.cs"
 "Assets/Scripts/Objects/Characters/Chicken.cs"
+"Assets/Scripts/Objects/Characters/Cow.cs"
 "Assets/Scripts/Objects/Characters/Npc.cs"
 "Assets/Scripts/Objects/Characters/Salesman.cs"
 "Assets/Scripts/Objects/Characters/Wife.cs"

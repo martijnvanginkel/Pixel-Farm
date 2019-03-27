@@ -10,12 +10,12 @@ public class DataManager : MonoBehaviour
 
     private void OnEnable()
     {
-        ReceivableObject.OnReceivedItem += DecideReceiveType;
+        Npc.OnReceivedItem += DecideReceiveType;
     }
 
     private void OnDisable()
     {
-        ReceivableObject.OnReceivedItem -= DecideReceiveType;
+        Npc.OnReceivedItem -= DecideReceiveType;
     }
 
     private void DecideReceiveType(ObjectData objectData, string receiveType)

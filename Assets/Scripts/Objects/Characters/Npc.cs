@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Npc : TradeableObject 
+public abstract class Npc : TradeableObject 
 {
-
     [SerializeField] private GameObject m_TextBalloon;
     [SerializeField] private TMPro.TextMeshProUGUI m_Text;
 
@@ -19,7 +18,6 @@ public class Npc : TradeableObject
         }
         else
         {
-
             if(Inventory.Instance.SelectedSlot.SlotIsTaken == true)
             {
                 base.ReceiveItem();

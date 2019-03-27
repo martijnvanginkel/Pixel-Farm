@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrassTile : ReceivableObject
+public class GrassTile : InteractableObject
 {
     [SerializeField] private GameObject m_GrassOverlay;
     [SerializeField] private GameObject m_PlantedSeedOverlay;
     [SerializeField] private Sprite m_PlowedSprite;
     private Sprite m_DefaultSprite;
 
-    private SpriteRenderer m_SpriteRenderer;
+    //private SpriteRenderer m_SpriteRenderer;
     private GameObject m_PlantedItemPrefab;
 
     private Vector3 m_SpawnLocation;
@@ -26,11 +26,11 @@ public class GrassTile : ReceivableObject
     private State m_CurrentState;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        m_SpriteRenderer = GetComponent<SpriteRenderer>();
-        m_DefaultSprite = m_SpriteRenderer.sprite;
+        base.Start(); 
 
+        m_DefaultSprite = m_SpriteRenderer.sprite;
         State m_CurrentState = State.Default;
 
         // Set the spawn location for grown plants
@@ -134,19 +134,6 @@ public class GrassTile : ReceivableObject
         base.PlayerActionEvent(); 
     }
 
-    protected override void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            if(m_CurrentState == State.Plowed)
-            {
-        
-                    ShowButtonPanel();
-                
-            }
-        }
-    }
-
     // Button panel is being showed when the inventory is selecting a seedpackage
     private void ShowButtonPanel()
     {
@@ -156,6 +143,19 @@ public class GrassTile : ReceivableObject
 
             if (selectedItem.ObjectData.ItemCategory == "Seeds")
             {
+                m_PlayerOnObject = true;
+                ShowButtonPanel(true);
+            }
+        }
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (m_CurrentState == State.Plowed)
+            {
+           
                 m_PlayerOnObject = true;
                 ShowButtonPanel(true);
             }

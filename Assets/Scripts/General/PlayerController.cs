@@ -23,6 +23,14 @@ public class PlayerController : MonoBehaviour
         set { m_AllowInput = value; }
     }
 
+    // List to keep track of all the items the player is currently standing on
+    private List<InteractableObject> m_CollidingItems = new List<InteractableObject>();
+    public List<InteractableObject> CollidingItems
+    {
+        get { return m_CollidingItems; }
+        set { m_CollidingItems = value; }
+    }
+
     private bool m_FacingRight = true;
     private bool m_IsSlashing = false;
 
@@ -49,14 +57,12 @@ public class PlayerController : MonoBehaviour
         m_TileLayer = LayerMask.GetMask("Tile");
     }
 
-
     private void Update()
     {
         GetInput(); // Always check for input of the player
 
         m_Animator.SetFloat("MoveSpeed", Mathf.Abs(m_RigidBody.velocity.x)); // Set float for run animation
         m_Animator.SetBool("Slashing", m_IsSlashing);
-
     }
 
     // Check for user input if its allowed
@@ -66,34 +72,89 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.D))
             {
-                m_RigidBody.velocity = new Vector2(m_MoveSpeed, m_RigidBody.velocity.y);
-
-                if (!m_FacingRight)
-                {
-                    FlipPlayerRight(true);
-                }
+                WalkRight();
             }
+
             if (Input.GetKey(KeyCode.A))
             {
-                m_RigidBody.velocity = new Vector2(-m_MoveSpeed, m_RigidBody.velocity.y);
-
-                if (m_FacingRight)
-                {
-                    FlipPlayerRight(false);
-                }
+                WalkLeft();
             }
+
             if (Input.GetKeyDown(KeyCode.S))
             {
-                m_IsSlashing = true;
-                GameObject standingTile = FindStandingTile();
+                SlashTile();
+            }
 
-                if (standingTile.tag == "GroundTile")
-                {
-                    standingTile.GetComponent<GrassTile>().Cut();
-                    Debug.Log(standingTile.name);
-                }
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                OpenCollidingItem();
             }
         }
+    }
+
+    private void WalkRight()
+    {
+        m_RigidBody.velocity = new Vector2(m_MoveSpeed, m_RigidBody.velocity.y);
+
+        if (!m_FacingRight)
+        {
+            FlipPlayerRight(true);
+        }
+    }
+
+    private void WalkLeft()
+    {
+        m_RigidBody.velocity = new Vector2(-m_MoveSpeed, m_RigidBody.velocity.y);
+
+        if (m_FacingRight)
+        {
+            FlipPlayerRight(false);
+        }
+    }
+
+    // Find the tile player is standing on and cuts the grasstile
+    private void SlashTile()
+    {
+        m_IsSlashing = true;
+        GameObject standingTile = FindStandingTile();
+
+        if (standingTile.tag == "GroundTile")
+        {
+            standingTile.GetComponent<GrassTile>().Cut();
+        }
+    }
+
+    // Open the buttonpanel of the object the player is currently standing on
+    private void OpenCollidingItem()
+    {
+        if (m_CollidingItems.Count == 1)
+        {
+            m_CollidingItems[0].ShowButtonPanel(true);
+        }
+        else if (m_CollidingItems.Count > 1)
+        {
+            FindFirstItem().ShowButtonPanel(true);
+        }
+        else
+        {
+            Debug.Log("No object is colliding");
+        }
+    }
+
+    // Return the item with the highest sortinglayer in the list of colliding items
+    private InteractableObject FindFirstItem()
+    {
+        InteractableObject highestPriorityItem = m_CollidingItems[0];
+
+        foreach (InteractableObject item in m_CollidingItems)
+        {
+            if(item.SortingLayerID < highestPriorityItem.SortingLayerID)
+            {
+                highestPriorityItem = item;
+            }
+        }
+
+        return highestPriorityItem;
     }
 
     // Flips the player to the right direction and sets the bool so its only called 1 frame

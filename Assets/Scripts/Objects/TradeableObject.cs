@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TradeableObject : InteractableObject
+public abstract class TradeableObject : InteractableObject
 {
-    //[SerializeField] protected ObjectData m_ObjectData; 
-
     public void TakeItem()
     {
         if (Inventory.Instance.CheckIfSpace(m_ObjectData))
