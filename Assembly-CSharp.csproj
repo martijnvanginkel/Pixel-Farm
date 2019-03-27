@@ -81,6 +81,8 @@
     <Compile Include="Assets\Scripts\Objects\Flowers\Yellowzy.cs" />
     <Compile Include="Assets\Scripts\Objects\Food\Egg.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableObject.cs" />
+    <Compile Include="Assets\Scripts\Objects\Sky\Cloud.cs" />
+    <Compile Include="Assets\Scripts\Objects\Sky\CloudManager.cs" />
     <Compile Include="Assets\Scripts\Objects\Tiles\GrassTile.cs" />
     <Compile Include="Assets\Scripts\Objects\Tiles\HouseTile.cs" />
     <Compile Include="Assets\Scripts\Objects\TradeableObject.cs" />
