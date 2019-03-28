@@ -79,10 +79,6 @@ public class Bar : MonoBehaviour
                 m_BarTransform.localScale = new Vector3(1, (float)m_CurrentValue / 100f, 1);
             }
         }
-        else
-        {
-            Debug.Log("Empty");
-        }
     }
 
     protected void ResetEnergy()

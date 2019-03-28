@@ -23,6 +23,13 @@ public class PlayerController : MonoBehaviour
         set { m_AllowInput = value; }
     }
 
+    [SerializeField] private bool m_HasButtonPanelOpen;
+    public bool HasButtonPanelOpen
+    {
+        get { return m_HasButtonPanelOpen; }
+        set { m_HasButtonPanelOpen = value; }
+    }
+
     // List to keep track of all the items the player is currently standing on
     [SerializeField] private List<InteractableObject> m_CollidingItems = new List<InteractableObject>();
     public List<InteractableObject> CollidingItems
@@ -87,7 +94,11 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.W))
             {
-                OpenCollidingItem();
+                // Don't open a panel if there is already one open (like a grasstile which opens by itself)
+                if(m_HasButtonPanelOpen == false)
+                {
+                    OpenCollidingItem();
+                }
             }
         }
     }
@@ -127,11 +138,11 @@ public class PlayerController : MonoBehaviour
     // Open the buttonpanel of the object the player is currently standing on
     private void OpenCollidingItem()
     {
-        if (m_CollidingItems.Count == 1)
+        if (m_CollidingItems.Count == 1) // If only one object is colliding open the first in the list
         {
             m_CollidingItems[0].ShowButtonPanel(true);
         }
-        else if (m_CollidingItems.Count > 1)
+        else if (m_CollidingItems.Count > 1) // If more than 1 open the one with the highest layer
         {
             FindFirstItem().ShowButtonPanel(true);
         }

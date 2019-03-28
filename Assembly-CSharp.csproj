@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Objects\Flowers\Flower.cs" />
     <Compile Include="Assets\Scripts\Objects\Flowers\Yellowzy.cs" />
     <Compile Include="Assets\Scripts\Objects\Food\Egg.cs" />
+    <Compile Include="Assets\Scripts\Objects\Food\Food.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableObject.cs" />
     <Compile Include="Assets\Scripts\Objects\Seeds\DaisySeeds.cs" />
     <Compile Include="Assets\Scripts\Objects\Sky\Cloud.cs" />

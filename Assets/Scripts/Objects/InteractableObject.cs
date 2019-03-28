@@ -67,6 +67,7 @@ public abstract class InteractableObject : MonoBehaviour
     public void ShowButtonPanel(bool showPanel)
     {
         m_ButtonPanel.SetActive(showPanel);
+        PlayerController.Instance.HasButtonPanelOpen = showPanel;
     }
 
     // Function to trigger OnPlayerAction event

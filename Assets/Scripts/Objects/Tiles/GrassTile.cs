@@ -80,15 +80,22 @@ public class GrassTile : InteractableObject
     {
         InventorySlot item = Inventory.Instance.SelectedSlot; // Get the currently selected item
 
-        switch (item.ObjectData.ItemCategory)
+        if(item.ObjectData == null)
         {
-            case "Seeds": // Receive the item if its a seed and plant the seed
-                PlantSeed(item.ObjectData);
-                base.ReceiveItem();
-                break;
-            default:
-                print("-");
-                break;
+            Debug.Log("No item to be planted");
+        }
+        else
+        {
+            switch (item.ObjectData.ItemCategory)
+            {
+                case "Seeds": // Receive the item if its a seed and plant the seed
+                    PlantSeed(item.ObjectData);
+                    base.ReceiveItem();
+                    break;
+                default:
+                    print("-");
+                    break;
+            }
         }
     }
 
@@ -120,7 +127,14 @@ public class GrassTile : InteractableObject
     {
         m_SpriteRenderer.sprite = m_PlowedSprite;
         m_CurrentState = State.Plowed;
-        ShowButtonPanel();
+
+        Debug.Log(this.gameObject);
+
+        // Only open the panel if the player is actually colliding with the tile (and not right next to it while plowing)
+        if (m_PlayerOnObject)
+        {
+            ShowButtonPanel(true);
+        }
     }
 
     private void PlantSeed(ObjectData objectData)
@@ -135,28 +149,28 @@ public class GrassTile : InteractableObject
     }
 
     // Button panel is being showed when the inventory is selecting a seedpackage
-    private void ShowButtonPanel()
-    {
-        if (Inventory.Instance.SelectedSlot.SlotIsTaken)
-        {
-            InventorySlot selectedItem = Inventory.Instance.SelectedSlot;
+    //private void ShowButtonPanel()
+    //{
+    //    if (Inventory.Instance.SelectedSlot.SlotIsTaken)
+    //    {
+    //        InventorySlot selectedItem = Inventory.Instance.SelectedSlot;
 
-            if (selectedItem.ObjectData.ItemCategory == "Seeds")
-            {
-                m_PlayerOnObject = true;
-                ShowButtonPanel(true);
-            }
-        }
-    }
+    //        if (selectedItem.ObjectData.ItemCategory == "Seeds")
+    //        {
+    //            m_PlayerOnObject = true;
+    //            ShowButtonPanel(true);
+    //        }
+    //    }
+    //}
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            m_PlayerOnObject = true;
+
             if (m_CurrentState == State.Plowed)
             {
-           
-                m_PlayerOnObject = true;
                 ShowButtonPanel(true);
             }
         }

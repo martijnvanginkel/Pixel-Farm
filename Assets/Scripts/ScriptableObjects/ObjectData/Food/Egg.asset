@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: 
   Icon: {fileID: 21300000, guid: 96e92c6ad2d424fafa97e33e61d1cd35, type: 3}
   Prefab: {fileID: 6486413159404111531, guid: 4afb93b33c0fa4a57aa45344565e2a2a, type: 3}
-  ItemCategory: 
+  ItemCategory: Food
   DataCategory: 
   SocialValue: 0
   DefaultStoreAmount: 10
@@ -24,3 +24,4 @@ MonoBehaviour:
   SellingCost: 0
   ReceiveType: 
   PlantPrefab: {fileID: 0}
+  EatingValue: 10

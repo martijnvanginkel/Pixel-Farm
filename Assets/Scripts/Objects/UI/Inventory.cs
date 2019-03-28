@@ -48,6 +48,7 @@ public class Inventory : MonoBehaviour
 
     private bool m_HoldingDropKeyDown;
     private float m_HoldingDropKeyTime = 2f;
+    [SerializeField] private EnergyBar m_EnergyBar;
 
     private void Awake()
     {
@@ -84,29 +85,6 @@ public class Inventory : MonoBehaviour
     private void Update()
     {
         CheckForKeyInput();
-
-        if (m_HoldingDropKeyDown)
-        {
-        
-            if (Input.GetKey(KeyCode.E))
-            {
-                Debug.Log("holding down");
-                m_HoldingDropKeyTime -= Time.deltaTime;
-
-                if(m_HoldingDropKeyTime < 0f)
-                {
-                    m_HoldingDropKeyDown = false;
-                    Debug.Log("eat Item");
-                }
-            }
-            else
-            {
-                Debug.Log("released key");
-                m_HoldingDropKeyTime = 2f;
-                m_HoldingDropKeyDown = false;
-            }
-
-        }
     }
 
     private void CheckForKeyInput()
@@ -121,15 +99,55 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E)) 
         {
-            //if(m_SelectedSlot.ObjectData.ItemCategory == "")
-
-            DropItem(m_SelectedSlot);
             m_HoldingDropKeyDown = true;
-            Debug.Log("single");
         }
 
+        // If the E button is pressed, check if the key is kept being pressed, if it is, check if the item is food, otherwise, drop the item and reset the key timer values
+        if (m_HoldingDropKeyDown)
+        {
+            if (Input.GetKey(KeyCode.E))
+            {
+                CheckIfItemIsFood();
+            }
+            else
+            {
+                ResetDropKey();
+                DropItem(m_SelectedSlot);
+            }
+        }
+    }
+
+    // Checks if item is food and otherwise drops the item on the floor
+    private void CheckIfItemIsFood()
+    {
+        // If the selected item is null or is not of the category food, drop the item and reset timer values
+        if (m_SelectedSlot.ObjectData == null || m_SelectedSlot.ObjectData.ItemCategory != "Food")
+        {
+            ResetDropKey();
+            DropItem(m_SelectedSlot);
+        }
+        else
+        {
+            // Otherwise start the timer
+            m_HoldingDropKeyTime -= Time.deltaTime; 
+
+            // When the timer is below 0, set the key back to not being pressed, gain the health value and remove the item 
+            if (m_HoldingDropKeyTime < 0f)
+            {
+                ResetDropKey();
+                m_EnergyBar.IncreaseValue(m_SelectedSlot.ObjectData.EatingValue);
+                RemoveItem(m_SelectedSlot);
+            }
+        }
+    }
+
+    // Resets the drop key timer values and drops the item on the floor
+    private void ResetDropKey()
+    {
+        m_HoldingDropKeyTime = 2f;
+        m_HoldingDropKeyDown = false;
     }
 
     private void DropItem(InventorySlot slot)
