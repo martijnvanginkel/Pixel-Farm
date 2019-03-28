@@ -7,7 +7,7 @@ public class Bar : MonoBehaviour
     [SerializeField] private RectTransform m_BarTransform;
 
     private int m_TotalValue = 100;
-    [SerializeField] private int m_CurrentValue = 100;
+    [SerializeField] protected int m_CurrentValue = 100;
 
     private float m_SetDecreaseTime;
     [SerializeField] private float m_DecreaseTime;
@@ -16,7 +16,7 @@ public class Bar : MonoBehaviour
     //[SerializeField] private int m_ActionDecreaseAmount;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         m_SetDecreaseTime = m_DecreaseTime;
     }
@@ -43,7 +43,7 @@ public class Bar : MonoBehaviour
         DecreaseValue(m_DecreaseAmount);
     }
 
-    public void IncreaseValue(int increaseValue)
+    public virtual void IncreaseValue(int increaseValue)
     {
         if(m_CurrentValue < 100)
         {
@@ -64,7 +64,7 @@ public class Bar : MonoBehaviour
         }
     }
 
-    protected void DecreaseValue(int decreaseValue)
+    protected virtual void DecreaseValue(int decreaseValue)
     {
         if (m_CurrentValue > 0)
         {
