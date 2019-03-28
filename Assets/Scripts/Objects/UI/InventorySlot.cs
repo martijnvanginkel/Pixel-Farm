@@ -44,12 +44,12 @@ public class InventorySlot : DigitalItem
         }
     }
 
-    public void FillSlot(ObjectData objectData)
+    public void FillSlot(ObjectData objectData, int amount)
     {
         m_ObjectData = objectData;
         m_SlotImage.color = m_SlotTakenColor;
         m_SlotImage.sprite = objectData.Icon;
-        SetAmount(1);
+        SetAmount(amount);
         m_SlotIsTaken = true;
     }
 

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46a2a93d55fe14bf7a99b4e79e7d977d, type: 3}
+  m_Name: CornPlant
+  m_EditorClassIdentifier: 
+  Name: Corn Plant
+  Description: 
+  Icon: {fileID: 21300000, guid: 56e4e586707384d668fd8d890e99ffb1, type: 3}
+  Prefab: {fileID: 6387089957066484487, guid: a9d8cabde999a471c992ddff6b8ec83e, type: 3}
+  ItemCategory: Plant
+  DataCategory: Environment
+  SocialValue: 0
+  DefaultStoreAmount: 0
+  BuyingCost: 0
+  SellingCost: 0
+  ReceiveType: 
+  HarvestedPlantData: {fileID: 11400000, guid: b38bc03a1a8894f95b4024d363308121, type: 2}
+  HarvestAmount: 5
+  EatingValue: 0

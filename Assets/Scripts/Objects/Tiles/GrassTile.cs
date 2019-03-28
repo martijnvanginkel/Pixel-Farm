@@ -142,7 +142,7 @@ public class GrassTile : InteractableObject
         m_PlantedSeedOverlay.SetActive(true); // Turn seedoverlay sprite on
 
         m_CurrentState = State.Planted;
-        m_PlantedItemPrefab = objectData.Prefab;
+        m_PlantedItemPrefab = objectData.HarvestedPlantData.Prefab;
 
         ShowButtonPanel(false); // Turn buttonPanel off
         base.PlayerActionEvent(); 

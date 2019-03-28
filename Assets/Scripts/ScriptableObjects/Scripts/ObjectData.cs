@@ -22,7 +22,8 @@ public class ObjectData : ScriptableObject
 
     public string ReceiveType;
 
-    public GameObject PlantPrefab;
+    public ObjectData HarvestedPlantData; // the corn that belong to this cornplant
+    public int HarvestAmount;
 
     public int EatingValue;
 }

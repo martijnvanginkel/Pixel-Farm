@@ -34,10 +34,10 @@ RectTransform:
   m_Father: {fileID: 460817189786681136}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 58.499996, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 30.249998, y: -15}
+  m_SizeDelta: {x: 58.499996, y: 28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &460817188080678501
 CanvasRenderer:
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 460817188978302437}
+      - m_Target: {fileID: 7488731831483963444}
         m_MethodName: TakeItem
         m_Mode: 1
         m_Arguments:
@@ -271,11 +271,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 460817188978302432}
   - component: {fileID: 460817188978302439}
   - component: {fileID: 460817188978302438}
-  - component: {fileID: 460817188978302437}
+  - component: {fileID: 7488731831483963444}
   m_Layer: 0
   m_Name: DaisySeeds
   m_TagString: Untagged
@@ -388,7 +388,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.25, y: 0.25}
+    oldSize: {x: 0.33333334, y: 0.33333334}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -397,7 +397,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.25}
   m_EdgeRadius: 0
---- !u!114 &460817188978302437
+--- !u!114 &7488731831483963444
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -406,7 +406,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 460817188978302436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33afbda453f0e4ba1b7b4ae4b1776faf, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fb23c231dabb468e9662853f9c22984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_ButtonPanel: {fileID: 460817189786681147}
@@ -529,7 +529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &460817189786681136
 RectTransform:
   m_ObjectHideFlags: 0
@@ -548,7 +548,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 100}
-  m_SizeDelta: {x: 0, y: 30}
+  m_SizeDelta: {x: 60.499996, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &460817189786681143
 CanvasRenderer:

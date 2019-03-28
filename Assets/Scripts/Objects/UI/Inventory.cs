@@ -173,15 +173,22 @@ public class Inventory : MonoBehaviour
         m_SelectedSlot.SelectSlot(true); // Select new slot
     }
 
-    public void AddItem(ObjectData objectData)
+    public void AddItem(ObjectData objectData, int amount)
     {
         if (ItemInBackPack(objectData) == null) // If item not in the inventory fill a new slot
         {
-            FillSlot(objectData);
+            if(amount == 0)
+            {
+                FillSlot(objectData, 1);
+            }
+            else
+            {
+                FillSlot(objectData, amount);
+            }
         }
         else
         {
-            ItemInBackPack(objectData).IncreaseAmount(1); // Increase amount if the item is already in the inventory
+            ItemInBackPack(objectData).IncreaseAmount(amount); // Increase amount if the item is already in the inventory
         }
     }
 
@@ -197,11 +204,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    private void FillSlot(ObjectData objectData)
+    private void FillSlot(ObjectData objectData, int amount)
     {
         InventorySlot newSlot = FindFreeSlot();
 
-        newSlot.FillSlot(objectData);
+        newSlot.FillSlot(objectData, amount);
     }
 
     private void EmptySlot(InventorySlot slot)

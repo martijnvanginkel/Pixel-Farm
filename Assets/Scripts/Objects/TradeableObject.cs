@@ -10,7 +10,7 @@ public abstract class TradeableObject : InteractableObject
         if (Inventory.Instance.CheckIfSpace(m_ObjectData))
         {
             base.PlayerActionEvent();
-            Inventory.Instance.AddItem(m_ObjectData);
+            Inventory.Instance.AddItem(m_ObjectData, 1);
             Destroy(this.gameObject);
         }
         else

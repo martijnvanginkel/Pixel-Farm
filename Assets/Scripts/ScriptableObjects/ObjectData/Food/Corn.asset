@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46a2a93d55fe14bf7a99b4e79e7d977d, type: 3}
+  m_Name: Corn
+  m_EditorClassIdentifier: 
+  Name: Corn
+  Description: 
+  Icon: {fileID: 21300000, guid: 6ac3cfc9b6fca4b23b6dbd64792dc5fd, type: 3}
+  Prefab: {fileID: 2259400632239420217, guid: c880f3b635f054eefa1231fc6d5c6f53, type: 3}
+  ItemCategory: Food
+  DataCategory: 
+  SocialValue: 5
+  DefaultStoreAmount: 8
+  BuyingCost: 30
+  SellingCost: 25
+  ReceiveType: 
+  PlantPrefab: {fileID: 0}
+  EatingValue: 20

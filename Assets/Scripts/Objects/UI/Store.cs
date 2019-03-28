@@ -74,12 +74,12 @@ public class Store : MonoBehaviour
         if (item.SlotAmount > 1)
         {
             item.DecreaseAmount(1);
-            Inventory.Instance.AddItem(item.ObjectData);
+            Inventory.Instance.AddItem(item.ObjectData, 1);
             m_MoneyBar.LoseMoney(item.ObjectData);
         }
         else
         {
-            Inventory.Instance.AddItem(item.ObjectData);
+            Inventory.Instance.AddItem(item.ObjectData, 1);
             m_MoneyBar.LoseMoney(item.ObjectData);
             RemoveSlot(item);
         }

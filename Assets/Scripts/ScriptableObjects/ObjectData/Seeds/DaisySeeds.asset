@@ -23,5 +23,6 @@ MonoBehaviour:
   BuyingCost: 0
   SellingCost: 0
   ReceiveType: Environment
-  PlantPrefab: {fileID: 5452082384582597599, guid: 1ef10ddb8cb5a40f79d7a54b2aedaa83,
-    type: 3}
+  HarvestedPlantData: {fileID: 11400000, guid: a0785f3dd3e844c33b06fdc877d1579c, type: 2}
+  HarvestAmount: 0
+  EatingValue: 0
