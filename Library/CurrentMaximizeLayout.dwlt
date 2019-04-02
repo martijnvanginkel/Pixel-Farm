@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 498}
   m_MaxSize: {x: 18008, y: 14048}
   vertical: 0
-  controlID: 4485
+  controlID: 27899
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_MinSize: {x: 436, y: 498}
   m_MaxSize: {x: 14006, y: 14048}
   vertical: 1
-  controlID: 4486
+  controlID: 27900
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -190,9 +190,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1044.831, y: 559.9226, z: 0.7726599}
+    m_Target: {x: 7.319783, y: -1.8596683, z: -0.04941591}
     speed: 2
-    m_Value: {x: 1044.831, y: 559.9226, z: 0.7726599}
+    m_Value: {x: 7.319783, y: -1.8596683, z: -0.04941591}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -224,9 +224,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 178.85324
+    m_Target: 7.103804
     speed: 2
-    m_Value: 178.85324
+    m_Value: 7.103804
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_MinSize: {x: 436, y: 274}
   m_MaxSize: {x: 14006, y: 10024}
   vertical: 0
-  controlID: 4360
+  controlID: 27901
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -457,8 +457,8 @@ MonoBehaviour:
     y: 0
     width: 439
     height: 274
-  m_MinSize: {x: 202, y: 224}
-  m_MaxSize: {x: 4002, y: 4024}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 10}
   m_Panes:
   - {fileID: 10}
@@ -494,10 +494,10 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 84.00055}
+      scrollPos: {x: 0, y: 278.99976}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: be7cfeff8e7dfeffee89feffd4fbffffa40e0000120f0000640f0000
+      m_ExpandedIDs: 5688feff5a88feff6688feff4ac0feffaacdfeffbadcfeffb85bffff36ebffff3cebffff48ebffffd4fbffffac0e0000a40f0000ae0f0000c00f000096100000fa10000000110000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -95762
+  m_LastSelectedObjectID: -5304
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -629,7 +629,7 @@ MonoBehaviour:
     height: 254
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SearchFilter:
-    m_NameFilter: 
+    m_NameFilter: door
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -640,19 +640,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Objects/UI
+    - Assets/Scripts/Objects/Furniture
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/Objects/UI
+  - Assets/Scripts/Objects/Furniture
   m_LastFoldersGridSize: -1
   m_LastProjectPath: /Users/Martijn/Games/the_balance_game
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 483}
-    m_SelectedIDs: 9e0a0000
-    m_LastClickedID: 2718
+    scrollPos: {x: 0, y: 496.9975}
+    m_SelectedIDs: 
+    m_LastClickedID: 0
     m_ExpandedIDs: 00000000f20900001e0a0000460a00006a0a0000f00a0000060b00001c0b0000b60b0000bc0b00002a0c0000300c0000400c0000d40c00007a0d0000ec0d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -706,9 +706,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 120f0000
-    m_LastClickedInstanceID: 3858
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: fa100000
+    m_LastClickedInstanceID: 4346
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000000000008a32000070340000e4c00000c27a0000000b0000960c0000ea2f0000b47d0000a60a0000380b000036250100b20a0000163000001a300000800c00000e3000006c160100de0c0000966effffbe740100240b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -733,7 +733,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 506.5}
+    m_ScrollPosition: {x: 0, y: 372.0006}
     m_GridSize: 64
   m_DirectoriesAreaWidth: 227
 --- !u!114 &15

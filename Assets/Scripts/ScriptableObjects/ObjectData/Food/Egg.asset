@@ -20,8 +20,9 @@ MonoBehaviour:
   DataCategory: 
   SocialValue: 0
   DefaultStoreAmount: 10
-  BuyingCost: 0
-  SellingCost: 0
+  BuyingCost: 10
+  SellingCost: 8
   ReceiveType: 
-  PlantPrefab: {fileID: 0}
+  HarvestedPlantData: {fileID: 0}
+  HarvestAmount: 0
   EatingValue: 10

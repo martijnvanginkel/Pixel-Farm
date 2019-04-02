@@ -60,6 +60,8 @@ public class Store : MonoBehaviour
         m_StorePanel.SetActive(true);
         m_StoreIsOpen = true;
         PlayerController.Instance.AllowInput = false;
+
+        Inventory.Instance.ShowPrices(true);
     }
 
     public void CloseStorePanel()
@@ -67,7 +69,10 @@ public class Store : MonoBehaviour
         m_StorePanel.SetActive(false);
         m_StoreIsOpen = false;
         PlayerController.Instance.AllowInput = true;
+
+        Inventory.Instance.ShowPrices(false);
     }
+
 
     public void BuyItem(StoreSlot item)
     {

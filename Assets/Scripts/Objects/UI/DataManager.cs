@@ -26,7 +26,7 @@ public class DataManager : MonoBehaviour
                 m_SocialBar.IncreaseValue(objectData.SocialValue);
                 break;
             case "Economy":
-                m_MoneyBar.GainMoney(objectData); 
+                //m_MoneyBar.IncreaseValue(objectData); 
                 break;
             case "Environment":
                 Debug.Log("Environment");

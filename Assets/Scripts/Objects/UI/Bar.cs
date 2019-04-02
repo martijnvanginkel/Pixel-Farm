@@ -96,14 +96,17 @@ public class Bar : MonoBehaviour
         m_IsChangingValue = true;
     }
 
-    private void SetAmountText(float value)
+    protected void SetAmountText(float value)
     {
         m_CurrentValueText.text = Mathf.Round(value).ToString();
     }
 
     private void SetBarScale(float value)
     {
-        m_BarTransform.localScale = new Vector3(1, value / 100f, 1);
+        if(m_BarTransform != null)
+        {
+            m_BarTransform.localScale = new Vector3(1, value / 100f, 1);
+        }
     }
 
     protected void ResetEnergy()

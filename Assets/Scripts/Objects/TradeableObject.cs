@@ -15,6 +15,7 @@ public abstract class TradeableObject : InteractableObject
         }
         else
         {
+            Inventory.Instance.BackPackIsFull();
             Debug.Log("Cant pick up backpack is full");
         }
     }

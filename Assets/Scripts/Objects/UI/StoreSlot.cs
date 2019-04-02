@@ -41,7 +41,7 @@ public class StoreSlot : DigitalItem, IPointerEnterHandler, IPointerExitHandler
         }
         else
         {
-            Debug.Log("Cant buy backpack is full");
+            Inventory.Instance.BackPackIsFull();
         }
     }
 

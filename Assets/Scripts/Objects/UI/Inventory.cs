@@ -286,4 +286,35 @@ public class Inventory : MonoBehaviour
             return true;
         }
     }
+
+    public void ShowPrices(bool show)
+    {
+        foreach (InventorySlot slot in m_SlotList)
+        {
+            if (slot.ObjectData != null)
+            {
+                slot.ShowStoreValue(show);
+            }
+        }
+    }
+
+    public void BackPackIsFull()
+    {
+        StartCoroutine("BackPackFullCo");
+    }
+
+    private IEnumerator BackPackFullCo()
+    {
+        foreach (InventorySlot slot in m_SlotList)
+        {
+            slot.LightUpSlot(true);
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        foreach (InventorySlot slot in m_SlotList)
+        {
+            slot.LightUpSlot(false);
+        }
+    }
 }

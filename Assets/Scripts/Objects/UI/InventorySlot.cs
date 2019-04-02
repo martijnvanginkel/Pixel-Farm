@@ -22,8 +22,13 @@ public class InventorySlot : DigitalItem
     [SerializeField] private Sprite m_SlotUnselectedSprite;
     [SerializeField] private Sprite m_SlotSelectedSprite;
 
+    [SerializeField] private TMPro.TextMeshProUGUI m_StoreValueText;
+
     private Color m_SlotTakenColor = new Color(1f, 1f, 1f, 1f);
     private Color m_SlotNotTakenColor = new Color(1f, 1f, 1f, 0f);
+    private Color m_LightUpSlotColor = new Color(178 / 255f, 106f / 255f, 63 / 255f);
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -73,6 +78,24 @@ public class InventorySlot : DigitalItem
             {
                 Store.Instance.SellItem(this);
             }
+        }
+    }
+
+    public void ShowStoreValue(bool show)
+    {
+        m_StoreValueText.text = m_ObjectData.SellingCost.ToString();
+        m_StoreValueText.gameObject.SetActive(show);
+    }
+
+    public void LightUpSlot(bool lightUp)
+    {
+        if (lightUp)
+        {
+            m_BackGroundImage.color = m_LightUpSlotColor;
+        }
+        else
+        {
+            m_BackGroundImage.color = m_SlotTakenColor;
         }
     }
 }
