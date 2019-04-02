@@ -6,83 +6,108 @@ public class Bar : MonoBehaviour
 {
     [SerializeField] private RectTransform m_BarTransform;
 
-    private int m_TotalValue = 100;
-    [SerializeField] protected int m_CurrentValue = 100;
+    [SerializeField] protected float m_CurrentValue;
+    [SerializeField] protected float m_NewValue;
 
-    private float m_SetDecreaseTime;
-    [SerializeField] private float m_DecreaseTime;
-    [SerializeField] private int m_DecreaseAmount;
+    [SerializeField] private float m_Speed; // Speed to change the barscale at
+    private bool m_IsChangingValue; // Checks if the barscale is currently changing
 
-    //[SerializeField] private int m_ActionDecreaseAmount;
+    private float m_ChangedAmountValue;
+
+    [SerializeField] private TMPro.TextMeshProUGUI m_CurrentValueText;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        m_SetDecreaseTime = m_DecreaseTime;
+        SetAmountText(m_CurrentValue);
+        SetBarScale(m_CurrentValue);
+
+        m_NewValue = m_CurrentValue;
     }
 
-    private void LateUpdate()
+    private void Update()
     {
-        CountDownTimer();
-    }
-
-    private void CountDownTimer()
-    {
-        m_DecreaseTime -= Time.deltaTime;
-
-        if (m_DecreaseTime < 0f)
+        if (m_IsChangingValue)
         {
-            TimeDecrease();
+            ChangeValue();
         }
     }
 
-    private void TimeDecrease()
+    private void ChangeValue() 
     {
-        m_DecreaseTime = m_SetDecreaseTime; // Set the time back to where it began
-
-        DecreaseValue(m_DecreaseAmount);
-    }
-
-    public virtual void IncreaseValue(int increaseValue)
-    {
-        if(m_CurrentValue < 100)
+        if (m_CurrentValue > m_NewValue)
         {
-            m_CurrentValue += increaseValue;
-
-            if (m_CurrentValue > 100)
-            {
-                Debug.Log("Full");
-            }
-            else
-            {
-                m_BarTransform.localScale = new Vector3(1, (float)m_CurrentValue / 100f, 1);
-            }
+            m_CurrentValue -= Time.deltaTime * m_Speed;
         }
         else
         {
-            Debug.Log("Full");
+            m_CurrentValue += Time.deltaTime * m_Speed;
+        }
+
+        SetAmountText(m_CurrentValue);
+        SetBarScale(m_CurrentValue);
+
+        // If the current value reaches the new value, round up all the values 
+        if (Mathf.Round(m_CurrentValue) == m_NewValue) 
+        {
+            m_IsChangingValue = false;
+            m_CurrentValue = Mathf.Round(m_CurrentValue);
+            SetBarScale(m_CurrentValue); 
+            m_NewValue = m_CurrentValue; 
         }
     }
 
-    protected virtual void DecreaseValue(int decreaseValue)
+    public virtual void IncreaseValue(float increaseValue)
     {
-        if (m_CurrentValue > 0)
+        if (!m_IsChangingValue)
         {
-            m_CurrentValue -= decreaseValue;
-
-            if (m_CurrentValue < 0)
-            {
-                Debug.Log("Empty");
-            }
-            else
-            {
-                m_BarTransform.localScale = new Vector3(1, (float)m_CurrentValue / 100f, 1);
-            }
+            m_NewValue = m_CurrentValue + increaseValue;
         }
+        else
+        {
+            m_NewValue += increaseValue;
+        }
+
+        if(m_NewValue > 100f)
+        {
+            m_NewValue = 100f;
+        }
+
+        m_IsChangingValue = true;
+    }
+
+
+    public virtual void DecreaseValue(float decreaseValue)
+    {
+        if (!m_IsChangingValue)
+        {
+            m_NewValue = m_CurrentValue - decreaseValue;
+        }
+        else
+        {
+            m_NewValue -= decreaseValue;
+        }
+
+        if(m_NewValue < 0f)
+        {
+            m_NewValue = 0f;
+        }
+
+        m_IsChangingValue = true;
+    }
+
+    private void SetAmountText(float value)
+    {
+        m_CurrentValueText.text = Mathf.Round(value).ToString();
+    }
+
+    private void SetBarScale(float value)
+    {
+        m_BarTransform.localScale = new Vector3(1, value / 100f, 1);
     }
 
     protected void ResetEnergy()
     {
-        m_CurrentValue = m_TotalValue;
+        m_CurrentValue = 100f;
     }
 }

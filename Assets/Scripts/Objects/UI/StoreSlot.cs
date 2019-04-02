@@ -8,18 +8,27 @@ using UnityEngine.EventSystems;
 public class StoreSlot : DigitalItem, IPointerEnterHandler, IPointerExitHandler
 {
 
+    [SerializeField] private TMPro.TextMeshProUGUI m_CostText;
     private bool m_MouseIsOver;
 
     void Awake()
     {
-        m_SlotImage = GetComponent<Image>();
+        // !! Get the first child as a fix, this is sensitive for bugs
+        m_SlotImage = transform.GetChild(0).GetComponent<Image>();
+    }
+
+    void Start()
+    {
+        SetObjectDescription();
     }
 
     void SetObjectDescription()
     {
-        if(ObjectData.Description != null)
+        if(ObjectData.Description != null && ObjectData.Name != null)
         {
+            m_DescriptionTitle.text = ObjectData.Name;
             m_DescriptionText.text = ObjectData.Description;
+            m_CostText.text = ObjectData.BuyingCost.ToString();
         }
     }
 
@@ -52,7 +61,7 @@ public class StoreSlot : DigitalItem, IPointerEnterHandler, IPointerExitHandler
 
     private IEnumerator WaitToShowDescription()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         if (m_MouseIsOver)
         {
             ShowDescription(true);

@@ -37,6 +37,7 @@ public abstract class DigitalItem : MonoBehaviour
     [SerializeField] protected Image m_BackGroundImage;
     [SerializeField] protected TMPro.TextMeshProUGUI m_SlotAmountText;
     [SerializeField] protected GameObject m_DescriptionBox;
+    [SerializeField] protected TMPro.TextMeshProUGUI m_DescriptionTitle;
     [SerializeField] protected TMPro.TextMeshProUGUI m_DescriptionText;
 
     public void SetImage(Sprite image)

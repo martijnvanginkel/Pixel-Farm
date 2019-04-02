@@ -7,13 +7,12 @@ public class EnergyBar : Bar
     public delegate void OutOfEnergy();
     public static event OutOfEnergy OnOutOfEnergy;
 
-    [SerializeField] private TMPro.TextMeshProUGUI m_HungerValueText;
     [SerializeField] private int m_ActionDecreaseAmount;
 
     protected override void Start()
     {
         base.Start();
-        SetEnergyText(m_CurrentValue);
+        //SetEnergyText(m_CurrentValue);
     }
 
     private void OnEnable()
@@ -31,22 +30,21 @@ public class EnergyBar : Bar
     private void ActionDecrease()
     {
         base.DecreaseValue(m_ActionDecreaseAmount);
+
+        //if(m_NewValue == 0)
+        //{
+        //    OnOutOfEnergy?.Invoke();
+        //}
+        //base.DecreaseValue(m_ActionDecreaseAmount);
     }
 
-    public override void IncreaseValue(int increaseValue)
+    public override void IncreaseValue(float increaseValue)
     {
         base.IncreaseValue(increaseValue);
-        SetEnergyText(m_CurrentValue);
     }
 
-    protected override void DecreaseValue(int decreaseValue)
+    public override void DecreaseValue(float decreaseValue)
     {
         base.DecreaseValue(decreaseValue);
-        SetEnergyText(m_CurrentValue);
-    }
-
-    private void SetEnergyText(int energyValue)
-    {
-        m_HungerValueText.text = energyValue.ToString();
     }
 }
