@@ -82,18 +82,20 @@ public class GrassTile : InteractableObject
 
         if(item.ObjectData == null)
         {
-            Debug.Log("No item to be planted");
+            PlayerController.Instance.Talk("I can'tt plant air!");
         }
         else
         {
             switch (item.ObjectData.ItemCategory)
             {
                 case "Seeds": // Receive the item if its a seed and plant the seed
+                    Debug.Log("\tseed");
                     PlantSeed(item.ObjectData);
                     base.ReceiveItem();
                     break;
                 default:
-                    print("-");
+                    Debug.Log("no seed");
+                    PlayerController.Instance.Talk("I can't plant that item");
                     break;
             }
         }

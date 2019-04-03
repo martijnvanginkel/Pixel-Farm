@@ -10,16 +10,26 @@ public class DataManager : MonoBehaviour
 
     private void OnEnable()
     {
-        Npc.OnReceivedItem += DecideReceiveType;
+        InteractableObject.OnReceivedItem += DecideReceiveType;
     }
 
     private void OnDisable()
     {
-        Npc.OnReceivedItem -= DecideReceiveType;
+        InteractableObject.OnReceivedItem -= DecideReceiveType;
     }
 
     private void DecideReceiveType(ObjectData objectData, string receiveType)
     {
+        if(receiveType == null)
+        {
+            Debug.Log("null");
+        }
+
+        if (receiveType == "")
+        {
+            Debug.Log("null2");
+        }
+
         switch (receiveType)
         {
             case "Social":

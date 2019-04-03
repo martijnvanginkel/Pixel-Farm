@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private Animator m_Animator;
     private SpriteRenderer m_SpriteRenderer;
 
+    [SerializeField] private GameObject m_TextBalloon;
+    [SerializeField] private TMPro.TextMeshProUGUI m_Text;
     [SerializeField] private float m_MoveSpeed;
          
     private bool m_AllowInput = true;
@@ -28,6 +30,14 @@ public class PlayerController : MonoBehaviour
     {
         get { return m_HasButtonPanelOpen; }
         set { m_HasButtonPanelOpen = value; }
+    }
+
+    // The buttonpanel that is open above the player
+    private GameObject m_OpenButtonPanel; 
+    public GameObject OpenButtonPanel
+    {
+        get { return m_OpenButtonPanel; }
+        set { m_OpenButtonPanel = value; }
     }
 
     // List to keep track of all the items the player is currently standing on
@@ -194,4 +204,27 @@ public class PlayerController : MonoBehaviour
         return this.transform;
     }
 
+    public void Talk(string text)
+    {
+        StartCoroutine("OpenTextBalloonCo", text);
+    }
+
+
+    private IEnumerator OpenTextBalloonCo(string text)
+    {
+        if (m_HasButtonPanelOpen)
+        {
+            m_OpenButtonPanel.SetActive(false);
+        }
+
+        m_Text.text = text;
+        m_TextBalloon.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        m_TextBalloon.SetActive(false);
+
+        if (m_HasButtonPanelOpen)
+        {
+            m_OpenButtonPanel.SetActive(true);
+        }
+    }
 }

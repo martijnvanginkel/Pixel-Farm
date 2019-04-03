@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Npc : TradeableObject 
+public class Npc : TradeableObject 
 {
     [SerializeField] private GameObject m_TextBalloon;
     [SerializeField] private TMPro.TextMeshProUGUI m_Text;
@@ -18,16 +18,24 @@ public abstract class Npc : TradeableObject
         }
         else
         {
-            if(Inventory.Instance.SelectedSlot.SlotIsTaken == true)
+            if(Inventory.Instance.SelectedSlot.ObjectData != null)
             {
-                base.ReceiveItem();
+                if (Inventory.Instance.SelectedSlot.SlotIsTaken == true)
+                {
+                    base.ReceiveItem();
 
-                StartCoroutine("OpenTextBalloon", m_NpcData.ReceivedText);
+                    StartCoroutine("OpenTextBalloon", m_NpcData.ReceivedText);
+                }
+                else
+                {
+                    StartCoroutine("OpenTextBalloon", m_NpcData.NothingReceivedText);
+                }
             }
             else
             {
                 StartCoroutine("OpenTextBalloon", m_NpcData.NothingReceivedText);
             }
+
         }
     }
 

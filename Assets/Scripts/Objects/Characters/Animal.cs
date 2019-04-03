@@ -106,6 +106,7 @@ public abstract class Animal : Npc
     // Stop the animation at the last frame of the animation
     private void AnimalDoneMoving()
     {
+        transform.position = new Vector3(0f, 0f, 0f);
         m_Animator.SetBool("AnimalMoving", false);
     }
 }

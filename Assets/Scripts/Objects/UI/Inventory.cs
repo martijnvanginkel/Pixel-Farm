@@ -200,6 +200,11 @@ public class Inventory : MonoBehaviour
         }
         else // If it has one, remove the inventoryslot with the item in it
         {
+            // If the store is open and the last one is sold, remove the price
+            if (Store.Instance.StoreIsOpen)
+            {
+                item.ShowStoreValue(false);
+            }
             EmptySlot(item);
         }
     }
@@ -209,6 +214,11 @@ public class Inventory : MonoBehaviour
         InventorySlot newSlot = FindFreeSlot();
 
         newSlot.FillSlot(objectData, amount);
+
+        if (Store.Instance.StoreIsOpen)
+        {
+            newSlot.ShowStoreValue(true);
+        }
     }
 
     private void EmptySlot(InventorySlot slot)
@@ -310,7 +320,7 @@ public class Inventory : MonoBehaviour
             slot.LightUpSlot(true);
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
 
         foreach (InventorySlot slot in m_SlotList)
         {

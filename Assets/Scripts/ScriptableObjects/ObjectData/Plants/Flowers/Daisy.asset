@@ -18,9 +18,11 @@ MonoBehaviour:
   Prefab: {fileID: 5452082384582597599, guid: 1ef10ddb8cb5a40f79d7a54b2aedaa83, type: 3}
   ItemCategory: Flowers
   DataCategory: Social
-  SocialValue: 30
+  SocialValue: 15
   DefaultStoreAmount: 3
   BuyingCost: 30
   SellingCost: 20
   ReceiveType: 
-  PlantPrefab: {fileID: 0}
+  HarvestedPlantData: {fileID: 0}
+  HarvestAmount: 0
+  EatingValue: 0

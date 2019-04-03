@@ -23,5 +23,6 @@ MonoBehaviour:
   BuyingCost: 30
   SellingCost: 25
   ReceiveType: 
-  PlantPrefab: {fileID: 0}
-  EatingValue: 20
+  HarvestedPlantData: {fileID: 0}
+  HarvestAmount: 0
+  EatingValue: 5
