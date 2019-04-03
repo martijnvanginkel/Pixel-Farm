@@ -7,14 +7,20 @@ public class Bar : MonoBehaviour
     [SerializeField] private RectTransform m_BarTransform;
 
     [SerializeField] protected float m_CurrentValue;
-    [SerializeField] protected float m_NewValue;
+    public float CurrentValue
+    {
+        get { return m_CurrentValue; }
+        set { m_CurrentValue = value; }
+    }
+
+    protected float m_NewValue;
 
     [SerializeField] private float m_Speed; // Speed to change the barscale at
     private bool m_IsChangingValue; // Checks if the barscale is currently changing
 
     private float m_ChangedAmountValue;
 
-    [SerializeField] private TMPro.TextMeshProUGUI m_CurrentValueText;
+    [SerializeField] protected TMPro.TextMeshProUGUI m_CurrentValueText;
 
     // Start is called before the first frame update
     protected virtual void Start()

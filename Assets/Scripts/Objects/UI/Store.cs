@@ -73,20 +73,38 @@ public class Store : MonoBehaviour
         Inventory.Instance.ShowPrices(false);
     }
 
-
-    public void BuyItem(StoreSlot item)
+    private bool PlayerCanAfford(float price)
     {
-        if (item.SlotAmount > 1)
+        if(price < m_MoneyBar.CurrentValue)
         {
-            item.DecreaseAmount(1);
-            Inventory.Instance.AddItem(item.ObjectData, 1);
-            m_MoneyBar.LoseMoney(item.ObjectData);
+            return true;
         }
         else
         {
-            Inventory.Instance.AddItem(item.ObjectData, 1);
-            m_MoneyBar.LoseMoney(item.ObjectData);
-            RemoveSlot(item);
+            return false;
+        }
+    }
+
+    public void BuyItem(StoreSlot item)
+    {
+        if (!PlayerCanAfford(item.ObjectData.BuyingCost))
+        {
+            m_MoneyBar.CantAffordBlink();
+        }
+        else
+        {
+            if (item.SlotAmount > 1)
+            {
+                item.DecreaseAmount(1);
+                Inventory.Instance.AddItem(item.ObjectData, 1);
+                m_MoneyBar.LoseMoney(item.ObjectData);
+            }
+            else
+            {
+                Inventory.Instance.AddItem(item.ObjectData, 1);
+                m_MoneyBar.LoseMoney(item.ObjectData);
+                RemoveSlot(item);
+            }
         }
     }
 

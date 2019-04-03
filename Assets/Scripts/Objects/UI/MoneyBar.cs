@@ -63,4 +63,18 @@ public class MoneyBar : Bar
         }
     }
 
+    public void CantAffordBlink()
+    {
+        StartCoroutine("BlinkMoney", Color.red);
+    }
+
+    private IEnumerator BlinkMoney(Color color)
+    {
+        Color oldColor = m_CurrentValueText.color;
+
+        m_CurrentValueText.color = color;
+        yield return new WaitForSeconds(0.5f);
+        m_CurrentValueText.color = oldColor;
+    }
+
 }

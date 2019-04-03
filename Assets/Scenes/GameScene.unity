@@ -883,8 +883,9 @@ GameObject:
   - component: {fileID: 109781657}
   - component: {fileID: 109781659}
   - component: {fileID: 109781658}
+  - component: {fileID: 109781660}
   m_Layer: 5
-  m_Name: EnvironmentPanel
+  m_Name: NaturePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -942,6 +943,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109781656}
   m_CullTransparentMesh: 0
+--- !u!114 &109781660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109781656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e69e2052b24c0432f974a666f76a9b1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BarTransform: {fileID: 1910822390}
+  m_CurrentValue: 50
+  m_NewValue: 0
+  m_Speed: 5
+  m_CurrentValueText: {fileID: 486794716}
 --- !u!1 &116262954
 GameObject:
   m_ObjectHideFlags: 0
@@ -12999,7 +13017,7 @@ GameObject:
   - component: {fileID: 1927341010}
   - component: {fileID: 1927341009}
   m_Layer: 5
-  m_Name: Environment
+  m_Name: NatureBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15930,61 +15948,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087348586897075754, guid: 66fb25c641ebe49ae889bddde636fa50,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087348586130088694, guid: 66fb25c641ebe49ae889bddde636fa50,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087348586130088694, guid: 66fb25c641ebe49ae889bddde636fa50,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087348586897075755, guid: 66fb25c641ebe49ae889bddde636fa50,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 60.499996
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087348585027962374, guid: 66fb25c641ebe49ae889bddde636fa50,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087348585027962374, guid: 66fb25c641ebe49ae889bddde636fa50,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087348585027962374, guid: 66fb25c641ebe49ae889bddde636fa50,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 30.249998
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087348585027962374, guid: 66fb25c641ebe49ae889bddde636fa50,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -15
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087348585027962374, guid: 66fb25c641ebe49ae889bddde636fa50,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087348585064948420, guid: 66fb25c641ebe49ae889bddde636fa50,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087348585064948420, guid: 66fb25c641ebe49ae889bddde636fa50,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66fb25c641ebe49ae889bddde636fa50, type: 3}

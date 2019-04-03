@@ -8,7 +8,7 @@ public abstract class InteractableObject : MonoBehaviour
     public delegate void PlayerAction();
     public static event PlayerAction OnPlayerAction;
 
-    public delegate void ReceivedItem(ObjectData objectData, string receiveType);
+    public delegate void ReceivedItem(ObjectData objectData);
     public static event ReceivedItem OnReceivedItem;
 
     protected SpriteRenderer m_SpriteRenderer;
@@ -41,7 +41,8 @@ public abstract class InteractableObject : MonoBehaviour
     public virtual void ReceiveItem()
     {
         InventorySlot item = Inventory.Instance.SelectedSlot;
-        OnReceivedItem?.Invoke(item.ObjectData, m_ObjectData.ReceiveType); // Call an event to transfer the item into data
+        OnReceivedItem?.Invoke(item.ObjectData); // Call an event to transfer the item into data
+        OnPlayerAction?.Invoke(); // Call the player action event on giving an item
         Inventory.Instance.RemoveItem(item);
     }
 

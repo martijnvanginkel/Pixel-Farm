@@ -15,6 +15,7 @@ public class ObjectData : ScriptableObject
     public string DataCategory;
 
     public int SocialValue;
+    public int NatureValue;
 
     public int DefaultStoreAmount;
     public int BuyingCost;

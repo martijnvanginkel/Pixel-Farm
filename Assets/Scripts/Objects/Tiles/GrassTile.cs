@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GrassTile : InteractableObject
 {
+    public delegate void PlantedSeed(ObjectData objectData);
+    public static event PlantedSeed OnPlantedSeed;
+
     [SerializeField] private GameObject m_GrassOverlay;
     [SerializeField] private GameObject m_PlantedSeedOverlay;
     [SerializeField] private Sprite m_PlowedSprite;
@@ -89,7 +92,7 @@ public class GrassTile : InteractableObject
             switch (item.ObjectData.ItemCategory)
             {
                 case "Seeds": // Receive the item if its a seed and plant the seed
-                    Debug.Log("\tseed");
+                    Debug.Log("seed");
                     PlantSeed(item.ObjectData);
                     base.ReceiveItem();
                     break;
@@ -147,23 +150,9 @@ public class GrassTile : InteractableObject
         m_PlantedItemPrefab = objectData.HarvestedPlantData.Prefab;
 
         ShowButtonPanel(false); // Turn buttonPanel off
-        base.PlayerActionEvent(); 
+        OnPlantedSeed?.Invoke(objectData); // Invoke event that seed has been planted
+        base.PlayerActionEvent(); // Player does an action
     }
-
-    // Button panel is being showed when the inventory is selecting a seedpackage
-    //private void ShowButtonPanel()
-    //{
-    //    if (Inventory.Instance.SelectedSlot.SlotIsTaken)
-    //    {
-    //        InventorySlot selectedItem = Inventory.Instance.SelectedSlot;
-
-    //        if (selectedItem.ObjectData.ItemCategory == "Seeds")
-    //        {
-    //            m_PlayerOnObject = true;
-    //            ShowButtonPanel(true);
-    //        }
-    //    }
-    //}
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {

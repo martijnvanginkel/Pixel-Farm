@@ -19,6 +19,7 @@ MonoBehaviour:
   ItemCategory: Seeds
   DataCategory: Environment
   SocialValue: 1
+  NatureValue: 25
   DefaultStoreAmount: 10
   BuyingCost: 20
   SellingCost: 10
