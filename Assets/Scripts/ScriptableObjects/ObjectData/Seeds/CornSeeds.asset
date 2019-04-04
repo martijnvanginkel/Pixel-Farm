@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CornSeeds
   m_EditorClassIdentifier: 
   Name: Corn Seeds
-  Description: 
+  Description: Will grow a cornplant
   Icon: {fileID: 21300000, guid: 7f9ed4985f3824508afce87838795dd8, type: 3}
   Prefab: {fileID: 2963560397136995242, guid: c2d4a6d80ac8041aea350b942f00a33c, type: 3}
   ItemCategory: Seeds
@@ -21,7 +21,7 @@ MonoBehaviour:
   SocialValue: 1
   NatureValue: 25
   DefaultStoreAmount: 10
-  BuyingCost: 20
+  BuyingCost: 30
   SellingCost: 10
   ReceiveType: Environment
   HarvestedPlantData: {fileID: 11400000, guid: 7c6e55132663b48c9b68a7ce0ebf392c, type: 2}

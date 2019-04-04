@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DaisySeeds
   m_EditorClassIdentifier: 
   Name: Daisy Seeds
-  Description: 
+  Description: Will grow a beautiful flower
   Icon: {fileID: 21300000, guid: 9ba1d6230f5da482f8a8a63eeb1579f2, type: 3}
   Prefab: {fileID: 460817188978302436, guid: c5f290ca29c3f42fe8a8551f3e25a671, type: 3}
   ItemCategory: Seeds
@@ -21,8 +21,8 @@ MonoBehaviour:
   SocialValue: 0
   NatureValue: 10
   DefaultStoreAmount: 4
-  BuyingCost: 0
-  SellingCost: 0
+  BuyingCost: 20
+  SellingCost: 10
   ReceiveType: Environment
   HarvestedPlantData: {fileID: 11400000, guid: a0785f3dd3e844c33b06fdc877d1579c, type: 2}
   HarvestAmount: 0

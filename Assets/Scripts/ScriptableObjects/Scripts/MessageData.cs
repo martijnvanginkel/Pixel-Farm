@@ -6,5 +6,6 @@ using UnityEngine;
 public class MessageData : ScriptableObject
 {
     public string FirstSocialBarDecrease;
+    public string FirstNightOfSleep;
 
 }

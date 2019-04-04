@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour
 
     private LayerMask m_TileLayer;
 
+    [SerializeField] private Transform m_SleepLocation;
+
     private void Awake()
     {
         if (m_Instance != null && m_Instance != this)
@@ -72,6 +74,16 @@ public class PlayerController : MonoBehaviour
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
 
         m_TileLayer = LayerMask.GetMask("Tile");
+    }
+
+    private void OnEnable()
+    {
+        DayManager.OnEndOfDay += MoveToSleepLocation;
+    }
+
+    private void OnDisable()
+    {
+        DayManager.OnEndOfDay -= MoveToSleepLocation;
     }
 
     private void Update()
@@ -226,5 +238,10 @@ public class PlayerController : MonoBehaviour
         {
             m_OpenButtonPanel.SetActive(true);
         }
+    }
+
+    private void MoveToSleepLocation()
+    {
+        transform.position = m_SleepLocation.position;
     }
 }

@@ -61,7 +61,7 @@ public class MessageManager : MonoBehaviour
     private IEnumerator ShowMessageCo(string text)
     {
         OpenMessageBox(text);
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(4f);
         CloseMessageBox();
     }
 
@@ -76,5 +76,10 @@ public class MessageManager : MonoBehaviour
     {
         StartCoroutine("ShowMessageCo", m_MessageData.FirstSocialBarDecrease);
     }
+
+    //private void FirstNightOfSleep()
+    //{
+    //    StartCoroutine("ShowMessageCo", m_MessageData.FirstNightOfSleep);
+    //}
 
 }

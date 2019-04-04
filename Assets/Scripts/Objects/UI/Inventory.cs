@@ -10,6 +10,9 @@ public class Inventory : MonoBehaviour
         get { return m_Instance; }
     }
 
+    public delegate void ItemDropped(ObjectData objectData);
+    public static event ItemDropped OnItemDropped;
+
     [SerializeField] private GameObject m_InventorySlotPrefab;
     [SerializeField] private int m_InventorySlotAmount;
 
@@ -160,8 +163,8 @@ public class Inventory : MonoBehaviour
         {
             GameObject tile = PlayerController.Instance.FindStandingTile();
             float height = tile.GetComponent<Renderer>().bounds.size.y;
-
             Instantiate(slot.ObjectData.Prefab, new Vector3(PlayerController.Instance.GetPlayerPosition().position.x, tile.transform.position.y + height / 2, tile.transform.position.z), transform.rotation);
+            OnItemDropped?.Invoke(slot.ObjectData);
             RemoveItem(m_SelectedSlot);
         }
     }

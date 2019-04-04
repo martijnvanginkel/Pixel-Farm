@@ -455,7 +455,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8788301147635352141
 RectTransform:
   m_ObjectHideFlags: 0
@@ -780,6 +780,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ButtonPanel: {fileID: 1018495647601293833}
   m_ObjectData: {fileID: 11400000, guid: 6f253d8e09a804547abaf76e2575001a, type: 2}
+  m_EmptyPlantSprite: {fileID: 0}
+  m_TakeButton: {fileID: 0}
+  m_PickButton: {fileID: 0}
+  m_CutButton: {fileID: 0}
 --- !u!61 &4453441856223469034
 BoxCollider2D:
   m_ObjectHideFlags: 0

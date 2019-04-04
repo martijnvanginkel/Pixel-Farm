@@ -19,6 +19,7 @@ MonoBehaviour:
   ItemCategory: Food
   DataCategory: 
   SocialValue: 5
+  NatureValue: 0
   DefaultStoreAmount: 8
   BuyingCost: 30
   SellingCost: 25

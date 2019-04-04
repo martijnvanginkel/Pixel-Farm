@@ -16,12 +16,13 @@ MonoBehaviour:
   Description: A nice flower
   Icon: {fileID: 21300000, guid: 6d2886c2c84e840baa472bbc176e8276, type: 3}
   Prefab: {fileID: 5452082384582597599, guid: 1ef10ddb8cb5a40f79d7a54b2aedaa83, type: 3}
-  ItemCategory: Flowers
+  ItemCategory: Plant
   DataCategory: Social
   SocialValue: 15
+  NatureValue: 10
   DefaultStoreAmount: 3
   BuyingCost: 30
-  SellingCost: 20
+  SellingCost: 10
   ReceiveType: 
   HarvestedPlantData: {fileID: 0}
   HarvestAmount: 0

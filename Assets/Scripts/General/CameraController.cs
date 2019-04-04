@@ -24,11 +24,13 @@ public class CameraController : MonoBehaviour
     private void OnEnable()
     {
         Door.OnPlayerIsInside += MoveCameraInside;
+        DayManager.OnEndOfDay += MoveCameraToBed;
     }
 
     private void OnDisable()
     {
         Door.OnPlayerIsInside -= MoveCameraInside;
+        DayManager.OnEndOfDay -= MoveCameraToBed;
     }
 
     //private void Update()
@@ -82,6 +84,11 @@ public class CameraController : MonoBehaviour
             m_IndoorCamera.enabled = false;
             m_Camera.enabled = true;
         }
+    }
+
+    private void MoveCameraToBed()
+    {
+        MoveCameraInside(true);
     }
 }
 

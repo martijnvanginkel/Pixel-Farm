@@ -16,11 +16,14 @@ MonoBehaviour:
   Description: Blue flower
   Icon: {fileID: 21300000, guid: 07d9cc964061b453385a7ffd96797ef6, type: 3}
   Prefab: {fileID: 6480533037712739863, guid: d45c249b4579c43a4bc34af0405fbd3d, type: 3}
-  ItemCategory: Flowers
+  ItemCategory: Plant
   DataCategory: Social
   SocialValue: 20
+  NatureValue: 0
   DefaultStoreAmount: 2
-  BuyingCost: 20
-  SellingCost: 10
+  BuyingCost: 25
+  SellingCost: 20
   ReceiveType: 
-  PlantPrefab: {fileID: 0}
+  HarvestedPlantData: {fileID: 0}
+  HarvestAmount: 0
+  EatingValue: 0

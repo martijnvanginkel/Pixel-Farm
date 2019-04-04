@@ -55,6 +55,17 @@ public class Store : MonoBehaviour
         SetDefaultItems();
     }
 
+    private void OnEnable()
+    {
+        DayManager.OnEndOfDay += CloseStorePanel;
+    }
+
+    private void OnDisable()
+    {
+        DayManager.OnEndOfDay -= CloseStorePanel;
+    }
+
+
     public void OpenStorePanel()
     {
         m_StorePanel.SetActive(true);

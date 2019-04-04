@@ -14,15 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Chicken
   Description: 
-  Prefab: {fileID: 96685331135562648, guid: 08e791efac5a34ea2a03d9bb3d8daf02, type: 3}
-  ItemCategory: 
-  DataCategory: 
   Icon: {fileID: 21300000, guid: 45380a43c409f441f92daf8cdf0f775f, type: 3}
-  SocialValue: 0
+  Prefab: {fileID: 96685331135562648, guid: 08e791efac5a34ea2a03d9bb3d8daf02, type: 3}
+  ItemCategory: Animal
+  DataCategory: 
+  SocialValue: 10
+  NatureValue: 20
   DefaultStoreAmount: 10
-  BuyingCost: 0
-  SellingCost: 0
+  BuyingCost: 100
+  SellingCost: 75
   ReceiveType: Environment
+  HarvestedPlantData: {fileID: 0}
+  HarvestAmount: 0
+  EatingValue: 0
   GreetingText: toktok
   ReceivedText: tok
   NothingReceivedText: tok!

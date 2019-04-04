@@ -17,7 +17,7 @@ public class DayManager : MonoBehaviour
     private Color m_LightOverlayColor;
 
     // 1f = 1 minute, 0.2f = 5 minutes, 3f = 20 seconds
-    private float m_AnimationSpeed = 2f;
+    private float m_AnimationSpeed = 1.5f;
     private bool m_DayTime;
     private bool m_FadingOverlay;
 
@@ -156,10 +156,16 @@ public class DayManager : MonoBehaviour
     // Get triggered when the sun animation is at its last frame
     private void EndOfDayTrigger()
     {
-
         ResetVariables();
-
         OnEndOfDay?.Invoke();
+        StartCoroutine("WaitForNextDay");
+    }
+
+    private IEnumerator WaitForNextDay()
+    {
+        m_Animator.SetFloat("AnimationSpeed", 0f);
+        yield return new WaitForSeconds(5f);
+        m_Animator.SetFloat("AnimationSpeed", m_AnimationSpeed);
     }
 
 }

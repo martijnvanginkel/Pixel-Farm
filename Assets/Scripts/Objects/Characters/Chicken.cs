@@ -10,7 +10,7 @@ public class Chicken : Animal
     {
         base.ResetTimer();
 
-        if (base.RandomBool(0.1f)) // Chance of laying an egg on movement
+        if (base.RandomBool(0.2f)) // Chance of laying an egg on movement
         {
             LayEgg();
         }

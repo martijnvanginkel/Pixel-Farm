@@ -385,6 +385,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ButtonPanel: {fileID: 9049134676819987198}
   m_ObjectData: {fileID: 11400000, guid: c5f1ce7b05b6d4c03af2bd296b5b70de, type: 2}
+  m_EmptyPlantSprite: {fileID: 0}
+  m_TakeButton: {fileID: 0}
+  m_PickButton: {fileID: 0}
+  m_CutButton: {fileID: 0}
 --- !u!61 &6625746847366503847
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -429,7 +433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9049134676615663008
 RectTransform:
   m_ObjectHideFlags: 0
