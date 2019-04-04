@@ -114,5 +114,8 @@ public class Bar : MonoBehaviour
     protected void ResetEnergy()
     {
         m_CurrentValue = 100f;
+
+        SetAmountText(m_CurrentValue);
+        SetBarScale(m_CurrentValue);
     }
 }

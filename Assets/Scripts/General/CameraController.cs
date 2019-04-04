@@ -5,7 +5,6 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     private Camera m_Camera;
-    private Color m_BackgroundColor;
 
     [SerializeField] private Camera m_IndoorCamera;
 
@@ -16,12 +15,10 @@ public class CameraController : MonoBehaviour
 
     private bool m_CameraMoving;
 
-
     void Start()
     {
         m_Camera = GetComponent<Camera>();
         m_IndoorCamera.enabled = false;
-        m_BackgroundColor = m_Camera.backgroundColor;
     }
 
     private void OnEnable()
@@ -34,9 +31,15 @@ public class CameraController : MonoBehaviour
         Door.OnPlayerIsInside -= MoveCameraInside;
     }
 
+    //private void Update()
+    //{
+    //    m_Camera.backgroundColor = m_CurrentColor;
+    //    m_CurrentColor = Color.Lerp(m_CurrentColor, m_DayColor, Time.deltaTime * 0.5f);
+    //}
+
+
     void LateUpdate()
     {
-
         CheckPlayerPosition();
 
         if (m_CameraMoving)
