@@ -957,8 +957,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BarTransform: {fileID: 1910822390}
   m_CurrentValue: 50
-  m_Speed: 5
   m_CurrentValueText: {fileID: 486794716}
+  m_Speed: 5
+  m_DecreaseTimer: 0
+  m_DecreaseAmount: 0
 --- !u!1 &116262954
 GameObject:
   m_ObjectHideFlags: 0
@@ -4721,10 +4723,10 @@ RectTransform:
   m_Father: {fileID: 1136919936}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 205, y: -42.365}
+  m_SizeDelta: {x: 400, y: 64.73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &542672579
 MonoBehaviour:
@@ -7868,7 +7870,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1136919936
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7887,7 +7889,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 410, y: 79.73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1136919937
 MonoBehaviour:
@@ -9289,8 +9291,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BarTransform: {fileID: 1609809468}
   m_CurrentValue: 60
-  m_Speed: 5
   m_CurrentValueText: {fileID: 1475007944}
+  m_Speed: 5
+  m_DecreaseTimer: 0
+  m_DecreaseAmount: 0
   m_ActionDecreaseAmount: 5
 --- !u!222 &1332584315
 CanvasRenderer:
@@ -11320,8 +11324,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BarTransform: {fileID: 1985539612}
   m_CurrentValue: 50
-  m_Speed: 0
   m_CurrentValueText: {fileID: 0}
+  m_Speed: 0
+  m_DecreaseTimer: 0
+  m_DecreaseAmount: 0
 --- !u!4 &1577793333 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8881846768455200871, guid: bdf828aebe0f145799c8aa0c7cac1d4b,
@@ -13576,8 +13582,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BarTransform: {fileID: 1985539612}
   m_CurrentValue: 50
-  m_Speed: 10
   m_CurrentValueText: {fileID: 771054355}
+  m_Speed: 10
+  m_DecreaseTimer: 10
+  m_DecreaseAmount: 5
 --- !u!114 &1935481718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13830,8 +13838,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BarTransform: {fileID: 0}
   m_CurrentValue: 100
-  m_Speed: 30
   m_CurrentValueText: {fileID: 1868272714}
+  m_Speed: 30
+  m_DecreaseTimer: 0
+  m_DecreaseAmount: 0
   m_MoneyDifferenceBox: {fileID: 2107864093}
   m_MoneyDifferenceIcon: {fileID: 241037872}
   m_MoneyDifferenceText: {fileID: 116262956}

@@ -75,7 +75,7 @@ public class Store : MonoBehaviour
 
     private bool PlayerCanAfford(float price)
     {
-        if(price < m_MoneyBar.CurrentValue)
+        if(price <= m_MoneyBar.CurrentValue)
         {
             return true;
         }

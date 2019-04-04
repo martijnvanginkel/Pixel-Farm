@@ -85,7 +85,7 @@ public class GrassTile : InteractableObject
 
         if(item.ObjectData == null)
         {
-            PlayerController.Instance.Talk("I can'tt plant air!");
+            PlayerController.Instance.Talk("I can't plant air!");
         }
         else
         {
