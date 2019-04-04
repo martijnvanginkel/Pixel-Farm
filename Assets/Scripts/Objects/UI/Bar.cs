@@ -18,10 +18,6 @@ public class Bar : MonoBehaviour
     [SerializeField] private float m_Speed; // Speed to change the barscale at
     private bool m_IsChangingValue; // Checks if the barscale is currently changing
 
-    [SerializeField] protected float m_DecreaseTimer;
-    [SerializeField] protected float m_DecreaseAmount;
-    private float m_SetDecreaseTime;
-
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -29,18 +25,14 @@ public class Bar : MonoBehaviour
         SetBarScale(m_CurrentValue);
 
         m_NewValue = m_CurrentValue;
-
-        m_SetDecreaseTime = m_DecreaseTimer;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (m_IsChangingValue)
         {
             ChangeValue();
         }
-
-        DecreaseTimer();
     }
 
     private void ChangeValue() 
@@ -116,18 +108,6 @@ public class Bar : MonoBehaviour
         if(m_BarTransform != null)
         {
             m_BarTransform.localScale = new Vector3(1, value / 100f, 1);
-        }
-    }
-
-    // Timer that always runs and decreases the value (nature and social bar)
-    protected void DecreaseTimer()
-    {
-        m_DecreaseTimer -= Time.deltaTime;
-
-        if (m_DecreaseTimer <= 0f)
-        {
-            m_DecreaseTimer = m_SetDecreaseTime;
-            DecreaseValue(m_DecreaseAmount);
         }
     }
 

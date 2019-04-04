@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\General\CameraController.cs" />
     <Compile Include="Assets\Scripts\General\DayManager.cs" />
+    <Compile Include="Assets\Scripts\General\MessageManager.cs" />
     <Compile Include="Assets\Scripts\General\PlayerController.cs" />
     <Compile Include="Assets\Scripts\HTTP\ApiCall.cs" />
     <Compile Include="Assets\Scripts\HTTP\ApiCallPool.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="Assets\Scripts\Objects\UI\Store.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\StoreSlot.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\FoodData.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\MessageData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\NpcData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\ObjectData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\SeedData.cs" />
