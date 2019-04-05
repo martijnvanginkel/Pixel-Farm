@@ -348,3 +348,4 @@
 "Assets/Scripts/ScriptableObjects/Scripts/NpcData.cs"
 "Assets/Scripts/ScriptableObjects/Scripts/ObjectData.cs"
 "Assets/Scripts/ScriptableObjects/Scripts/SeedData.cs"
+"Assets/Scripts/UI/StartMenu.cs"

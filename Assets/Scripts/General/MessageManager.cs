@@ -61,7 +61,7 @@ public class MessageManager : MonoBehaviour
     private IEnumerator ShowMessageCo(string text)
     {
         OpenMessageBox(text);
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(8f);
         CloseMessageBox();
     }
 

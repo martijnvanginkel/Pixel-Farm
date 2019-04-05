@@ -959,7 +959,7 @@ MonoBehaviour:
   m_BarTransform: {fileID: 1910822390}
   m_CurrentValue: 50
   m_CurrentValueText: {fileID: 486794716}
-  m_Speed: 5
+  m_Speed: 20
 --- !u!1 &116262954
 GameObject:
   m_ObjectHideFlags: 0
@@ -5795,7 +5795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DarknessOverlay: {fileID: 1121400479}
   m_FadeOverlaySpeed: 0.6
-  m_FadeCameraBackgroundSpeed: 0.5
+  m_FadeCameraBackgroundSpeed: 0.25
   m_MainCamera: {fileID: 519420031}
 --- !u!95 &640922715
 Animator:
@@ -8070,7 +8070,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -200.6}
+  m_AnchoredPosition: {x: 0.0000066757, y: -160}
   m_SizeDelta: {x: 310, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1136919937
@@ -9475,7 +9475,7 @@ MonoBehaviour:
   m_CurrentValue: 60
   m_CurrentValueText: {fileID: 1475007944}
   m_Speed: 5
-  m_ActionDecreaseAmount: 5
+  m_ActionDecreaseAmount: 2
 --- !u!222 &1332584315
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13982,8 +13982,8 @@ MonoBehaviour:
   m_BarTransform: {fileID: 1985539612}
   m_CurrentValue: 50
   m_CurrentValueText: {fileID: 771054355}
-  m_Speed: 10
-  m_DecreaseTimer: 10
+  m_Speed: 20
+  m_DecreaseTimer: 17.5
   m_DecreaseAmount: 5
 --- !u!114 &1935481718
 MonoBehaviour:

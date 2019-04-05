@@ -18,10 +18,11 @@ MonoBehaviour:
   Prefab: {fileID: 6387089957066484487, guid: a9d8cabde999a471c992ddff6b8ec83e, type: 3}
   ItemCategory: Plant
   DataCategory: Environment
-  SocialValue: 0
+  SocialValue: 5
+  NatureValue: 10
   DefaultStoreAmount: 0
   BuyingCost: 0
-  SellingCost: 0
+  SellingCost: 40
   ReceiveType: 
   HarvestedPlantData: {fileID: 11400000, guid: b38bc03a1a8894f95b4024d363308121, type: 2}
   HarvestAmount: 5

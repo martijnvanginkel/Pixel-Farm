@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Bar : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class Bar : MonoBehaviour
 
     [SerializeField] private float m_Speed; // Speed to change the barscale at
     private bool m_IsChangingValue; // Checks if the barscale is currently changing
+    private bool m_InDangerZone; // Bool that turns true when the percentage is under 20%
+
+    private Color m_NormalColor;
+    private Color m_DangerColor;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -25,6 +30,9 @@ public class Bar : MonoBehaviour
         SetBarScale(m_CurrentValue);
 
         m_NewValue = m_CurrentValue;
+
+        m_NormalColor = new Color(1f, 1f, 1f, 1f);
+        m_DangerColor = new Color(255f / 255, 160f / 255f, 160f / 255f, 255f / 255f);
     }
 
     protected virtual void Update()
@@ -70,7 +78,13 @@ public class Bar : MonoBehaviour
             m_NewValue += increaseValue;
         }
 
-        if(m_NewValue > 100f)
+        if (m_NewValue >= 20f && m_InDangerZone == true)
+        {
+            m_InDangerZone = false;
+            ColorBar(m_NormalColor);
+        }
+
+        if (m_NewValue > 100f)
         {
             m_NewValue = 100f;
         }
@@ -90,12 +104,23 @@ public class Bar : MonoBehaviour
             m_NewValue -= decreaseValue;
         }
 
-        if(m_NewValue < 0f)
+        if(m_NewValue <= 20f && m_InDangerZone == false)
+        {
+            m_InDangerZone = true;
+            ColorBar(m_DangerColor);
+        }
+
+        if (m_NewValue < 0f)
         {
             m_NewValue = 0f;
         }
 
         m_IsChangingValue = true;
+    }
+
+    private void ColorBar(Color color)
+    {
+        m_BarTransform.gameObject.GetComponent<Image>().color = color;
     }
 
     protected void SetAmountText(float value)

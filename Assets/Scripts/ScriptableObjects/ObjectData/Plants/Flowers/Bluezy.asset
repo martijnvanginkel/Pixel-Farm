@@ -19,7 +19,7 @@ MonoBehaviour:
   ItemCategory: Plant
   DataCategory: Social
   SocialValue: 20
-  NatureValue: 0
+  NatureValue: 10
   DefaultStoreAmount: 2
   BuyingCost: 25
   SellingCost: 20
