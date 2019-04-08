@@ -71,7 +71,6 @@ public class Store : MonoBehaviour
         m_StorePanel.SetActive(true);
         m_StoreIsOpen = true;
         PlayerController.Instance.AllowInput = false;
-
         Inventory.Instance.ShowPrices(true);
     }
 
@@ -82,6 +81,9 @@ public class Store : MonoBehaviour
         PlayerController.Instance.AllowInput = true;
 
         Inventory.Instance.ShowPrices(false);
+
+        // Set money bar color back to normal when the store closes
+        m_MoneyBar.CurrentValueText.color = m_MoneyBar.DefaultTextColor;
     }
 
     private bool PlayerCanAfford(float price)

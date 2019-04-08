@@ -13,7 +13,14 @@ public class Bar : MonoBehaviour
         get { return m_CurrentValue; }
         set { m_CurrentValue = value; }
     }
+
     [SerializeField] protected TMPro.TextMeshProUGUI m_CurrentValueText;
+    public TMPro.TextMeshProUGUI CurrentValueText
+    {
+        get { return m_CurrentValueText; }
+        set { m_CurrentValueText = value; }
+    }
+
     protected float m_NewValue; // New targeted value
 
     [SerializeField] private float m_Speed; // Speed to change the barscale at
@@ -142,5 +149,6 @@ public class Bar : MonoBehaviour
 
         SetAmountText(m_CurrentValue);
         SetBarScale(m_CurrentValue);
+        ColorBar(m_NormalColor);
     }
 }

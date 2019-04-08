@@ -22,6 +22,16 @@ public class StoreSlot : DigitalItem, IPointerEnterHandler, IPointerExitHandler
         SetObjectDescription();
     }
 
+    private void OnEnable()
+    {
+        DayManager.OnEndOfDay += CloseDescription;
+    }
+
+    private void OnDisable()
+    {
+        DayManager.OnEndOfDay -= CloseDescription;
+    }
+
     void SetObjectDescription()
     {
         if(ObjectData.Description != null && ObjectData.Name != null)
@@ -66,6 +76,12 @@ public class StoreSlot : DigitalItem, IPointerEnterHandler, IPointerExitHandler
         {
             ShowDescription(true);
         }
+    }
+
+    // Wrapper function to close the description box on endofday
+    private void CloseDescription()
+    {
+        ShowDescription(false);
     }
 
     private void ShowDescription(bool isOn)

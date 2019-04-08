@@ -12,12 +12,14 @@ public class DayManager : MonoBehaviour
     private Animator m_Animator;
 
     [SerializeField] private Image m_DarknessOverlay;
+    [SerializeField] private TMPro.TextMeshProUGUI m_SleepingText;
+
     [SerializeField] private float m_FadeOverlaySpeed;
     private Color m_DarkOverlayColor;
     private Color m_LightOverlayColor;
 
     // 1f = 1 minute, 0.2f = 5 minutes, 3f = 20 seconds
-    private float m_AnimationSpeed = 0.4f;
+    private float m_AnimationSpeed = 6f;
     private bool m_DayTime;
     private bool m_FadingOverlay;
 
@@ -164,7 +166,9 @@ public class DayManager : MonoBehaviour
     private IEnumerator WaitForNextDay()
     {
         m_Animator.SetFloat("AnimationSpeed", 0f);
+        m_SleepingText.enabled = true;
         yield return new WaitForSeconds(1f);
+        m_SleepingText.enabled = false;
         m_Animator.SetFloat("AnimationSpeed", m_AnimationSpeed);
     }
 

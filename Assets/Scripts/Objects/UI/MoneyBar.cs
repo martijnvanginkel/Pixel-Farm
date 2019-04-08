@@ -12,9 +12,17 @@ public class MoneyBar : Bar
     private float m_ShowTime = 2f;
     private bool m_ShowMoneyDifference;
 
+    private Color m_DefaultTextColor;
+    public Color DefaultTextColor
+    {
+        get { return m_DefaultTextColor; }
+        set { m_DefaultTextColor = value; }
+    }
+
     protected override void Start()
     {
         base.Start();
+        m_DefaultTextColor = m_CurrentValueText.color;
     }
 
     private void Update()
@@ -70,11 +78,9 @@ public class MoneyBar : Bar
 
     private IEnumerator BlinkMoney(Color color)
     {
-        Color oldColor = m_CurrentValueText.color;
-
         m_CurrentValueText.color = color;
         yield return new WaitForSeconds(0.5f);
-        m_CurrentValueText.color = oldColor;
+        m_CurrentValueText.color = m_DefaultTextColor;
     }
 
 }
