@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class Inventory : MonoBehaviour
         get { return m_SelectedSlot; }
         set { m_SelectedSlot = value; }
     }
+
+    [SerializeField] private Image m_PlayerSelectedImage;
 
     private bool m_InventoryIsFull;
     public bool InventoryIsFull
@@ -174,6 +177,23 @@ public class Inventory : MonoBehaviour
         m_SelectedSlot.SelectSlot(false); //  Deselect old slot
         m_SelectedSlot = slot; // Set new slot
         m_SelectedSlot.SelectSlot(true); // Select new slot
+        SetPlayerIcon(slot); // Set the player icon when selecting a slot
+    }
+
+    private void SetPlayerIcon(InventorySlot slot)
+    {
+        if(slot.ObjectData == null)
+        {
+            m_PlayerSelectedImage.enabled = false;
+        }
+        else
+        {
+            if(m_PlayerSelectedImage.enabled == false)
+            {
+                m_PlayerSelectedImage.enabled = true;
+            }
+            m_PlayerSelectedImage.sprite = slot.ObjectData.Icon;
+        }
     }
 
     public void AddItem(ObjectData objectData, int amount)
@@ -218,6 +238,12 @@ public class Inventory : MonoBehaviour
 
         newSlot.FillSlot(objectData, amount);
 
+        // Set the player icon if the selected slot is being filled
+        if(newSlot == m_SelectedSlot)
+        {
+            SetPlayerIcon(newSlot);
+        }
+
         if (Store.Instance.StoreIsOpen)
         {
             newSlot.ShowStoreValue(true);
@@ -232,6 +258,12 @@ public class Inventory : MonoBehaviour
         }
 
         slot.ResetSlot();
+
+        // Reset the player icon if the selected slot is being emptied
+        if(slot == m_SelectedSlot)
+        {
+            SetPlayerIcon(slot);
+        }
     }
 
     // Finds a free slot and returns that slot

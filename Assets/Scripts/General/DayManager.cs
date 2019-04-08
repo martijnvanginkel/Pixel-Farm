@@ -164,7 +164,7 @@ public class DayManager : MonoBehaviour
     private IEnumerator WaitForNextDay()
     {
         m_Animator.SetFloat("AnimationSpeed", 0f);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
         m_Animator.SetFloat("AnimationSpeed", m_AnimationSpeed);
     }
 
