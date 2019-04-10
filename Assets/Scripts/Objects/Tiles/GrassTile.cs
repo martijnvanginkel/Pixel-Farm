@@ -65,18 +65,23 @@ public class GrassTile : InteractableObject
                 break;
             case State.Planted:
                 m_PlantedSeedOverlay.SetActive(false); // Turn seedsprite off
-                Instantiate(m_PlantedItemPrefab, m_SpawnLocation, transform.rotation); // Spawn flower on top of the tile
-                m_CurrentState = State.Recovering; // Set state to recovery
-                m_PlantedItemPrefab = null; // Set prefab back to null after spawning
-                break;
-            case State.Recovering:
+                SpawnPlant();
                 m_SpriteRenderer.sprite = m_DefaultSprite;
-                //m_GrassOverlay.SetActive(true);
-                m_CurrentState = State.Cut;
+                m_CurrentState = State.Cut; // Set state to cut
+                m_PlantedItemPrefab = null; // Set prefab back to null after spawning
                 break;
             default:
                 break;
         }
+    }
+
+    private void SpawnPlant()
+    {
+        // Add a little bit of a range to where the plant exactly grows
+        float randomFloat = Random.Range(-0.5f, 0.5f);
+        m_SpawnLocation.x = m_SpawnLocation.x + randomFloat;
+
+        Instantiate(m_PlantedItemPrefab, m_SpawnLocation, transform.rotation); // Spawn flower on top of the tile
     }
 
     public override void ReceiveItem()
