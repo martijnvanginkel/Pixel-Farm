@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46a2a93d55fe14bf7a99b4e79e7d977d, type: 3}
+  m_Name: PumpkinSeeds
+  m_EditorClassIdentifier: 
+  Name: Pumpkin seeds
+  Description: Will grow an orange looking vegetable
+  Icon: {fileID: 21300000, guid: c6f11437db76f461884362cafd259b22, type: 3}
+  Prefab: {fileID: 54266557467475932, guid: 7f000de4246af415fb620735661587c3, type: 3}
+  ItemCategory: Seeds
+  DataCategory: 
+  SocialValue: 0
+  NatureValue: 0
+  DefaultStoreAmount: 10
+  BuyingCost: 0
+  SellingCost: 0
+  ReceiveType: 
+  HarvestedPlantData: {fileID: 11400000, guid: b9652eb266768460484564e2d94cae7b, type: 2}
+  HarvestAmount: 0
+  EatingValue: 0

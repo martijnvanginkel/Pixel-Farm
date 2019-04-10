@@ -83,8 +83,9 @@
     <Compile Include="Assets\Scripts\Objects\Plants\Flowers\Bluezy.cs" />
     <Compile Include="Assets\Scripts\Objects\Plants\Flowers\Daisy.cs" />
     <Compile Include="Assets\Scripts\Objects\Plants\Flowers\Flower.cs" />
-    <Compile Include="Assets\Scripts\Objects\Plants\Flowers\Plant.cs" />
     <Compile Include="Assets\Scripts\Objects\Plants\Flowers\Yellowzy.cs" />
+    <Compile Include="Assets\Scripts\Objects\Plants\Plant.cs" />
+    <Compile Include="Assets\Scripts\Objects\Plants\Tree.cs" />
     <Compile Include="Assets\Scripts\Objects\Seeds\Seed.cs" />
     <Compile Include="Assets\Scripts\Objects\Sky\Cloud.cs" />
     <Compile Include="Assets\Scripts\Objects\Tiles\GrassTile.cs" />
