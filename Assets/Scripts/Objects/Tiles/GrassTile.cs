@@ -165,7 +165,8 @@ public class GrassTile : InteractableObject
         {
             m_PlayerOnObject = true;
 
-            if (m_CurrentState == State.Plowed)
+            // TO DO: this needs to be triggered when a buttonpanel on a plowed tile is closed aswell
+            if (m_CurrentState == State.Plowed && !PlayerController.Instance.HasButtonPanelOpen)
             {
                 ShowButtonPanel(true);
             }
@@ -178,6 +179,19 @@ public class GrassTile : InteractableObject
         {
             m_PlayerOnObject = false;
             ShowButtonPanel(false);
+        }
+    }
+
+    // Bool that returns if the current state of the tile is on default, used for the Cow class
+    public bool IsTileOnDefault()
+    {
+        if(m_CurrentState == State.Default)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class Store : MonoBehaviour
 {
@@ -191,6 +192,9 @@ public class Store : MonoBehaviour
     // Set the default items from the start of the game in the store
     private void SetDefaultItems()
     {
+        // Order list by itemcategory and after order by buyingcost
+        m_StartObjects = m_StartObjects.OrderBy(item => item.ItemCategory).ThenBy(item => item.BuyingCost).ToList();
+
         foreach (ObjectData objectData in m_StartObjects)
         {
             // Spawn new itemPrefab

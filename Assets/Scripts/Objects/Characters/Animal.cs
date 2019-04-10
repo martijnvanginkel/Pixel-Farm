@@ -10,7 +10,6 @@ public abstract class Animal : Npc
 
     [SerializeField] private float m_NextAnimTime;
     private float m_SetAnimTime;
-
     private int m_SameDirectionCounter;
 
     // Start is called before the first frame update
@@ -36,7 +35,7 @@ public abstract class Animal : Npc
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (!m_PlayerOnObject)
         {
