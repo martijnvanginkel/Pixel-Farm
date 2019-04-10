@@ -181,7 +181,7 @@ public class PlayerController : MonoBehaviour
 
         foreach (InteractableObject item in m_CollidingItems)
         {
-            if(item.SortingLayerID < highestPriorityItem.SortingLayerID)
+            if(item.SortingLayerID > highestPriorityItem.SortingLayerID)
             {
                 highestPriorityItem = item;
             }
@@ -242,6 +242,6 @@ public class PlayerController : MonoBehaviour
 
     private void MoveToSleepLocation()
     {
-        transform.position = m_SleepLocation.position;
+        //transform.position = m_SleepLocation.position;
     }
 }

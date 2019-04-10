@@ -1,14 +1,23 @@
 ﻿<Properties StartupConfiguration="{5939ABBB-C06D-3999-1DA5-0EAC991E5E09}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Objects/Plants/Tree.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Objects/Characters/Cow.cs">
     <Files>
       <File FileName="Assets/Scripts/General/MessageManager.cs" Line="64" Column="42" />
       <File FileName="Assets/Scripts/Objects/UI/Bar.cs" Line="152" Column="9" />
-      <File FileName="Library/metadata/5a/5a8d5fe70b7ce459d89abb2df292a517" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Objects/Plants/Plant.cs" Line="5" Column="14" />
+      <File FileName="Assets/Scripts/Objects/Plants/PickablePlant.cs" Line="5" Column="35" />
       <File FileName="Assets/Scripts/General/DayManager.cs" Line="22" Column="39" />
       <File FileName="Assets/Scripts/Objects/Tiles/GrassTile.cs" Line="70" Column="86" />
-      <File FileName="Assets/Scripts/Objects/Plants/Flowers/Flower.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Objects/Plants/Tree.cs" Line="5" Column="26" />
+      <File FileName="Assets/Scripts/Objects/Plants/Flowers/Flower.cs" Line="5" Column="37" />
+      <File FileName="Assets/Scripts/Objects/Plants/Tree.cs" Line="17" Column="19" />
+      <File FileName="Assets/Scripts/Objects/Plants/Plant.cs" Line="5" Column="37" />
+      <File FileName="Assets/Scripts/Objects/Food/Food.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Objects/Food/Mushroom.cs" Line="23" Column="5" />
+      <File FileName="Assets/Scripts/Objects/Food/Egg.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Objects/TradeableObject.cs" Line="6" Column="59" />
+      <File FileName="Assets/Scripts/Objects/InteractableObject.cs" Line="6" Column="23" />
+      <File FileName="Assets/Scripts/Objects/Characters/Chicken.cs" Line="23" Column="9" />
+      <File FileName="Assets/Scripts/General/PlayerController.cs" Line="184" Column="37" />
+      <File FileName="Assets/Scripts/General/CameraController.cs" Line="91" Column="11" />
+      <File FileName="Assets/Scripts/Objects/Characters/Cow.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

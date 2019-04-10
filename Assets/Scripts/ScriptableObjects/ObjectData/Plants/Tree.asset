@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Tree
   Description: A regular tree
-  Icon: {fileID: 0}
-  Prefab: {fileID: 0}
-  ItemCategory: 
+  Icon: {fileID: 21300000, guid: 1140f5e109d744cd5a7455ba007c2379, type: 3}
+  Prefab: {fileID: 2096015568081894154, guid: a6798032b85b3403e86804ae84a6b90b, type: 3}
+  ItemCategory: Plant
   DataCategory: 
   SocialValue: 0
   NatureValue: 0

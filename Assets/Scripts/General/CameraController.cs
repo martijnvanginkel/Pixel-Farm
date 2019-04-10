@@ -88,7 +88,7 @@ public class CameraController : MonoBehaviour
 
     private void MoveCameraToBed()
     {
-        MoveCameraInside(true);
+        //MoveCameraInside(true);
     }
 }
 
