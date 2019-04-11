@@ -41,7 +41,7 @@ public class Cow : Animal
     // Gets triggered a second into the cows idle animation
     private void SecondInIdleAnimation()
     {
-        if (base.RandomBool(0.2f)) // Chance of eating grass
+        if (base.RandomBool(1f)) // Chance of eating grass
         {
             EatGrass();
         }

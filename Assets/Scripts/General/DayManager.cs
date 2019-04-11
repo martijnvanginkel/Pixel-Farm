@@ -19,7 +19,7 @@ public class DayManager : MonoBehaviour
     private Color m_LightOverlayColor;
 
     // 1f = 1 minute, 0.2f = 5 minutes, 3f = 20 seconds
-    private float m_AnimationSpeed = 1f;
+    private float m_AnimationSpeed = 5f;
     private bool m_DayTime;
     private bool m_FadingOverlay;
 
@@ -32,6 +32,8 @@ public class DayManager : MonoBehaviour
     private Color m_DayCameraColor;
     private Color m_CurrentCameraColor;
 
+    private bool m_PlayerGoingToSleep;
+
     void Start()
     {
         m_Image = GetComponent<Image>();
@@ -39,6 +41,7 @@ public class DayManager : MonoBehaviour
         m_Animator.SetFloat("AnimationSpeed", m_AnimationSpeed);
 
         m_DarknessOverlay.gameObject.SetActive(true);
+        m_DayTime = true;
 
         SetStartColors();
     }
@@ -69,41 +72,41 @@ public class DayManager : MonoBehaviour
             }
         }
 
-        if (m_FadingCameraBackground)
-        {
-            if (m_DayTime) 
-            {
-                FadeInSkyColor();
-            }
-            else 
-            {
-                FadeOutSkyColor();
-            }
-        }
+        //if (m_FadingCameraBackground)
+        //{
+        //    if (m_DayTime)
+        //    {
+        //        FadeInSkyColor();
+        //    }
+        //    else
+        //    {
+        //        FadeOutSkyColor();
+        //    }
+        //}
     }
 
-    private void FadeInSkyColor()
-    {
-        m_MainCamera.backgroundColor = m_CurrentCameraColor;
+    //private void FadeInSkyColor()
+    //{
+    //    m_MainCamera.backgroundColor = m_CurrentCameraColor;
         
-        m_CurrentCameraColor = Color.Lerp(m_CurrentCameraColor, m_DayCameraColor, Time.deltaTime * m_FadeCameraBackgroundSpeed);
+    //    m_CurrentCameraColor = Color.Lerp(m_CurrentCameraColor, m_DayCameraColor, Time.deltaTime * m_FadeCameraBackgroundSpeed);
 
-        if (m_CurrentCameraColor == m_DayCameraColor)
-        {
-            m_FadingCameraBackground = false;
-        }
-    }
+    //    if (m_CurrentCameraColor == m_DayCameraColor)
+    //    {
+    //        m_FadingCameraBackground = false;
+    //    }
+    //}
 
-    private void FadeOutSkyColor()
-    {
-        m_MainCamera.backgroundColor = m_CurrentCameraColor;
+    //private void FadeOutSkyColor()
+    //{
+    //    m_MainCamera.backgroundColor = m_CurrentCameraColor;
 
-        m_CurrentCameraColor = Color.Lerp(m_CurrentCameraColor, m_EveningCameraColor, Time.deltaTime * m_FadeCameraBackgroundSpeed);
-    }
+    //    m_CurrentCameraColor = Color.Lerp(m_CurrentCameraColor, m_EveningCameraColor, Time.deltaTime * m_FadeCameraBackgroundSpeed);
+    //}
 
     private void FadeInOverlay()
     {
-        m_DarknessOverlay.color = Color.Lerp(m_DarknessOverlay.color, m_LightOverlayColor, Time.deltaTime * m_FadeOverlaySpeed);
+        m_DarknessOverlay.color = Color.Lerp(m_DarknessOverlay.color, m_LightOverlayColor, Time.deltaTime * m_FadeOverlaySpeed * 3f);
 
         if (m_DarknessOverlay.color.a < 0.01f) 
         {
@@ -116,60 +119,57 @@ public class DayManager : MonoBehaviour
     {
         m_DarknessOverlay.color = Color.Lerp(m_DarknessOverlay.color, m_DarkOverlayColor, Time.deltaTime * m_FadeOverlaySpeed);
 
-        if (m_DarknessOverlay.color.a > 0.99f) 
+        if (m_DarknessOverlay.color.a > 0.99f && m_DayTime == false)
         {
-            m_FadingOverlay = false;
-            m_DarknessOverlay.color = m_DarkOverlayColor;
+            StartCoroutine("WaitForNextDay");
+            m_DayTime = true;
         }
     }
 
-    private void MorningFadeTrigger()
+    private void MorningTrigger()
     {
-        m_FadingCameraBackground = true;
+        if(m_PlayerGoingToSleep == false)
+        {
+            m_FadingOverlay = true;
+        }
     }
 
-    private void EveningFadeTrigger()
+    private void NightTrigger()
     {
-        m_FadingCameraBackground = true;
-        m_DayTime = false;
+        if (m_PlayerGoingToSleep == false)
+        {
+            PlayerController.Instance.AllowInput = false;
+            m_DayTime = false;
+            m_FadingOverlay = true;
+        }
     }
 
-    private void SunGoesUpTrigger()
+    private void StopSunMovement()
     {
-        m_FadingOverlay = true;
-        m_DayTime = true;
-    }
-
-    private void SunGoesDownTrigger()
-    {
-        m_FadingOverlay = true;
-    }
-
-    private void ResetVariables()
-    {
-        m_CurrentCameraColor = m_MorningCameraColor;
-        m_MainCamera.backgroundColor = m_CurrentCameraColor;
-        m_DarknessOverlay.color = m_DarkOverlayColor;
-
-        m_FadingCameraBackground = false;
-        m_FadingOverlay = false;
-    }
-
-    // Get triggered when the sun animation is at its last frame
-    private void EndOfDayTrigger()
-    {
-        ResetVariables();
-        OnEndOfDay?.Invoke();
-        StartCoroutine("WaitForNextDay");
+        m_Animator.enabled = false;
     }
 
     private IEnumerator WaitForNextDay()
     {
-        m_Animator.SetFloat("AnimationSpeed", 0f);
+        m_FadingOverlay = false;
+
         m_SleepingText.enabled = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
+        m_PlayerGoingToSleep = false;
         m_SleepingText.enabled = false;
-        m_Animator.SetFloat("AnimationSpeed", m_AnimationSpeed);
+
+        OnEndOfDay?.Invoke();
+        m_Animator.enabled = true;
+
+        PlayerController.Instance.AllowInput = true;
+    }
+
+    public void PlayerGoesToBed()
+    {
+        PlayerController.Instance.AllowInput = false;
+        m_PlayerGoingToSleep = true;
+        m_DayTime = false;
+        m_FadingOverlay = true;
     }
 
 }

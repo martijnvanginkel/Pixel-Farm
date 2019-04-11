@@ -20,7 +20,7 @@ MonoBehaviour:
   DataCategory: Social
   SocialValue: 10
   NatureValue: 0
-  DefaultStoreAmount: 3
+  DefaultStoreAmount: 1
   BuyingCost: 500
   SellingCost: 60
   ReceiveType: 

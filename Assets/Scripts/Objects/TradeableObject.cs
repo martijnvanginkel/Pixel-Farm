@@ -8,7 +8,7 @@ public abstract class TradeableObject : InteractableObject
     public delegate void ItemPickedUp(ObjectData objectData);
     public static event ItemPickedUp OnItemPickedUp;
 
-    public void TakeItem()
+    public virtual void TakeItem()
     {
         if (Inventory.Instance.CheckIfSpace(m_ObjectData))
         {
