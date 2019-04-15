@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Bed : TradeableObject
 {
-
+    public void GoToBed()
+    {
+        DayManager.Instance.PlayerGoesToBed();
+    }
 
 }

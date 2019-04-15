@@ -1,18 +1,15 @@
 ﻿<Properties StartupConfiguration="{5939ABBB-C06D-3999-1DA5-0EAC991E5E09}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Objects/Furniture/Bed.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/General/DayManager.cs">
     <Files>
       <File FileName="Assets/Scripts/General/MessageManager.cs" Line="64" Column="42" />
-      <File FileName="Assets/Scripts/Objects/Tiles/GrassTile.cs" Line="185" Column="96" />
-      <File FileName="Assets/Scripts/General/PlayerController.cs" Line="76" Column="8" />
-      <File FileName="Assets/Scripts/Objects/Characters/Cow.cs" Line="44" Column="30" />
-      <File FileName="Assets/Scripts/Objects/UI/Store.cs" Line="195" Column="68" />
-      <File FileName="Assets/Scripts/Objects/Characters/Animal.cs" Line="5" Column="35" />
-      <File FileName="Assets/Scripts/Objects/Characters/Chicken.cs" Line="13" Column="1" />
-      <File FileName="Assets/Scripts/General/DayManager.cs" Line="157" Column="42" />
-      <File FileName="Assets/Scripts/Objects/Characters/Npc.cs" Line="36" Column="53" />
-      <File FileName="Assets/Scripts/Objects/Furniture/Bed.cs" Line="7" Column="1" />
-      <File FileName="Assets/Scripts/Objects/TradeableObject.cs" Line="6" Column="59" />
+      <File FileName="Assets/Scripts/Objects/Tiles/GrassTile.cs" Line="162" Column="1" />
+      <File FileName="Assets/Scripts/General/PlayerController.cs" Line="33" Column="6" />
+      <File FileName="Assets/Scripts/Objects/Tiles/FishingSpot.cs" Line="9" Column="36" />
       <File FileName="Assets/Scripts/Objects/InteractableObject.cs" Line="6" Column="23" />
+      <File FileName="Assets/Scripts/ScriptableObjects/Scripts/FishData.cs" Line="8" Column="15" />
+      <File FileName="Assets/Scripts/ScriptableObjects/Scripts/ObjectData.cs" Line="5" Column="1" />
+      <File FileName="Assets/Scripts/ScriptableObjects/Scripts/SeedData.cs" Line="6" Column="1" />
+      <File FileName="Assets/Scripts/General/DayManager.cs" Line="73" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
@@ -20,7 +17,7 @@
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/Martijn/Games/the_balance_game/Assets/Scripts/Objects/UI/DigitalItem.cs" relfile="Assets/Scripts/Objects/UI/DigitalItem.cs" line="89" column="1" />
+      <Breakpoint file="/Users/Martijn/Games/the_balance_game/Assets/Scripts/Objects/UI/DigitalItem.cs" relfile="Assets/Scripts/Objects/UI/DigitalItem.cs" line="90" column="1" />
       <Breakpoint file="/Users/Martijn/Games/the_balance_game/Assets/Scripts/Objects/UI/BackPack.cs" relfile="Assets/Scripts/Objects/UI/BackPack.cs" line="34" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

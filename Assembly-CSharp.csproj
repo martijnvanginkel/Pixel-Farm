@@ -90,6 +90,7 @@
     <Compile Include="Assets\Scripts\Objects\Plants\Tree.cs" />
     <Compile Include="Assets\Scripts\Objects\Seeds\Seed.cs" />
     <Compile Include="Assets\Scripts\Objects\Sky\Cloud.cs" />
+    <Compile Include="Assets\Scripts\Objects\Tiles\FishingSpot.cs" />
     <Compile Include="Assets\Scripts\Objects\Tiles\GrassTile.cs" />
     <Compile Include="Assets\Scripts\Objects\Tiles\HouseTile.cs" />
     <Compile Include="Assets\Scripts\Objects\TradeableObject.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Assets\Scripts\Objects\UI\SocialBar.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\Store.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\StoreSlot.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\FishData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\FoodData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\MessageData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\NpcData.cs" />

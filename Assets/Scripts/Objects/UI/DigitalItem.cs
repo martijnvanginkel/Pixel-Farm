@@ -71,4 +71,5 @@ public abstract class DigitalItem : MonoBehaviour
         m_SlotAmountText.text = m_SlotAmount.ToString();
     }
 
+
 }

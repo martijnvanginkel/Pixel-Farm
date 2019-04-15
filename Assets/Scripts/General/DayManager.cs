@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class DayManager : MonoBehaviour
 {
+    private static DayManager m_Instance;
+    public static DayManager Instance
+    {
+        get { return m_Instance; }
+    }
+
     public delegate void EndOfday();
     public static event EndOfday OnEndOfDay;
 
@@ -19,7 +25,7 @@ public class DayManager : MonoBehaviour
     private Color m_LightOverlayColor;
 
     // 1f = 1 minute, 0.2f = 5 minutes, 3f = 20 seconds
-    private float m_AnimationSpeed = 5f;
+    private float m_AnimationSpeed = 1f;
     private bool m_DayTime;
     private bool m_FadingOverlay;
 
@@ -33,6 +39,18 @@ public class DayManager : MonoBehaviour
     private Color m_CurrentCameraColor;
 
     private bool m_PlayerGoingToSleep;
+
+    private void Awake()
+    {
+        if (m_Instance != null && m_Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            m_Instance = this;
+        }
+    }
 
     void Start()
     {
@@ -50,7 +68,10 @@ public class DayManager : MonoBehaviour
     {
         m_DarkOverlayColor = new Color(0f, 0f, 0f, 1f);
         m_LightOverlayColor = new Color(0f, 0f, 0f, 0f);
-        m_MorningCameraColor = new Color(231f / 255f, 225f / 255f, 146f / 255f, 255f / 255f);
+        //m_MorningCameraColor = new Color(231f / 255f, 225f / 255f, 146f / 255f, 255f / 255f);
+       //m_MorningCameraColor = new Color(155f / 255f, 95f / 255f, 150f / 255f, 255f / 255f); // temporary
+        m_MorningCameraColor = new Color(115f / 255f, 94 / 255f, 150f / 255f, 255f / 255f); // lighter sky
+
         m_EveningCameraColor = new Color(206f / 255f, 199 / 255f, 104f / 255f, 255f / 255f);
         m_DayCameraColor = new Color(155f / 255f, 95f / 255f, 150f / 255f, 255f / 255f);
 
@@ -155,6 +176,11 @@ public class DayManager : MonoBehaviour
 
         m_SleepingText.enabled = true;
         yield return new WaitForSeconds(3f);
+
+        m_Animator.Play("sun_rotation", 0, 0);
+        m_FadingOverlay = true;
+        
+
         m_PlayerGoingToSleep = false;
         m_SleepingText.enabled = false;
 

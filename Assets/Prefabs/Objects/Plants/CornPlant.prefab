@@ -116,7 +116,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3876012971077599850}
+      - m_Target: {fileID: 677917346636668114}
         m_MethodName: TakeItem
         m_Mode: 1
         m_Arguments:
@@ -622,7 +622,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3876012971077599850}
+      - m_Target: {fileID: 677917346636668114}
         m_MethodName: PickPlant
         m_Mode: 1
         m_Arguments:
@@ -646,7 +646,7 @@ GameObject:
   - component: {fileID: 6387089957066484485}
   - component: {fileID: 6387089957066484486}
   - component: {fileID: 3507296199830253860}
-  - component: {fileID: 3876012971077599850}
+  - component: {fileID: 677917346636668114}
   m_Layer: 0
   m_Name: CornPlant
   m_TagString: Untagged
@@ -743,7 +743,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5625, y: 1.5}
   m_EdgeRadius: 0
---- !u!114 &3876012971077599850
+--- !u!114 &677917346636668114
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -752,7 +752,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6387089957066484487}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39d5ae8624d0f4001afe5744684aec6e, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d12dde85578b4ba797bdcd51db75741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_ButtonPanel: {fileID: 2193230513868646474}
@@ -877,7 +877,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3876012971077599850}
+      - m_Target: {fileID: 677917346636668114}
         m_MethodName: CutShaft
         m_Mode: 1
         m_Arguments:

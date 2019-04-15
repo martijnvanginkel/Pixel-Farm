@@ -210,6 +210,16 @@ public class PlayerController : MonoBehaviour
         StartCoroutine("OpenTextBalloonCo", text);
     }
 
+    public void Fish(bool isFishing)
+    {
+        m_Animator.SetBool("Fishing", isFishing);
+        m_AllowInput = !isFishing;
+
+        if(m_FacingRight == false)
+        {
+            FlipPlayerRight(isFishing);
+        }
+    }
 
     private IEnumerator OpenTextBalloonCo(string text)
     {
