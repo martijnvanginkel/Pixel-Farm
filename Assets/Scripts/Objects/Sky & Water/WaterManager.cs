@@ -4,44 +4,36 @@ using UnityEngine;
 
 public class WaterManager : MonoBehaviour
 {
-
-    [SerializeField] private List<WaterTile> m_TileList = new List<WaterTile>();
-
+    private List<WaterTile> m_TileList = new List<WaterTile>();
     private int m_CurrentTileInt;
-    private bool m_GoingUp = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         AddChildrenToList();
 
+        m_CurrentTileInt = m_TileList.Count; // Set it equal to count cause TheNextTile immediately decreases value
 
+        GoToNextTile();
     }
 
+    // Puts all the WaterTile components in the list
     private void AddChildrenToList()
     {
         foreach (Transform child in this.transform)
         {
             m_TileList.Add(child.GetComponent<WaterTile>());
         }
-
-        m_CurrentTileInt = m_TileList.Count - 1;
-
-        GoToNextTile();
     }
 
     public void GoToNextTile()
     {
-        m_TileList[m_CurrentTileInt].StartFlow();
+        m_CurrentTileInt--;
 
-        if(m_GoingUp == false)
+        if(m_CurrentTileInt < 0)
         {
-            m_CurrentTileInt--;
-
-            if(m_CurrentTileInt == 0)
-            {
-                m_GoingUp = true;
-            }
+            m_CurrentTileInt = m_TileList.Count - 1;
         }
+
+        m_TileList[m_CurrentTileInt].StartFlow(); 
     }
 }

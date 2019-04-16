@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{5939ABBB-C06D-3999-1DA5-0EAC991E5E09}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Objects/Sky &amp; Water/WaterManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Objects/Sky &amp; Water/WaterTile.cs">
     <Files>
       <File FileName="Assets/Scripts/General/MessageManager.cs" Line="64" Column="42" />
       <File FileName="Assets/Scripts/Objects/Tiles/GrassTile.cs" Line="119" Column="17" />
@@ -10,8 +10,8 @@
       <File FileName="Assets/Scripts/ScriptableObjects/Scripts/ObjectData.cs" Line="5" Column="1" />
       <File FileName="Assets/Scripts/ScriptableObjects/Scripts/SeedData.cs" Line="6" Column="1" />
       <File FileName="Assets/Scripts/General/DayManager.cs" Line="73" Column="57" />
-      <File FileName="Assets/Scripts/Objects/Sky &amp; Water/WaterManager.cs" Line="40" Column="21" />
-      <File FileName="Assets/Scripts/Objects/Sky &amp; Water/WaterTile.cs" Line="45" Column="39" />
+      <File FileName="Assets/Scripts/Objects/Sky &amp; Water/WaterManager.cs" Line="28" Column="49" />
+      <File FileName="Assets/Scripts/Objects/Sky &amp; Water/WaterTile.cs" Line="10" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
