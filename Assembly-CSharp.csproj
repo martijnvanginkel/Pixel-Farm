@@ -113,6 +113,7 @@
     <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\NpcData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\ObjectData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\SeedData.cs" />
+    <Compile Include="Assets\Scripts\UI\FishingBar.cs" />
     <Compile Include="Assets\Scripts\UI\StartMenu.cs" />
     <Compile Include="Assets\Scripts\UI\StartMenuBackground.cs" />
     <None Include="Assets\Packages\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interactable
   - GroundTile
+  - UI
   layers:
   - Default
   - TransparentFX

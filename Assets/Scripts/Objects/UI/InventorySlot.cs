@@ -28,8 +28,6 @@ public class InventorySlot : DigitalItem
     private Color m_SlotNotTakenColor = new Color(1f, 1f, 1f, 0f);
     private Color m_LightUpSlotColor = new Color(178 / 255f, 106f / 255f, 63 / 255f);
 
-
-
     // Start is called before the first frame update
     void Start()
     {
