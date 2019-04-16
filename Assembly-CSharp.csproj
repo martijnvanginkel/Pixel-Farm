@@ -79,8 +79,9 @@
     <Compile Include="Assets\Scripts\Objects\Food\Egg.cs" />
     <Compile Include="Assets\Scripts\Objects\Food\Food.cs" />
     <Compile Include="Assets\Scripts\Objects\Food\Mushroom.cs" />
-    <Compile Include="Assets\Scripts\Objects\Furniture\Bed.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableObject.cs" />
+    <Compile Include="Assets\Scripts\Objects\Items\Bed.cs" />
+    <Compile Include="Assets\Scripts\Objects\Items\CompostBin.cs" />
     <Compile Include="Assets\Scripts\Objects\Plants\Flowers\Bluezy.cs" />
     <Compile Include="Assets\Scripts\Objects\Plants\Flowers\Daisy.cs" />
     <Compile Include="Assets\Scripts\Objects\Plants\Flowers\Flower.cs" />

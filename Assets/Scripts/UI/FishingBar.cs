@@ -27,10 +27,11 @@ public class FishingBar : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (m_InCatchRange)
+                if (m_InCatchRange) // If the mouse gets clicked inside the catchrange catch a fish, otherwish only stop the game
                 {
                     m_FishingSpot.CatchFish();
                 }
+
                 StopFishGame();
             }
         }
@@ -41,7 +42,7 @@ public class FishingBar : MonoBehaviour
     {
         float randomWidth = Random.Range(8f, 60f);
         float randomPosition = Random.Range(50f, 160f);
-        float randomSpeed = Random.Range(0.75f, 3f);
+        float randomSpeed = Random.Range(1.5f, 4f);
 
         m_CollidingPoint.sizeDelta = new Vector2(randomWidth, m_CollidingPoint.sizeDelta.y);
         m_CollidingPoint.anchoredPosition = new Vector2(randomPosition, m_CollidingPoint.anchoredPosition.y);

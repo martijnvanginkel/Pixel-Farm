@@ -13,7 +13,7 @@ public class FishingSpot : InteractableObject
     [SerializeField] private GameObject m_FishingBarParent;
     [SerializeField] private FishingBar m_FishingBar;
 
-    private float m_WaitForFishTime;
+    private float m_WaitForFishTime = 5f;
 
     protected override void Start()
     {
@@ -55,7 +55,7 @@ public class FishingSpot : InteractableObject
         if (m_WaitForFishTime <= 0f)
         {
             m_PlayerIsFishing = false;
-            m_WaitForFishTime = Random.Range(3f, 7f);
+            m_WaitForFishTime = Random.Range(3f, 10f);
 
             // Start minigame
             m_FishingBarParent.SetActive(true);
