@@ -2,6 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class PlayerTalkTuple
+{
+    private string m_Text;
+    public string Text
+    {
+        get { return m_Text; }
+        set { m_Text = value; }
+    }
+
+    private float m_Length;
+    public float Length
+    {
+        get { return m_Length; }
+        set { m_Length = value; }
+    }
+}
+
 public class PlayerController : MonoBehaviour
 {
     private static PlayerController m_Instance;
@@ -205,9 +222,14 @@ public class PlayerController : MonoBehaviour
         return this.transform;
     }
 
-    public void Talk(string text)
+    public void Talk(string text, float talkLength)
     {
-        StartCoroutine("OpenTextBalloonCo", text);
+        PlayerTalkTuple playerTalkTuple = new PlayerTalkTuple();
+
+        playerTalkTuple.Text = text;
+        playerTalkTuple.Length = talkLength;
+
+        StartCoroutine("OpenTextBalloonCo", playerTalkTuple);
     }
 
     public void Fish(bool isFishing)
@@ -221,16 +243,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private IEnumerator OpenTextBalloonCo(string text)
+    private IEnumerator OpenTextBalloonCo(PlayerTalkTuple playerTalkTuple)
     {
         if (m_HasButtonPanelOpen)
         {
             m_OpenButtonPanel.SetActive(false);
         }
 
-        m_Text.text = text;
+        m_Text.text = playerTalkTuple.Text;
         m_TextBalloon.SetActive(true);
-        yield return new WaitForSeconds(2f);
+
+        yield return new WaitForSeconds(playerTalkTuple.Length);
+
         m_TextBalloon.SetActive(false);
 
         if (m_HasButtonPanelOpen)

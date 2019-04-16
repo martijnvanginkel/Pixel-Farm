@@ -34,6 +34,8 @@ public class FishingSpot : InteractableObject
     {
         m_PlayerIsFishing = true;
         PlayerController.Instance.Fish(true);
+        PlayerController.Instance.Talk("...", m_WaitForFishTime);
+
         ShowButtonPanel(false);
         base.PlayerActionEvent();
     }
@@ -53,7 +55,7 @@ public class FishingSpot : InteractableObject
         if (m_WaitForFishTime <= 0f)
         {
             m_PlayerIsFishing = false;
-            m_WaitForFishTime = Random.Range(1f, 5f);
+            m_WaitForFishTime = Random.Range(3f, 7f);
 
             // Start minigame
             m_FishingBarParent.SetActive(true);

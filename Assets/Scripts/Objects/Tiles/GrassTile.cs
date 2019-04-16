@@ -90,7 +90,7 @@ public class GrassTile : InteractableObject
 
         if(item.ObjectData == null)
         {
-            PlayerController.Instance.Talk("I can't plant air!");
+            PlayerController.Instance.Talk("I can't plant air!", 2f);
         }
         else
         {
@@ -103,7 +103,7 @@ public class GrassTile : InteractableObject
                     break;
                 default:
                     Debug.Log("no seed");
-                    PlayerController.Instance.Talk("I can't plant that item");
+                    PlayerController.Instance.Talk("I can't plant that item", 2f);
                     break;
             }
         }
