@@ -13,11 +13,21 @@ public class FishingSpot : InteractableObject
     [SerializeField] private GameObject m_FishingBarParent;
     [SerializeField] private FishingBar m_FishingBar;
 
+    private float m_WaitForFishTime;
+
     protected override void Start()
     {
         base.Start();
 
         m_FishingBarParent.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (m_PlayerIsFishing)
+        {
+            WaitForFish();
+        }
     }
 
     public void StartFishing()
@@ -26,11 +36,7 @@ public class FishingSpot : InteractableObject
         PlayerController.Instance.Fish(true);
         ShowButtonPanel(false);
         base.PlayerActionEvent();
-
-        m_FishingBarParent.SetActive(true);
-        m_FishingBar.OpenFishGame();
     }
-
 
     public void StopFishing()
     {
@@ -38,6 +44,21 @@ public class FishingSpot : InteractableObject
         m_PlayerIsFishing = false;
         PlayerController.Instance.Fish(false);
         ShowButtonPanel(true);
+    }
+
+    private void WaitForFish()
+    {
+        m_WaitForFishTime -= Time.deltaTime;
+
+        if (m_WaitForFishTime <= 0f)
+        {
+            m_PlayerIsFishing = false;
+            m_WaitForFishTime = Random.Range(1f, 5f);
+
+            // Start minigame
+            m_FishingBarParent.SetActive(true);
+            m_FishingBar.OpenFishGame();
+        }
     }
 
     public void CatchFish()
