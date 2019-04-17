@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\General\CameraController.cs" />
     <Compile Include="Assets\Scripts\General\DayManager.cs" />
+    <Compile Include="Assets\Scripts\General\GameManager.cs" />
     <Compile Include="Assets\Scripts\General\MessageManager.cs" />
     <Compile Include="Assets\Scripts\General\PlayerController.cs" />
     <Compile Include="Assets\Scripts\HTTP\ApiCall.cs" />
@@ -98,6 +99,8 @@
     <Compile Include="Assets\Scripts\Objects\Tiles\HouseTile.cs" />
     <Compile Include="Assets\Scripts\Objects\TradeableObject.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\Bar.cs" />
+    <Compile Include="Assets\Scripts\Objects\UI\CompostBinUI.cs" />
+    <Compile Include="Assets\Scripts\Objects\UI\CompostSlot.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\DataManager.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\DigitalItem.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\EnergyBar.cs" />
@@ -105,6 +108,7 @@
     <Compile Include="Assets\Scripts\Objects\UI\InventorySlot.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\MoneyBar.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\NatureBar.cs" />
+    <Compile Include="Assets\Scripts\Objects\UI\SlotsHolder.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\SocialBar.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\Store.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\StoreSlot.cs" />

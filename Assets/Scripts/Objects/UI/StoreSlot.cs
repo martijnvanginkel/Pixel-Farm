@@ -51,7 +51,7 @@ public class StoreSlot : DigitalItem, IPointerEnterHandler, IPointerExitHandler
         }
         else
         {
-            Inventory.Instance.BackPackIsFull();
+            Inventory.Instance.SlotsAreAllTaken();
         }
     }
 

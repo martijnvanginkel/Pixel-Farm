@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Inventory : MonoBehaviour
+public class Inventory : SlotsHolder
 {
     private static Inventory m_Instance;
     public static Inventory Instance
@@ -17,11 +17,11 @@ public class Inventory : MonoBehaviour
     [SerializeField] private GameObject m_InventorySlotPrefab;
     [SerializeField] private int m_InventorySlotAmount;
 
-    [SerializeField] private List<InventorySlot> m_SlotList = new List<InventorySlot>();
-    public List<InventorySlot> SlotList
+    [SerializeField] private List<InventorySlot> m_InventoryList = new List<InventorySlot>();
+    public List<InventorySlot> InventoryList
     {
-        get { return m_SlotList; }
-        set { m_SlotList = value; }
+        get { return m_InventoryList; }
+        set { m_InventoryList = value; }
     }
 
     private InventorySlot m_SelectedSlot;
@@ -33,12 +33,12 @@ public class Inventory : MonoBehaviour
 
     [SerializeField] private Image m_PlayerSelectedImage;
 
-    private bool m_InventoryIsFull;
-    public bool InventoryIsFull
-    {
-        get { return m_InventoryIsFull; }
-        set { m_InventoryIsFull = value; }
-    }
+    //private bool m_InventoryIsFull;
+    //public bool InventoryIsFull
+    //{
+    //    get { return m_InventoryIsFull; }
+    //    set { m_InventoryIsFull = value; }
+    //}
 
     private KeyCode[] m_KeyCodes = 
     {
@@ -80,11 +80,14 @@ public class Inventory : MonoBehaviour
             GameObject slotPrefab = Instantiate(m_InventorySlotPrefab, this.transform);
             InventorySlot inventorySlot = slotPrefab.transform.GetChild(0).GetComponent<InventorySlot>();
 
+            // Also add it to the slotsholder
+            m_SlotList.Add(inventorySlot); 
+
             inventorySlot.HotKeyText.text = (i + 1).ToString();
-            m_SlotList.Add(inventorySlot);
+            m_InventoryList.Add(inventorySlot);
         }
 
-        m_SelectedSlot = m_SlotList[0]; // Select the first item
+        m_SelectedSlot = m_InventoryList[0]; // Select the first item
         m_SelectedSlot.SelectSlot(true);
     }
 
@@ -101,7 +104,7 @@ public class Inventory : MonoBehaviour
             {
                 int numberPressed = i + 1;
 
-                SetSlotSelected(m_SlotList[i]);
+                SetSlotSelected(m_InventoryList[i]);
             }
         }
 
@@ -180,7 +183,7 @@ public class Inventory : MonoBehaviour
         SetPlayerIcon(slot); // Set the player icon when selecting a slot
     }
 
-    private void SetPlayerIcon(InventorySlot slot)
+    private void SetPlayerIcon(DigitalItem slot)
     {
         if(slot.ObjectData == null)
         {
@@ -196,145 +199,80 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void AddItem(ObjectData objectData, int amount)
-    {
-        if (ItemInBackPack(objectData) == null) // If item not in the inventory fill a new slot
-        {
-            if(amount == 0)
-            {
-                FillSlot(objectData, 1);
-            }
-            else
-            {
-                FillSlot(objectData, amount);
-            }
-        }
-        else
-        {
-            ItemInBackPack(objectData).IncreaseAmount(amount); // Increase amount if the item is already in the inventory
-        }
-    }
+    //public void AddItem(ObjectData objectData, int amount)
+    //{
+    //    if (ItemInBackPack(objectData) == null) // If item not in the inventory fill a new slot
+    //    {
+    //        if(amount == 0)
+    //        {
+    //            FillSlot(objectData, 1);
+    //        }
+    //        else
+    //        {
+    //            FillSlot(objectData, amount);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        ItemInBackPack(objectData).IncreaseAmount(amount); // Increase amount if the item is already in the inventory
+    //    }
+    //}
 
-    public void RemoveItem(InventorySlot item)
-    {
-        if (item.SlotAmount > 1) // If it has more than one, decrease the amount
-        {
-            item.DecreaseAmount(1);
-        }
-        else // If it has one, remove the inventoryslot with the item in it
-        {
-            // If the store is open and the last one is sold, remove the price
-            if (Store.Instance.StoreIsOpen)
-            {
-                item.ShowStoreValue(false);
-            }
-            EmptySlot(item);
-        }
-    }
+    //public void RemoveItem(InventorySlot item)
+    //{
+    //    if (item.SlotAmount > 1) // If it has more than one, decrease the amount
+    //    {
+    //        item.DecreaseAmount(1);
+    //    }
+    //    else // If it has one, remove the inventoryslot with the item in it
+    //    {
+    //        // If the store is open and the last one is sold, remove the price
+    //        if (Store.Instance.StoreIsOpen)
+    //        {
+    //            item.ShowStoreValue(false);
+    //        }
+    //        EmptySlot(item);
+    //    }
+    //}
 
-    private void FillSlot(ObjectData objectData, int amount)
+    protected override void FillSlot(ObjectData objectData, int amount)
     {
-        InventorySlot newSlot = FindFreeSlot();
-
-        newSlot.FillSlot(objectData, amount);
+        base.FillSlot(objectData, amount);
 
         // Set the player icon if the selected slot is being filled
-        if(newSlot == m_SelectedSlot)
-        {
-            SetPlayerIcon(newSlot);
-        }
+        //if(newSlot == m_SelectedSlot)
+        //{
+        //    SetPlayerIcon(newSlot);
+        //}
 
-        if (Store.Instance.StoreIsOpen)
-        {
-            newSlot.ShowStoreValue(true);
-        }
+
+        // TO DO HOW TO SOLVE THIS?!!!!!
+
+        //if (Store.Instance.StoreIsOpen)
+        //{
+        //    newSlot.ShowStoreValue(true);
+        //}
     }
 
-    private void EmptySlot(InventorySlot slot)
-    {
-        if (m_InventoryIsFull) // Backpack is not full anymore if a slot is emptied
-        {
-            m_InventoryIsFull = false;
-        }
+    //private void EmptySlot(InventorySlot slot)
+    //{
+    //    if (m_SlotsHolderIsFull) // Backpack is not full anymore if a slot is emptied
+    //    {
+    //        m_SlotsHolderIsFull = false;
+    //    }
 
-        slot.ResetSlot();
+    //    slot.ResetSlot();
 
-        // Reset the player icon if the selected slot is being emptied
-        if(slot == m_SelectedSlot)
-        {
-            SetPlayerIcon(slot);
-        }
-    }
-
-    // Finds a free slot and returns that slot
-    private InventorySlot FindFreeSlot()
-    {
-        InventorySlot freeSlot = null;
-        int takenSlots = 0;
-
-        for (int i = 0; i < m_SlotList.Count; i++) // Loop through all slots
-        {
-
-            if(m_SlotList[i].SlotIsTaken == false) // If the slot is not taken
-            {
-                if(freeSlot == null) // And theres not a new slot already found
-                {
-                    freeSlot = m_SlotList[i]; // Set this slot as the new inventory slot
-                }
-            }
-            else // If the slot is taken increment the takenSlots int
-            {
-                takenSlots++;
-            }
-        }
-
-        if(takenSlots == m_SlotList.Count - 1) // If all the slots are taken set the inventory to full
-        {
-            m_InventoryIsFull = true;
-        }
-
-        return freeSlot; // Return the slot, also if its null
-    }
-
-    // Loop through the slotlist and checks if theres a slot with the same name as the given object, then returns that object
-    private InventorySlot ItemInBackPack(ObjectData objectData)
-    {
-        foreach (InventorySlot slot in m_SlotList)
-        {
-            if(slot.ObjectData != null)
-            {
-                if(slot.ObjectData.Name == objectData.Name)
-                {
-                    return slot;
-                }
-            }
-        }
-        return null;
-    }
-
-    // Checks in a full inventory if the given object is already in the inventory and returns true if it is
-    public bool CheckIfSpace(ObjectData objectData)
-    {
-        if (m_InventoryIsFull)
-        {
-            if (ItemInBackPack(objectData))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            return true;
-        }
-    }
+    //    // Reset the player icon if the selected slot is being emptied
+    //    //if(slot == m_SelectedSlot)
+    //    //{
+    //    //    SetPlayerIcon(slot);
+    //    //}
+    //}
 
     public void ShowPrices(bool show)
     {
-        foreach (InventorySlot slot in m_SlotList)
+        foreach (InventorySlot slot in m_InventoryList)
         {
             if (slot.ObjectData != null)
             {
@@ -343,23 +281,100 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void BackPackIsFull()
-    {
-        StartCoroutine("BackPackFullCo");
-    }
+    //// Finds a free slot and returns that slot
+    //private InventorySlot FindFreeSlot()
+    //{
+    //    InventorySlot freeSlot = null;
+    //    int takenSlots = 0;
 
-    private IEnumerator BackPackFullCo()
-    {
-        foreach (InventorySlot slot in m_SlotList)
-        {
-            slot.LightUpSlot(true);
-        }
+    //    for (int i = 0; i < m_SlotList.Count; i++) // Loop through all slots
+    //    {
 
-        yield return new WaitForSeconds(0.25f);
+    //        if(m_SlotList[i].SlotIsTaken == false) // If the slot is not taken
+    //        {
+    //            if(freeSlot == null) // And theres not a new slot already found
+    //            {
+    //                freeSlot = m_SlotList[i]; // Set this slot as the new inventory slot
+    //            }
+    //        }
+    //        else // If the slot is taken increment the takenSlots int
+    //        {
+    //            takenSlots++;
+    //        }
+    //    }
 
-        foreach (InventorySlot slot in m_SlotList)
-        {
-            slot.LightUpSlot(false);
-        }
-    }
+    //    if(takenSlots == m_SlotList.Count - 1) // If all the slots are taken set the inventory to full
+    //    {
+    //        m_InventoryIsFull = true;
+    //    }
+
+    //    return freeSlot; // Return the slot, also if its null
+    //}
+
+    //// Loop through the slotlist and checks if theres a slot with the same name as the given object, then returns that object
+    //private InventorySlot ItemInBackPack(ObjectData objectData)
+    //{
+    //    foreach (InventorySlot slot in m_SlotList)
+    //    {
+    //        if(slot.ObjectData != null)
+    //        {
+    //            if(slot.ObjectData.Name == objectData.Name)
+    //            {
+    //                return slot;
+    //            }
+    //        }
+    //    }
+    //    return null;
+    //}
+
+    //// Checks in a full inventory if the given object is already in the inventory and returns true if it is
+    //public bool CheckIfSpace(ObjectData objectData)
+    //{
+    //    if (m_InventoryIsFull)
+    //    {
+    //        if (ItemInBackPack(objectData))
+    //        {
+    //            return true;
+    //        }
+    //        else
+    //        {
+    //            return false;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        return true;
+    //    }
+    //}
+
+    //public void ShowPrices(bool show)
+    //{
+    //    foreach (InventorySlot slot in m_SlotList)
+    //    {
+    //        if (slot.ObjectData != null)
+    //        {
+    //            slot.ShowStoreValue(show);
+    //        }
+    //    }
+    //}
+
+    //public void BackPackIsFull()
+    //{
+    //    StartCoroutine("BackPackFullCo");
+    //}
+
+    //private IEnumerator BackPackFullCo()
+    //{
+    //    foreach (InventorySlot slot in m_SlotList)
+    //    {
+    //        slot.LightUpSlot(true);
+    //    }
+
+    //    yield return new WaitForSeconds(0.25f);
+
+    //    foreach (InventorySlot slot in m_SlotList)
+    //    {
+    //        slot.LightUpSlot(false);
+    //    }
+    //}
 }

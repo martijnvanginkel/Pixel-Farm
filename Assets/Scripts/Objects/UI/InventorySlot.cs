@@ -24,9 +24,9 @@ public class InventorySlot : DigitalItem
 
     [SerializeField] private TMPro.TextMeshProUGUI m_StoreValueText;
 
-    private Color m_SlotTakenColor = new Color(1f, 1f, 1f, 1f);
-    private Color m_SlotNotTakenColor = new Color(1f, 1f, 1f, 0f);
-    private Color m_LightUpSlotColor = new Color(178 / 255f, 106f / 255f, 63 / 255f);
+    //private Color m_SlotTakenColor = new Color(1f, 1f, 1f, 1f);
+    //private Color m_SlotNotTakenColor = new Color(1f, 1f, 1f, 0f);
+    //private Color m_LightUpSlotColor = new Color(178 / 255f, 106f / 255f, 63 / 255f);
 
     // Start is called before the first frame update
     void Start()
@@ -47,35 +47,41 @@ public class InventorySlot : DigitalItem
         }
     }
 
-    public void FillSlot(ObjectData objectData, int amount)
+    public override void FillSlot(ObjectData objectData, int amount)
     {
-        m_ObjectData = objectData;
+        base.FillSlot(objectData, amount);
         m_SlotImage.color = m_SlotTakenColor;
-        m_SlotImage.sprite = objectData.Icon;
-        SetAmount(amount);
-        m_SlotIsTaken = true;
     }
 
-    public void ResetSlot()
+    public override void ResetSlot()
     {
-        m_ObjectData = null;
+        base.ResetSlot();
         m_SlotImage.color = m_SlotNotTakenColor;
-        m_SlotIsTaken = false;
-        SetAmount(0);
     }
 
+    // If a player clicks on an inventory slot, check if the store is open or a compostbin before selecting
     public void ClickedOnSlot()
     {
-        if (!Store.Instance.StoreIsOpen)
-        {
-            Inventory.Instance.SetSlotSelected(this);
-        }
-        else
+        if (Store.Instance.StoreIsOpen)
         {
             if (m_SlotIsTaken)
             {
                 Store.Instance.SellItem(this);
             }
+        }
+        if (GameManager.Instance.CompostUIIsOpen)
+        {
+            if (m_SlotIsTaken)
+            {
+                Debug.Log("here");
+                GameManager.Instance.OpenCompostBin.AddItemToBin(m_ObjectData);
+                Inventory.Instance.RemoveItem(this);
+            }
+        }
+        else
+        {
+            Debug.Log("not herehere");
+            Inventory.Instance.SetSlotSelected(this);
         }
     }
 
@@ -83,17 +89,5 @@ public class InventorySlot : DigitalItem
     {
         m_StoreValueText.text = m_ObjectData.SellingCost.ToString();
         m_StoreValueText.gameObject.SetActive(show);
-    }
-
-    public void LightUpSlot(bool lightUp)
-    {
-        if (lightUp)
-        {
-            m_BackGroundImage.color = m_LightUpSlotColor;
-        }
-        else
-        {
-            m_BackGroundImage.color = m_SlotTakenColor;
-        }
     }
 }

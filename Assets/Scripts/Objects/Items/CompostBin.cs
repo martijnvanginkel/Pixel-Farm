@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class CompostBin : TradeableObject
 {
+    //private List<TradeableObject> m_ContainedItems = new List<TradeableObject>();
+
+    [SerializeField] private List<CompostSlot> m_SlotList = new List<CompostSlot>();
+
     private Animator m_Animator;
     private bool m_BinOpen;
+
+    [SerializeField] private CompostBinUI m_CompostBinUI;
+    private GameObject m_CompostBinUIObject;
 
     [SerializeField] private GameObject m_TakeButton;
     [SerializeField] private GameObject m_OpenButton;
@@ -17,6 +24,8 @@ public class CompostBin : TradeableObject
         base.Start();
 
         m_Animator = GetComponent<Animator>();
+
+        m_CompostBinUIObject = m_CompostBinUI.gameObject;
     }
 
     public void OpenBin()
@@ -43,6 +52,13 @@ public class CompostBin : TradeableObject
 
     public void FillBin()
     {
+        m_CompostBinUIObject.SetActive(true);
+        GameManager.Instance.OpenedCompostBin(this);
         Debug.Log("Open bin UI");
+    }
+    
+    public void AddItemToBin(ObjectData objectData)
+    {
+        m_CompostBinUI.AddToBin(objectData);
     }
 }
