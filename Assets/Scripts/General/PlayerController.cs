@@ -70,7 +70,6 @@ public class PlayerController : MonoBehaviour
 
     private LayerMask m_TileLayer;
 
-
     private void Awake()
     {
         if (m_Instance != null && m_Instance != this)

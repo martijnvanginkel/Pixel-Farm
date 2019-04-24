@@ -13,7 +13,7 @@ public class StoreSlot : DigitalItem, IPointerEnterHandler, IPointerExitHandler
 
     void Awake()
     {
-        // !! Get the first child as a fix, this is sensitive for bugs
+        // This is sensitive for bugs
         m_SlotImage = transform.GetChild(0).GetComponent<Image>();
     }
 
@@ -87,6 +87,5 @@ public class StoreSlot : DigitalItem, IPointerEnterHandler, IPointerExitHandler
     private void ShowDescription(bool isOn)
     {
         m_DescriptionBox.SetActive(isOn);
-        Debug.Log("show description");
     }
 }

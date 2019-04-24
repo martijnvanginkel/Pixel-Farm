@@ -35,7 +35,6 @@ public class Store : MonoBehaviour
 
     [SerializeField] private GameObject m_StorePanel;
     [SerializeField] private Transform m_StoreItemsParent;
-    [SerializeField] private Transform m_InventoryItemsParent;
     [SerializeField] private GameObject m_StoreItemPrefab;
     [SerializeField] private MoneyBar m_MoneyBar;
 

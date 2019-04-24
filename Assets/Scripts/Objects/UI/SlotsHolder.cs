@@ -47,7 +47,6 @@ public abstract class SlotsHolder : MonoBehaviour
         else // If it has one, remove the inventoryslot with the item in it
         {
             // If the store is open and the last one is sold, remove the price
-            // TO DO HOW TI FIX THIS????
             //if (Store.Instance.StoreIsOpen)
             //{
             //    item.ShowStoreValue(false);
@@ -120,6 +119,18 @@ public abstract class SlotsHolder : MonoBehaviour
         {
             return true;
         }
+    }
+
+    private bool AllSlotsEmpty()
+    {
+        foreach (DigitalItem item in m_SlotList)
+        {
+            if(item.ObjectData != null)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     protected virtual void FillSlot(ObjectData objectData, int amount)

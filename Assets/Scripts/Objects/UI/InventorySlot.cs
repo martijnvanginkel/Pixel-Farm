@@ -21,7 +21,6 @@ public class InventorySlot : DigitalItem
 
     [SerializeField] private Sprite m_SlotUnselectedSprite;
     [SerializeField] private Sprite m_SlotSelectedSprite;
-
     [SerializeField] private TMPro.TextMeshProUGUI m_StoreValueText;
 
     //private Color m_SlotTakenColor = new Color(1f, 1f, 1f, 1f);
@@ -73,9 +72,7 @@ public class InventorySlot : DigitalItem
         {
             if (m_SlotIsTaken)
             {
-                Debug.Log("here");
-                GameManager.Instance.OpenCompostBin.AddItemToBin(m_ObjectData);
-                Inventory.Instance.RemoveItem(this);
+                GameManager.Instance.OpenCompostBin.AddItemToBin(this);
             }
         }
         else

@@ -64,6 +64,7 @@ public abstract class DigitalItem : MonoBehaviour
     {
         m_ObjectData = null;
         //m_SlotImage.color = m_SlotNotTakenColor;
+        SetImage(null);
         m_SlotIsTaken = false;
         SetAmount(0);
     }

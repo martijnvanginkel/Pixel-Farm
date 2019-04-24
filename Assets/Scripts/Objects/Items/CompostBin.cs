@@ -14,11 +14,6 @@ public class CompostBin : TradeableObject
     [SerializeField] private CompostBinUI m_CompostBinUI;
     private GameObject m_CompostBinUIObject;
 
-    [SerializeField] private GameObject m_TakeButton;
-    [SerializeField] private GameObject m_OpenButton;
-    [SerializeField] private GameObject m_FillButton;
-    [SerializeField] private GameObject m_CloseButton;
-
     protected override void Start()
     {
         base.Start();
@@ -28,37 +23,57 @@ public class CompostBin : TradeableObject
         m_CompostBinUIObject = m_CompostBinUI.gameObject;
     }
 
+    private void Update()
+    {
+        if (m_BinOpen)
+        {
+            CheckForAnyKeysPressed();
+        }
+    }
+
+    private void CheckForAnyKeysPressed()
+    {
+        if (Input.anyKeyDown)
+        {
+            if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))
+            {
+                return;
+            }
+            else
+            {
+                CloseBin();
+            }
+        }
+    }
+
     public void OpenBin()
     {
         m_BinOpen = true;
         m_Animator.SetBool("Open", m_BinOpen);
-
-        m_TakeButton.SetActive(false);
-        m_OpenButton.SetActive(false);
-        m_CloseButton.SetActive(true);
-        m_FillButton.SetActive(true);
+        m_CompostBinUIObject.SetActive(m_BinOpen);
+        GameManager.Instance.OpenedCompostBin(this);
     }
 
     public void CloseBin()
     {
         m_BinOpen = false;
         m_Animator.SetBool("Open", m_BinOpen);
-
-        m_CloseButton.SetActive(false);
-        m_FillButton.SetActive(false);
-        m_TakeButton.SetActive(true);
-        m_OpenButton.SetActive(true);
+        m_CompostBinUIObject.SetActive(m_BinOpen);
     }
 
     public void FillBin()
     {
-        m_CompostBinUIObject.SetActive(true);
-        GameManager.Instance.OpenedCompostBin(this);
+
         Debug.Log("Open bin UI");
     }
     
-    public void AddItemToBin(ObjectData objectData)
+    public void AddItemToBin(DigitalItem item)
     {
-        m_CompostBinUI.AddToBin(objectData);
+        m_CompostBinUI.AddToBin(item);
+    }
+
+    public void RemoveItemFromBin(DigitalItem item)
+    {
+        m_CompostBinUI.RemoveFromBin(item);
     }
 }

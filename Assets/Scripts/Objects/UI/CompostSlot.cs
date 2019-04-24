@@ -22,8 +22,7 @@ public class CompostSlot : DigitalItem
             }
             else if(m_SlotAmount <= 1)
             {
-                Inventory.Instance.AddItem(m_ObjectData, 1);
-                ResetSlot();
+                GameManager.Instance.OpenCompostBin.RemoveItemFromBin(this);
             }
         }
     }
