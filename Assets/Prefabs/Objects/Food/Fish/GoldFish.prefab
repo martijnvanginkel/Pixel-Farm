@@ -489,7 +489,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7652927177894808473}
+      - m_Target: {fileID: 0}
         m_MethodName: TakeItem
         m_Mode: 1
         m_Arguments:
@@ -512,8 +512,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1485597923469129767}
   - component: {fileID: 3550374113550363538}
-  - component: {fileID: 7652927177894808473}
   - component: {fileID: 5451661230168244176}
+  - component: {fileID: 4362893447931158497}
+  - component: {fileID: 1248116958939864595}
   m_Layer: 0
   m_Name: GoldFish
   m_TagString: Untagged
@@ -570,34 +571,20 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1967785757
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c2d4fb6ff127b426eb8f4080ab272511, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.375, y: 0.25}
+  m_Size: {x: 0.06, y: 0.04}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7652927177894808473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5451661230168244175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d9a52717569748e2b0c1ee1c4cc9e84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ButtonPanel: {fileID: 3564233633794009114}
-  m_ObjectData: {fileID: 11400000, guid: efb6e052945ec4ad7a62196ad9d44ffb, type: 2}
 --- !u!61 &5451661230168244176
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -616,7 +603,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
     oldSize: {x: 0.375, y: 0.25}
-    newSize: {x: 0.375, y: 0.25}
+    newSize: {x: 0.06, y: 0.04}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -624,3 +611,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.375, y: 0.25}
   m_EdgeRadius: 0
+--- !u!95 &4362893447931158497
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5451661230168244175}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0167a2b38900940ed972a0025cd9b7a2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1248116958939864595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5451661230168244175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1399239f802b14cdda15ab62391672c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ButtonPanel: {fileID: 3564233633794009114}
+  m_ObjectData: {fileID: 11400000, guid: efb6e052945ec4ad7a62196ad9d44ffb, type: 2}
+  OnEdge: 0

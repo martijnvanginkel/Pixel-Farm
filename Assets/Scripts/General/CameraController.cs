@@ -5,91 +5,25 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     private Camera m_Camera;
-
-    [SerializeField] private Camera m_IndoorCamera;
-
     [SerializeField] private Transform m_Player;
     [SerializeField] private float m_SmoothSpeed = 0.125f; // Between 0 and 1
-
-    [SerializeField] private float m_CameraOffset;
-
-    private bool m_CameraMoving;
 
     void Start()
     {
         m_Camera = GetComponent<Camera>();
-        m_IndoorCamera.enabled = false;
     }
-
-    private void OnEnable()
-    {
-        Door.OnPlayerIsInside += MoveCameraInside;
-        DayManager.OnEndOfDay += MoveCameraToBed;
-    }
-
-    private void OnDisable()
-    {
-        Door.OnPlayerIsInside -= MoveCameraInside;
-        DayManager.OnEndOfDay -= MoveCameraToBed;
-    }
-
-    //private void Update()
-    //{
-    //    m_Camera.backgroundColor = m_CurrentColor;
-    //    m_CurrentColor = Color.Lerp(m_CurrentColor, m_DayColor, Time.deltaTime * 0.5f);
-    //}
-
 
     void LateUpdate()
     {
-        CheckPlayerPosition();
-
-        if (m_CameraMoving)
-        {
-            MoveCamera();
-        }
+        MoveCamera();   
     }
 
-    // Check if the player is outside of the camera offset
-    private void CheckPlayerPosition()
-    {
-        if (m_Player.transform.position.x > transform.position.x + m_CameraOffset || m_Player.transform.position.x < transform.position.x - m_CameraOffset)
-        {
-            m_CameraMoving = true;
-        }
-    }
-
-    // Move the camera to the player position and stop movement the camera reaches the position
     private void MoveCamera()
     {
-        Vector3 desiredPosition = new Vector3(m_Player.transform.position.x, transform.position.y, transform.position.z);
-        Vector3 smoothedPosition = Vector3.MoveTowards(transform.position, desiredPosition, m_SmoothSpeed);
-        transform.position = smoothedPosition;
 
-        if (m_Player.transform.position.x == transform.position.x)
-        {
-            m_CameraMoving = false;
-        }
+        transform.position = Vector3.Slerp(transform.position, new Vector3(m_Player.transform.position.x, 0, -10), m_SmoothSpeed * Time.deltaTime);
     }
 
-    private void MoveCameraInside(bool playerInside)
-    {
-        if (playerInside)
-        {
-            m_Camera.enabled = false;
-            m_IndoorCamera.enabled = true;
-        }
-        else
-        {
-            m_IndoorCamera.enabled = false;
-            m_Camera.enabled = true;
-        }
-    }
-
-    private void MoveCameraToBed()
-    {
-        //MoveCameraInside(true);
-    }
 }
 
 

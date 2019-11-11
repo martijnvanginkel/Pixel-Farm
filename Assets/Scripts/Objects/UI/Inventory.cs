@@ -14,6 +14,9 @@ public class Inventory : SlotsHolder
     public delegate void ItemDropped(ObjectData objectData);
     public static event ItemDropped OnItemDropped;
 
+    public delegate void SeedDropped(ObjectData objectData);
+    public static event SeedDropped OnSeedDropped;
+
     [SerializeField] private GameObject m_InventorySlotPrefab;
     [SerializeField] private int m_InventorySlotAmount;
 
@@ -160,10 +163,18 @@ public class Inventory : SlotsHolder
         }
         else
         {
-            GameObject tile = PlayerController.Instance.FindStandingTile();
-            float height = tile.GetComponent<Renderer>().bounds.size.y;
-            Instantiate(slot.ObjectData.Prefab, new Vector3(PlayerController.Instance.GetPlayerPosition().position.x, tile.transform.position.y + height / 2, tile.transform.position.z), transform.rotation);
-            OnItemDropped?.Invoke(slot.ObjectData);
+            if (slot.ObjectData.ItemCategory == "Seeds")
+            {
+                PlayerController.Instance.SlashTile();
+                OnSeedDropped?.Invoke(slot.ObjectData);
+            }
+            else
+            {
+                GameObject tile = PlayerController.Instance.FindStandingTile();
+                float height = tile.GetComponent<Renderer>().bounds.size.y;
+                Instantiate(slot.ObjectData.Prefab, new Vector3(PlayerController.Instance.GetPlayerPosition().position.x, tile.transform.position.y + height / 2, tile.transform.position.z), transform.rotation);
+                OnItemDropped?.Invoke(slot.ObjectData);
+            }
             RemoveItem(m_SelectedSlot);
         }
     }

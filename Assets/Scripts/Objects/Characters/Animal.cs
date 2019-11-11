@@ -97,7 +97,6 @@ public abstract class Animal : Npc
 
     protected void MoveAnimal()
     {
-        Debug.Log("movechicken");
         m_Animator.SetBool("FacingRight", m_FacingRight);
         m_Animator.SetBool("AnimalMoving", true);
     }

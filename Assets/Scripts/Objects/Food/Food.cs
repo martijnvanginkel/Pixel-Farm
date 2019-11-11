@@ -5,6 +5,7 @@ using UnityEngine;
 public class Food : TradeableObject
 {
 
+
     // Update is called once per frame
     void Update()
     {

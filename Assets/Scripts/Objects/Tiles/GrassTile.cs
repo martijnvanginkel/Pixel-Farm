@@ -43,11 +43,13 @@ public class GrassTile : InteractableObject
 
     private void OnEnable()
     {
+        Inventory.OnSeedDropped += PlantSeed;
         DayManager.OnEndOfDay += ResetTile;
     }
 
     private void OnDisable()
     {
+        Inventory.OnSeedDropped -= PlantSeed;
         DayManager.OnEndOfDay -= ResetTile;
     }
 
@@ -84,30 +86,30 @@ public class GrassTile : InteractableObject
         Instantiate(m_PlantedItemPrefab, m_SpawnLocation, transform.rotation); // Spawn flower on top of the tile
     }
 
-    public override void ReceiveItem()
-    {
-        InventorySlot item = Inventory.Instance.SelectedSlot; // Get the currently selected item
+    //public override void ReceiveItem()
+    //{
+    //    InventorySlot item = Inventory.Instance.SelectedSlot; // Get the currently selected item
 
-        if(item.ObjectData == null)
-        {
-            PlayerController.Instance.Talk("I can't plant air!", 2f);
-        }
-        else
-        {
-            switch (item.ObjectData.ItemCategory)
-            {
-                case "Seeds": // Receive the item if its a seed and plant the seed
-                    Debug.Log("seed");
-                    PlantSeed(item.ObjectData);
-                    base.ReceiveItem();
-                    break;
-                default:
-                    Debug.Log("no seed");
-                    PlayerController.Instance.Talk("I can't plant that item", 2f);
-                    break;
-            }
-        }
-    }
+    //    if(item.ObjectData == null)
+    //    {
+    //        PlayerController.Instance.Talk("I can't plant air!", 2f);
+    //    }
+    //    else
+    //    {
+    //        switch (item.ObjectData.ItemCategory)
+    //        {
+    //            case "Seeds": // Receive the item if its a seed and plant the seed
+    //                Debug.Log("seed");
+    //                PlantSeed(item.ObjectData);
+    //                base.ReceiveItem();
+    //                break;
+    //            default:
+    //                Debug.Log("no seed");
+    //                PlayerController.Instance.Talk("I can't plant that item", 2f);
+    //                break;
+    //        }
+    //    }
+    //}
 
     // Go to function when the downarrow is being clicked by the player, checks for current state of the groundtile
     public void Cut()

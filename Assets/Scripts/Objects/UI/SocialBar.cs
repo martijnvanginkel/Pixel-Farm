@@ -21,25 +21,10 @@ public class SocialBar : Bar
         m_SetDecreaseTime = m_DecreaseTimer;
     }
 
-    private void OnEnable()
-    {
-        InteractableObject.OnReceivedItem += GainSocialPoints;
-    }
-
-    private void OnDisable()
-    {
-        InteractableObject.OnReceivedItem -= GainSocialPoints;
-    }
-
     protected override void Update()
     {
         base.Update();
         DecreaseTimer();
-    }
-
-    public void GainSocialPoints(ObjectData objectData)
-    {
-        base.IncreaseValue(objectData.SocialValue);
     }
 
     // Timer that always runs and decreases the value (nature and social bar)

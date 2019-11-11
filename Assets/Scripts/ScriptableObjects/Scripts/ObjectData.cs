@@ -9,6 +9,7 @@ public class ObjectData : ScriptableObject
     public string Description;
 
     public Sprite Icon;
+    public Sprite PrefabSprite;
     public GameObject Prefab;
 
     public string ItemCategory;

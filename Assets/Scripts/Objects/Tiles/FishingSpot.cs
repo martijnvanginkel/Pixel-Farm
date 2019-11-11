@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class FishingSpot : InteractableObject
 {
-    [SerializeField] private List<FishData> m_CommonFish = new List<FishData>();
-    private List<FishData> m_UnCommonFish = new List<FishData>();
-    private List<FishData> m_RareFish = new List<FishData>();
+    //[SerializeField] private List<FishData> m_CommonFish = new List<FishData>();
+    //private List<FishData> m_UnCommonFish = new List<FishData>();
+    //private List<FishData> m_RareFish = new List<FishData>();
 
     private bool m_PlayerIsFishing;
 
@@ -14,6 +14,9 @@ public class FishingSpot : InteractableObject
     [SerializeField] private FishingBar m_FishingBar;
 
     private float m_WaitForFishTime = 5f;
+
+    [SerializeField] private GameObject m_RandomFishPrefab;
+    [SerializeField] private Transform m_FishSpawnPoint;
 
     protected override void Start()
     {
@@ -26,7 +29,16 @@ public class FishingSpot : InteractableObject
     {
         if (m_PlayerIsFishing)
         {
+            CheckForInterupting();
             WaitForFish();
+        }
+    }
+
+    private void CheckForInterupting()
+    {
+        if(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
+        {
+            StopFishing();
         }
     }
 
@@ -34,7 +46,7 @@ public class FishingSpot : InteractableObject
     {
         m_PlayerIsFishing = true;
         PlayerController.Instance.Fish(true);
-        PlayerController.Instance.Talk("...", m_WaitForFishTime);
+        //PlayerController.Instance.Talk("...", m_WaitForFishTime);
 
         ShowButtonPanel(false);
         base.PlayerActionEvent();
@@ -55,7 +67,7 @@ public class FishingSpot : InteractableObject
         if (m_WaitForFishTime <= 0f)
         {
             m_PlayerIsFishing = false;
-            m_WaitForFishTime = Random.Range(3f, 10f);
+            m_WaitForFishTime = Random.Range(2.5f, 7.5f);
 
             // Start minigame
             m_FishingBarParent.SetActive(true);
@@ -65,17 +77,20 @@ public class FishingSpot : InteractableObject
 
     public void CatchFish()
     {
-        float rareness = Random.Range(0f, 1f);
+        Instantiate(m_RandomFishPrefab, m_FishSpawnPoint);
 
-        // This needs to be changed into a different chance for the type of fish that is being catched
+        // CATCHING FISH
+        // float rareness = Random.Range(0f, 1f);
 
-        if(rareness > 0f)
-        {
-            int randomFishInt = Random.Range(0, m_CommonFish.Count);
-            FishData randomFish = m_CommonFish[randomFishInt];
+        // // This needs to be changed into a different chance for the type of fish that is being catched
 
-            Inventory.Instance.AddItem(randomFish, 1);
-        }
+        // if(rareness > 0f)
+        // {
+        //     int randomFishInt = Random.Range(0, m_CommonFish.Count);
+        //     FishData randomFish = m_CommonFish[randomFishInt];
+
+        //     Inventory.Instance.AddItem(randomFish, 1);
+        // }
     }
 
     protected override void OnTriggerEnter2D(Collider2D other)

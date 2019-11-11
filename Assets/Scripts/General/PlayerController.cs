@@ -33,8 +33,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject m_TextBalloon;
     [SerializeField] private TMPro.TextMeshProUGUI m_Text;
+    [SerializeField] private TMPro.TextMeshProUGUI m_CatchText;
     [SerializeField] private float m_MoveSpeed;
-         
+
     private bool m_AllowInput = true;
     public bool AllowInput
     {
@@ -49,8 +50,10 @@ public class PlayerController : MonoBehaviour
         set { m_HasButtonPanelOpen = value; }
     }
 
+    private InteractableObject m_OpenPanelObject;
+
     // The buttonpanel that is open above the player
-    private GameObject m_OpenButtonPanel; 
+    private GameObject m_OpenButtonPanel;
     public GameObject OpenButtonPanel
     {
         get { return m_OpenButtonPanel; }
@@ -82,6 +85,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        RandomFish.OnFishCaught += PlayerCaughtFish;
+    }
+
+    private void OnDisable()
+    {
+        RandomFish.OnFishCaught -= PlayerCaughtFish;
+    }
+
     void Start()
     {
         m_RigidBody = GetComponent<Rigidbody2D>();
@@ -102,29 +115,27 @@ public class PlayerController : MonoBehaviour
     // Check for user input if its allowed
     private void GetInput()
     {
-        if (m_AllowInput) 
+        if (m_AllowInput)
         {
             if (Input.GetKey(KeyCode.D))
             {
                 WalkRight();
             }
-
             if (Input.GetKey(KeyCode.A))
             {
                 WalkLeft();
             }
-
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                SlashTile();
-            }
-
             if (Input.GetKeyDown(KeyCode.W))
             {
                 // Don't open a panel if there is already one open (like a grasstile which opens by itself)
-                if(m_HasButtonPanelOpen == false)
+                if (m_HasButtonPanelOpen == false)
                 {
                     OpenCollidingItem();
+                }
+                else
+                {
+                    m_OpenPanelObject.QuickAction();
+                    // Take the item or whatever the firstaction may be
                 }
             }
         }
@@ -151,7 +162,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Find the tile player is standing on and cuts the grasstile
-    private void SlashTile()
+    public void SlashTile()
     {
         m_IsSlashing = true;
         GameObject standingTile = FindStandingTile();
@@ -165,17 +176,19 @@ public class PlayerController : MonoBehaviour
     // Open the buttonpanel of the object the player is currently standing on
     private void OpenCollidingItem()
     {
+        InteractableObject collidingItem = null;
+
         if (m_CollidingItems.Count == 1) // If only one object is colliding open the first in the list
         {
-            m_CollidingItems[0].ShowButtonPanel(true);
+            collidingItem = m_CollidingItems[0];
+            collidingItem.ShowButtonPanel(true);
+            m_OpenPanelObject = collidingItem;
         }
         else if (m_CollidingItems.Count > 1) // If more than 1 open the one with the highest layer
         {
-            FindFirstItem().ShowButtonPanel(true);
-        }
-        else
-        {
-            Debug.Log("No object is colliding");
+            collidingItem = FindFirstItem();
+            collidingItem.ShowButtonPanel(true);
+            m_OpenPanelObject = collidingItem;
         }
     }
 
@@ -186,7 +199,7 @@ public class PlayerController : MonoBehaviour
 
         foreach (InteractableObject item in m_CollidingItems)
         {
-            if(item.SortingLayerID > highestPriorityItem.SortingLayerID)
+            if (item.SortingLayerID > highestPriorityItem.SortingLayerID)
             {
                 highestPriorityItem = item;
             }
@@ -211,8 +224,6 @@ public class PlayerController : MonoBehaviour
     public GameObject FindStandingTile()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, m_TileLayer);
-        //Debug.DrawRay(transform.position, Vector2.down, Color.green);
-
         return hit.collider.gameObject;
     }
 
@@ -234,12 +245,23 @@ public class PlayerController : MonoBehaviour
     public void Fish(bool isFishing)
     {
         m_Animator.SetBool("Fishing", isFishing);
-        m_AllowInput = !isFishing;
 
-        if(m_FacingRight == false)
+        if (m_FacingRight == false)
         {
             FlipPlayerRight(isFishing);
         }
+    }
+
+    private void PlayerCaughtFish()
+    {
+        StartCoroutine("ShowCatchTextCo");
+    }
+
+    private IEnumerator ShowCatchTextCo()
+    {
+        m_CatchText.enabled = true;
+        yield return new WaitForSeconds(0.5f);
+        m_CatchText.enabled = false;
     }
 
     private IEnumerator OpenTextBalloonCo(PlayerTalkTuple playerTalkTuple)

@@ -7,6 +7,7 @@ TagManager:
   - Interactable
   - GroundTile
   - UI
+  - WaterEdge
   layers:
   - Default
   - TransparentFX

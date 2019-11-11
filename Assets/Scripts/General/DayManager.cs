@@ -25,7 +25,7 @@ public class DayManager : MonoBehaviour
     private Color m_LightOverlayColor;
 
     // 1f = 1 minute, 0.2f = 5 minutes, 3f = 20 seconds
-    private float m_AnimationSpeed = 1f;
+    private float m_AnimationSpeed = 0.5f;
     private bool m_DayTime;
     private bool m_FadingOverlay;
 
@@ -175,7 +175,7 @@ public class DayManager : MonoBehaviour
         m_FadingOverlay = false;
 
         m_SleepingText.enabled = true;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         m_Animator.Play("sun_rotation", 0, 0);
         m_FadingOverlay = true;
