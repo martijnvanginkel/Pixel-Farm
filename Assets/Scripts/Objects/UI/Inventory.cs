@@ -14,9 +14,6 @@ public class Inventory : SlotsHolder
     public delegate void ItemDropped(ObjectData objectData);
     public static event ItemDropped OnItemDropped;
 
-    public delegate void SeedDropped(ObjectData objectData);
-    public static event SeedDropped OnSeedDropped;
-
     [SerializeField] private GameObject m_InventorySlotPrefab;
     [SerializeField] private int m_InventorySlotAmount;
 
@@ -104,7 +101,7 @@ public class Inventory : SlotsHolder
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.E)) 
+        if (Input.GetKeyDown(KeyCode.S)) 
         {
             m_HoldingDropKeyDown = true;
         }
@@ -112,7 +109,7 @@ public class Inventory : SlotsHolder
         // If the E button is pressed, check if the key is kept being pressed, if it is, check if the item is food, otherwise, drop the item and reset the key timer values
         if (m_HoldingDropKeyDown)
         {
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKey(KeyCode.S))
             {
                 CheckIfItemIsFood();
             }
@@ -165,8 +162,7 @@ public class Inventory : SlotsHolder
         {
             if (slot.ObjectData.ItemCategory == "Seeds")
             {
-                PlayerController.Instance.SlashTile();
-                OnSeedDropped?.Invoke(slot.ObjectData);
+                PlayerController.Instance.SlashTile(slot.ObjectData);
             }
             else
             {

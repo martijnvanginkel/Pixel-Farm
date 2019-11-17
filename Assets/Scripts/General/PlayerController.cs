@@ -127,15 +127,15 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.W))
             {
-                // Don't open a panel if there is already one open (like a grasstile which opens by itself)
                 if (m_HasButtonPanelOpen == false)
                 {
+                    //m_HasButtonPanelOpen = true;
                     OpenCollidingItem();
                 }
                 else
                 {
-                    m_OpenPanelObject.QuickAction();
                     // Take the item or whatever the firstaction may be
+                    m_OpenPanelObject.QuickAction();
                 }
             }
         }
@@ -162,14 +162,16 @@ public class PlayerController : MonoBehaviour
     }
 
     // Find the tile player is standing on and cuts the grasstile
-    public void SlashTile()
+    public void SlashTile(ObjectData objectData)
     {
         m_IsSlashing = true;
         GameObject standingTile = FindStandingTile();
+        GrassTile grassTile = standingTile.GetComponent<GrassTile>();
 
         if (standingTile.tag == "GroundTile")
         {
-            standingTile.GetComponent<GrassTile>().Cut();
+            grassTile.Cut();
+            grassTile.PlantSeed(objectData);
         }
     }
 
@@ -225,6 +227,12 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, m_TileLayer);
         return hit.collider.gameObject;
+    }
+
+    public GrassTile FindStandingGrassTile()
+    {
+        GrassTile grassTile = FindStandingTile().GetComponent<GrassTile>();
+        return grassTile;
     }
 
     public Transform GetPlayerPosition()

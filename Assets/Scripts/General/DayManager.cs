@@ -75,8 +75,8 @@ public class DayManager : MonoBehaviour
         m_EveningCameraColor = new Color(206f / 255f, 199 / 255f, 104f / 255f, 255f / 255f);
         m_DayCameraColor = new Color(155f / 255f, 95f / 255f, 150f / 255f, 255f / 255f);
 
-        m_MainCamera.backgroundColor = m_MorningCameraColor;
-        m_CurrentCameraColor = m_MorningCameraColor;
+        m_MainCamera.backgroundColor = m_DayCameraColor;
+        m_CurrentCameraColor = m_DayCameraColor;
     }
 
     private void Update()

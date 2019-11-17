@@ -58,7 +58,7 @@ public abstract class InteractableObject : MonoBehaviour
         }
     }
 
-    public void ShowButtonPanel(bool showPanel)
+    public virtual void ShowButtonPanel(bool showPanel)
     {
         m_ButtonPanel.SetActive(showPanel); // Open the buttonpanel
         PlayerController.Instance.HasButtonPanelOpen = showPanel; // Tell the player that a buttonpanel is open

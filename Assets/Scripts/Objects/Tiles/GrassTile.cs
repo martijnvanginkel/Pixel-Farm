@@ -43,13 +43,11 @@ public class GrassTile : InteractableObject
 
     private void OnEnable()
     {
-        Inventory.OnSeedDropped += PlantSeed;
         DayManager.OnEndOfDay += ResetTile;
     }
 
     private void OnDisable()
     {
-        Inventory.OnSeedDropped -= PlantSeed;
         DayManager.OnEndOfDay -= ResetTile;
     }
 
@@ -66,11 +64,11 @@ public class GrassTile : InteractableObject
                 m_CurrentState = State.Cut;
                 break;
             case State.Planted:
-                m_PlantedSeedOverlay.SetActive(false); // Turn seedsprite off
+                m_PlantedSeedOverlay.SetActive(false);
                 SpawnPlant();
                 m_SpriteRenderer.sprite = m_DefaultSprite;
-                m_CurrentState = State.Cut; // Set state to cut
-                m_PlantedItemPrefab = null; // Set prefab back to null after spawning
+                m_CurrentState = State.Cut;
+                m_PlantedItemPrefab = null;
                 break;
             default:
                 break;
@@ -79,49 +77,17 @@ public class GrassTile : InteractableObject
 
     private void SpawnPlant()
     {
-        // Add a little bit of a range to where the plant exactly grows
         float randomFloat = Random.Range(-0.5f, 0.5f);
         m_SpawnLocation.x = m_SpawnLocation.x + randomFloat;
-
-        Instantiate(m_PlantedItemPrefab, m_SpawnLocation, transform.rotation); // Spawn flower on top of the tile
+        Instantiate(m_PlantedItemPrefab, m_SpawnLocation, transform.rotation);
     }
 
-    //public override void ReceiveItem()
-    //{
-    //    InventorySlot item = Inventory.Instance.SelectedSlot; // Get the currently selected item
-
-    //    if(item.ObjectData == null)
-    //    {
-    //        PlayerController.Instance.Talk("I can't plant air!", 2f);
-    //    }
-    //    else
-    //    {
-    //        switch (item.ObjectData.ItemCategory)
-    //        {
-    //            case "Seeds": // Receive the item if its a seed and plant the seed
-    //                Debug.Log("seed");
-    //                PlantSeed(item.ObjectData);
-    //                base.ReceiveItem();
-    //                break;
-    //            default:
-    //                Debug.Log("no seed");
-    //                PlayerController.Instance.Talk("I can't plant that item", 2f);
-    //                break;
-    //        }
-    //    }
-    //}
-
-    // Go to function when the downarrow is being clicked by the player, checks for current state of the groundtile
     public void Cut()
     {
         switch (m_CurrentState)
         {
             case State.Default:
                 CutGrass(false);
-                base.PlayerActionEvent();
-                break;
-            case State.Cut:
-                PlowTile();
                 base.PlayerActionEvent();
                 break;
             default:
@@ -135,56 +101,23 @@ public class GrassTile : InteractableObject
         m_CurrentState = State.Cut;
     }
 
-    private void PlowTile()
+    public void PlantSeed(ObjectData objectData)
     {
-        m_SpriteRenderer.sprite = m_PlowedSprite;
-        m_CurrentState = State.Plowed;
-
-        Debug.Log(this.gameObject);
-
-        // Only open the panel if the player is actually colliding with the tile (and not right next to it while plowing)
-        if (m_PlayerOnObject)
-        {
-            ShowButtonPanel(true);
-        }
-    }
-
-    private void PlantSeed(ObjectData objectData)
-    {
-        m_PlantedSeedOverlay.SetActive(true); // Turn seedoverlay sprite on
-
+        m_PlantedSeedOverlay.SetActive(true);
         m_CurrentState = State.Planted;
         m_PlantedItemPrefab = objectData.HarvestedPlantData.Prefab;
-
-        ShowButtonPanel(false); // Turn buttonPanel off
-        OnPlantedSeed?.Invoke(objectData); // Invoke event that seed has been planted
-        base.PlayerActionEvent(); // Player does an action
+        OnPlantedSeed?.Invoke(objectData); 
     }
 
-    protected override void OnTriggerEnter2D(Collider2D other)
+    public override void ShowButtonPanel(bool showPanel)
     {
-        if (other.CompareTag("Player"))
+        if (IsTileOnDefault() == true)
         {
-            m_PlayerOnObject = true;
-
-            // TO DO: this needs to be triggered when a buttonpanel on a plowed tile is closed aswell
-            if (m_CurrentState == State.Plowed && !PlayerController.Instance.HasButtonPanelOpen)
-            {
-                ShowButtonPanel(true);
-            }
+            return;
         }
+        base.ShowButtonPanel(showPanel);
     }
 
-    protected override void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            m_PlayerOnObject = false;
-            ShowButtonPanel(false);
-        }
-    }
-
-    // Bool that returns if the current state of the tile is on default, used for the Cow class
     public bool IsTileOnDefault()
     {
         if(m_CurrentState == State.Default)
