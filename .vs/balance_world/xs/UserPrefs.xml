@@ -1,27 +1,16 @@
 ﻿<Properties StartupConfiguration="{6969DE6D-0B9C-333F-1E0B-9000BAE8E4EE}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Objects/Items/CompostBin.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI/NightOverlay.cs">
     <Files>
-      <File FileName="Assets/Scripts/Objects/Tiles/FishingSpot.cs" Line="70" Column="55" />
-      <File FileName="Assets/Scripts/Objects/UI/Inventory.cs" Line="15" Column="51" />
-      <File FileName="Assets/Scripts/Objects/Food/Food.cs" />
-      <File FileName="Assets/Scripts/General/PlayerController.cs" Line="132" Column="23" />
-      <File FileName="Assets/Scripts/Random/RandomFish.cs" />
-      <File FileName="Assets/Scripts/ScriptableObjects/Scripts/ObjectData.cs" />
-      <File FileName="Assets/Scripts/Objects/Tiles/GrassTile.cs" Line="119" Column="6" />
       <File FileName="Assets/Scripts/Objects/Characters/Npc.cs" />
-      <File FileName="Assets/Scripts/Objects/UI/SocialBar.cs" />
-      <File FileName="Assets/Scripts/Objects/Characters/Chicken.cs" />
-      <File FileName="Assets/Scripts/Objects/Characters/Animal.cs" />
-      <File FileName="Assets/Scripts/Objects/InteractableObject.cs" Line="64" Column="9" />
-      <File FileName="Assets/Scripts/General/DayManager.cs" />
-      <File FileName="Assets/Scripts/Objects/Characters/Salesman.cs" Line="9" Column="38" />
-      <File FileName="Assets/Scripts/Objects/UI/Store.cs" Line="36" Column="41" />
-      <File FileName="Assets/Scripts/Objects/Items/CompostBin.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Objects/Characters/Dog.cs" Line="9" Column="22" />
+      <File FileName="Assets/Scripts/Objects/Characters/Cow.cs" Line="9" Column="1" />
+      <File FileName="Assets/Scripts/General/DayManager.cs" Line="38" Column="28" />
+      <File FileName="Assets/Scripts/UI/NightOverlay.cs" Line="7" Column="18" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="b689f029-cfa1-4422-9629-7b2a899db5c7" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="af088614-aee0-446b-8fc5-6fe4a784b73a" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

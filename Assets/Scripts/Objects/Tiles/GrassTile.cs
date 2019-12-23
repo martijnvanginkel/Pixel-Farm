@@ -7,9 +7,11 @@ public class GrassTile : InteractableObject
     public delegate void PlantedSeed(ObjectData objectData);
     public static event PlantedSeed OnPlantedSeed;
 
+    private BoxCollider2D m_BoxCollider;
     [SerializeField] private GameObject m_GrassOverlay;
     [SerializeField] private GameObject m_PlantedSeedOverlay;
     [SerializeField] private Sprite m_PlowedSprite;
+    [SerializeField] private GameObject m_HealthUI;
     private Sprite m_DefaultSprite;
 
     //private SpriteRenderer m_SpriteRenderer;
@@ -31,8 +33,9 @@ public class GrassTile : InteractableObject
     // Start is called before the first frame update
     protected override void Start()
     {
-        base.Start(); 
+        base.Start();
 
+        m_BoxCollider = GetComponent<BoxCollider2D>();
         m_DefaultSprite = m_SpriteRenderer.sprite;
         State m_CurrentState = State.Default;
 
@@ -99,6 +102,7 @@ public class GrassTile : InteractableObject
     {
         m_GrassOverlay.SetActive(cutGrass);
         m_CurrentState = State.Cut;
+        m_BoxCollider.enabled = true;
     }
 
     public void PlantSeed(ObjectData objectData)
@@ -107,6 +111,11 @@ public class GrassTile : InteractableObject
         m_CurrentState = State.Planted;
         m_PlantedItemPrefab = objectData.HarvestedPlantData.Prefab;
         OnPlantedSeed?.Invoke(objectData); 
+    }
+
+    public void CheckHealth()
+    {
+        m_HealthUI.SetActive(true);
     }
 
     public override void ShowButtonPanel(bool showPanel)
@@ -127,6 +136,18 @@ public class GrassTile : InteractableObject
         else
         {
             return false;
+        }
+    }
+
+    protected override void OnTriggerExit2D(Collider2D other)
+    {
+        base.OnTriggerExit2D(other);
+        if (other.CompareTag("Player"))
+        {
+            m_HealthUI.SetActive(false);
+            //m_PlayerOnObject = false;
+            //ShowButtonPanel(false);
+            //PlayerController.Instance.CollidingItems.Remove(this);
         }
     }
 }

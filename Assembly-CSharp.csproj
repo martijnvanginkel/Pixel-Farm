@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\Objects\Characters\Animal.cs" />
     <Compile Include="Assets\Scripts\Objects\Characters\Chicken.cs" />
     <Compile Include="Assets\Scripts\Objects\Characters\Cow.cs" />
+    <Compile Include="Assets\Scripts\Objects\Characters\Dog.cs" />
     <Compile Include="Assets\Scripts\Objects\Characters\Npc.cs" />
     <Compile Include="Assets\Scripts\Objects\Characters\Salesman.cs" />
     <Compile Include="Assets\Scripts\Objects\Food\Egg.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Assets\Scripts\Objects\InteractableObject.cs" />
     <Compile Include="Assets\Scripts\Objects\Items\Bed.cs" />
     <Compile Include="Assets\Scripts\Objects\Items\CompostBin.cs" />
+    <Compile Include="Assets\Scripts\Objects\Items\WateringCan.cs" />
     <Compile Include="Assets\Scripts\Objects\Plants\Flowers\Bluezy.cs" />
     <Compile Include="Assets\Scripts\Objects\Plants\Flowers\Daisy.cs" />
     <Compile Include="Assets\Scripts\Objects\Plants\Flowers\Flower.cs" />
@@ -118,6 +120,7 @@
     <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\ObjectData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\SeedData.cs" />
     <Compile Include="Assets\Scripts\UI\FishingBar.cs" />
+    <Compile Include="Assets\Scripts\UI\NightOverlay.cs" />
     <Compile Include="Assets\Scripts\UI\StartMenu.cs" />
     <Compile Include="Assets\Scripts\UI\StartMenuBackground.cs" />
     <None Include="Assets\Packages\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />

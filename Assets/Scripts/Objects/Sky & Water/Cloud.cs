@@ -46,7 +46,7 @@ public class Cloud : MonoBehaviour
 
     private float RandomSpeed()
     {
-        float speed = Random.Range(0.1f, 0.5f);
+        float speed = 0.25f;//Random.Range(0.1f, 0.5f);
 
         return speed;
     }
