@@ -46,11 +46,6 @@ public abstract class SlotsHolder : MonoBehaviour
         }
         else // If it has one, remove the inventoryslot with the item in it
         {
-            // If the store is open and the last one is sold, remove the price
-            //if (Store.Instance.StoreIsOpen)
-            //{
-            //    item.ShowStoreValue(false);
-            //}
             EmptySlot(item);
         }
     }
@@ -145,14 +140,7 @@ public abstract class SlotsHolder : MonoBehaviour
         {
             m_SlotsHolderIsFull = false;
         }
-
         slot.ResetSlot();
-
-        // Reset the player icon if the selected slot is being emptied
-        //if(slot == m_SelectedSlot)
-        //{
-        //    SetPlayerIcon(slot);
-        //}
     }
 
     public void SlotsAreAllTaken()
@@ -166,9 +154,7 @@ public abstract class SlotsHolder : MonoBehaviour
         {
             slot.LightUpSlot(true);
         }
-
         yield return new WaitForSeconds(0.25f);
-
         foreach (DigitalItem slot in m_SlotList)
         {
             slot.LightUpSlot(false);

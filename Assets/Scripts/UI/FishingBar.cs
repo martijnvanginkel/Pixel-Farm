@@ -40,15 +40,15 @@ public class FishingBar : MonoBehaviour
     // Set a random width, position and speed for the minigame
     private void RandomGameVariables()
     {
-        float randomWidth = Random.Range(8f, 60f);
+        //float randomWidth = Random.Range(8f, 60f);
         float randomPosition = Random.Range(50f, 160f);
         float randomSpeed = Random.Range(1.5f, 4f);
 
-        m_CollidingPoint.sizeDelta = new Vector2(randomWidth, m_CollidingPoint.sizeDelta.y);
+        m_CollidingPoint.sizeDelta = new Vector2(m_CollidingPoint.sizeDelta.x, m_CollidingPoint.sizeDelta.y);
         m_CollidingPoint.anchoredPosition = new Vector2(randomPosition, m_CollidingPoint.anchoredPosition.y);
 
         // Also scale the collider with the new width
-        m_CollidingPointCollider.size = new Vector2(randomWidth, m_CollidingPointCollider.size.y);
+        m_CollidingPointCollider.size = new Vector2(m_CollidingPoint.sizeDelta.x, m_CollidingPointCollider.size.y);
 
         m_Animator.SetFloat("Speed", randomSpeed);
     }

@@ -8,29 +8,47 @@ public class EnergyBar : Bar
     public static event OutOfEnergy OnOutOfEnergy;
 
     [SerializeField] private int m_ActionDecreaseAmount;
+    private float m_DecreaseStartTime = 30f;
+    private float m_DecreaseTimer;
 
     protected override void Start()
     {
         base.Start();
+        m_DecreaseTimer = m_DecreaseStartTime;
     }
 
     private void OnEnable()
     {
-        //InteractableObject.OnPlayerAction += ActionDecrease;
+        Inventory.OnFoodEaten += FoodEaten;
         DayManager.OnEndOfDay += base.ResetEnergy;
     }
 
     private void OnDisable()
     {
-        //InteractableObject.OnPlayerAction -= ActionDecrease;
+        Inventory.OnFoodEaten -= FoodEaten;
         DayManager.OnEndOfDay -= base.ResetEnergy;
     }
 
-    //protected override void Update()
-    //{
-    //    base.Update();
+    protected override void Update()
+    {
+        base.Update();
+        DecreaseEnergyTimer();
+    }
 
-    //}
+    private void DecreaseEnergyTimer()
+    {
+        m_DecreaseTimer -= Time.deltaTime;
+        if (m_DecreaseTimer < 0f)
+        {
+            ActionDecrease();
+            m_DecreaseTimer = m_DecreaseStartTime;
+        }
+    }
+
+    private void FoodEaten(ObjectData eatenObject)
+    {
+        IncreaseValue(eatenObject.EatingValue);
+    }
 
     private void ActionDecrease()
     {

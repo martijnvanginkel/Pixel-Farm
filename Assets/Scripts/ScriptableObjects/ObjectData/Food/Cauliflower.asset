@@ -15,6 +15,7 @@ MonoBehaviour:
   Name: Cauliflower
   Description: 
   Icon: {fileID: 21300000, guid: 30fd04f536ba441a086b39233c13167b, type: 3}
+  PrefabSprite: {fileID: 0}
   Prefab: {fileID: 653312450726196040, guid: 5a7e38b694a2f42278a9d812e41bfde3, type: 3}
   ItemCategory: Food
   DataCategory: 
@@ -26,4 +27,4 @@ MonoBehaviour:
   ReceiveType: 
   HarvestedPlantData: {fileID: 0}
   HarvestAmount: 0
-  EatingValue: 0
+  EatingValue: 30

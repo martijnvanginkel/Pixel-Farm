@@ -6,6 +6,11 @@ public class Salesman : Npc
 {
     public void OpenShop()
     {
-        Store.Instance.OpenStorePanel(); // Open the store panel
+        Store.Instance.OpenStorePanel();
+    }
+
+    public override void QuickAction()
+    {
+        OpenShop();
     }
 }

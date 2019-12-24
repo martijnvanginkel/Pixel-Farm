@@ -19,18 +19,14 @@ public class GrassTile : InteractableObject
 
     private Vector3 m_SpawnLocation;
 
-    enum State
+    public enum State
     {
         Default,
-        Cut,
-        Plowed,
-        Planted,
-        Recovering
+        Planted
     }
 
     private State m_CurrentState;
 
-    // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
@@ -58,20 +54,8 @@ public class GrassTile : InteractableObject
     {
         switch (m_CurrentState)
         {
-            case State.Cut: 
-                m_GrassOverlay.SetActive(true);
-                m_CurrentState = State.Default;
-                break;
-            case State.Plowed:
-                m_SpriteRenderer.sprite = m_DefaultSprite;
-                m_CurrentState = State.Cut;
-                break;
             case State.Planted:
-                m_PlantedSeedOverlay.SetActive(false);
                 SpawnPlant();
-                m_SpriteRenderer.sprite = m_DefaultSprite;
-                m_CurrentState = State.Cut;
-                m_PlantedItemPrefab = null;
                 break;
             default:
                 break;
@@ -83,30 +67,31 @@ public class GrassTile : InteractableObject
         float randomFloat = Random.Range(-0.5f, 0.5f);
         m_SpawnLocation.x = m_SpawnLocation.x + randomFloat;
         Instantiate(m_PlantedItemPrefab, m_SpawnLocation, transform.rotation);
+
+        m_PlantedSeedOverlay.SetActive(false);
+        m_SpriteRenderer.sprite = m_DefaultSprite;
+        m_CurrentState = State.Default;
+        m_PlantedItemPrefab = null;
     }
 
-    public void Cut()
+    public void CheckIfSeedPlantable(ObjectData droppedSeed)
     {
-        switch (m_CurrentState)
+        if (m_CurrentState == State.Default)
         {
-            case State.Default:
-                CutGrass(false);
-                base.PlayerActionEvent();
-                break;
-            default:
-                break;
+            PlantSeed(droppedSeed);
+            Inventory.Instance.RemoveItem(Inventory.Instance.SelectedSlot);
         }
     }
 
-    private void CutGrass(bool cutGrass)
+    private void CutGrass()
     {
-        m_GrassOverlay.SetActive(cutGrass);
-        m_CurrentState = State.Cut;
+        m_GrassOverlay.SetActive(false);
         m_BoxCollider.enabled = true;
     }
 
-    public void PlantSeed(ObjectData objectData)
+    private void PlantSeed(ObjectData objectData)
     {
+        CutGrass();
         m_PlantedSeedOverlay.SetActive(true);
         m_CurrentState = State.Planted;
         m_PlantedItemPrefab = objectData.HarvestedPlantData.Prefab;
@@ -146,9 +131,6 @@ public class GrassTile : InteractableObject
         if (other.CompareTag("Player"))
         {
             m_HealthUI.SetActive(false);
-            //m_PlayerOnObject = false;
-            //ShowButtonPanel(false);
-            //PlayerController.Instance.CollidingItems.Remove(this);
         }
     }
 }

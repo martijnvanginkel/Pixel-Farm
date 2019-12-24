@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class FishingSpot : InteractableObject
 {
-    //[SerializeField] private List<FishData> m_CommonFish = new List<FishData>();
-    //private List<FishData> m_UnCommonFish = new List<FishData>();
-    //private List<FishData> m_RareFish = new List<FishData>();
-
     private bool m_PlayerIsFishing;
 
     [SerializeField] private GameObject m_FishingBarParent;
@@ -46,7 +42,6 @@ public class FishingSpot : InteractableObject
     {
         m_PlayerIsFishing = true;
         PlayerController.Instance.Fish(true);
-        //PlayerController.Instance.Talk("...", m_WaitForFishTime);
 
         ShowButtonPanel(false);
         base.PlayerActionEvent();
@@ -78,19 +73,6 @@ public class FishingSpot : InteractableObject
     public void CatchFish()
     {
         Instantiate(m_RandomFishPrefab, m_FishSpawnPoint);
-
-        // CATCHING FISH
-        // float rareness = Random.Range(0f, 1f);
-
-        // // This needs to be changed into a different chance for the type of fish that is being catched
-
-        // if(rareness > 0f)
-        // {
-        //     int randomFishInt = Random.Range(0, m_CommonFish.Count);
-        //     FishData randomFish = m_CommonFish[randomFishInt];
-
-        //     Inventory.Instance.AddItem(randomFish, 1);
-        // }
     }
 
     protected override void OnTriggerEnter2D(Collider2D other)

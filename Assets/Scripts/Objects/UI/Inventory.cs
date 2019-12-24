@@ -14,6 +14,12 @@ public class Inventory : SlotsHolder
     public delegate void ItemDropped(ObjectData objectData);
     public static event ItemDropped OnItemDropped;
 
+    public delegate void FoodEaten(ObjectData objectData);
+    public static event FoodEaten OnFoodEaten;
+
+    public delegate void SeedDropped(ObjectData objectData);
+    public static event SeedDropped OnSeedDropped;
+
     [SerializeField] private GameObject m_InventorySlotPrefab;
     [SerializeField] private int m_InventorySlotAmount;
 
@@ -139,7 +145,8 @@ public class Inventory : SlotsHolder
             if (m_HoldingDropKeyTime < 0f)
             {
                 ResetDropKey();
-                m_EnergyBar.IncreaseValue(m_SelectedSlot.ObjectData.EatingValue);
+                OnFoodEaten?.Invoke(m_SelectedSlot.ObjectData);
+                //m_EnergyBar.IncreaseValue(m_SelectedSlot.ObjectData.EatingValue);
                 RemoveItem(m_SelectedSlot);
             }
         }
@@ -162,7 +169,9 @@ public class Inventory : SlotsHolder
         {
             if (slot.ObjectData.ItemCategory == "Seeds")
             {
-                PlayerController.Instance.SlashTile(slot.ObjectData);
+                Debug.Log("Seed dropped");
+                OnSeedDropped?.Invoke(slot.ObjectData);
+                //PlayerController.Instance.SlashTile(slot.ObjectData);
             }
             else
             {
@@ -170,8 +179,8 @@ public class Inventory : SlotsHolder
                 float height = tile.GetComponent<Renderer>().bounds.size.y;
                 Instantiate(slot.ObjectData.Prefab, new Vector3(PlayerController.Instance.GetPlayerPosition().position.x, tile.transform.position.y + height / 2, tile.transform.position.z), transform.rotation);
                 OnItemDropped?.Invoke(slot.ObjectData);
+                RemoveItem(m_SelectedSlot);
             }
-            RemoveItem(m_SelectedSlot);
         }
     }
 
@@ -202,12 +211,6 @@ public class Inventory : SlotsHolder
     protected override void FillSlot(ObjectData objectData, int amount)
     {
         base.FillSlot(objectData, amount);
-
-        // Show the sellvalue
-        //if (Store.Instance.StoreIsOpen)
-        //{
-        //    newSlot.ShowStoreValue(true);
-        //}
     }
 
     public void ShowPrices(bool show)
@@ -220,15 +223,4 @@ public class Inventory : SlotsHolder
             }
         }
     }
-
-    //public void ShowPrices(bool show)
-    //{
-    //    foreach (InventorySlot slot in m_SlotList)
-    //    {
-    //        if (slot.ObjectData != null)
-    //        {
-    //            slot.ShowStoreValue(show);
-    //        }
-    //    }
-    //}
 }

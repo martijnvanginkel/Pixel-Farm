@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Animal : Npc
+public abstract class Animal : TradeableObject
 {
     private Animator m_Animator;
 

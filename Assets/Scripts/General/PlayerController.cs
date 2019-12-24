@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject m_TextBalloon;
     [SerializeField] private TMPro.TextMeshProUGUI m_Text;
     [SerializeField] private TMPro.TextMeshProUGUI m_CatchText;
+    [SerializeField] private TMPro.TextMeshProUGUI m_EatText;
     [SerializeField] private float m_MoveSpeed;
 
     private bool m_AllowInput = true;
@@ -52,7 +53,6 @@ public class PlayerController : MonoBehaviour
 
     private InteractableObject m_OpenPanelObject;
 
-    // The buttonpanel that is open above the player
     private GameObject m_OpenButtonPanel;
     public GameObject OpenButtonPanel
     {
@@ -69,7 +69,6 @@ public class PlayerController : MonoBehaviour
     }
 
     private bool m_FacingRight = true;
-    private bool m_IsSlashing = false;
 
     private LayerMask m_TileLayer;
 
@@ -88,11 +87,17 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         RandomFish.OnFishCaught += PlayerCaughtFish;
+        Inventory.OnFoodEaten += PlayerEat;
+        Inventory.OnSeedDropped += CheckTileStatus;
+        GrassTile.OnPlantedSeed += StartPlantAnimation;
     }
 
     private void OnDisable()
     {
         RandomFish.OnFishCaught -= PlayerCaughtFish;
+        Inventory.OnFoodEaten -= PlayerEat;
+        Inventory.OnSeedDropped -= CheckTileStatus;
+        GrassTile.OnPlantedSeed -= StartPlantAnimation;
     }
 
     void Start()
@@ -107,9 +112,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         GetInput(); // Always check for input of the player
-
-        m_Animator.SetFloat("MoveSpeed", Mathf.Abs(m_RigidBody.velocity.x)); // Set float for run animation
-        m_Animator.SetBool("Slashing", m_IsSlashing);
+        m_Animator.SetFloat("MoveSpeed", Mathf.Abs(m_RigidBody.velocity.x));
     }
 
     // Check for user input if its allowed
@@ -129,13 +132,14 @@ public class PlayerController : MonoBehaviour
             {
                 if (m_HasButtonPanelOpen == false)
                 {
-                    //m_HasButtonPanelOpen = true;
                     OpenCollidingItem();
                 }
                 else
                 {
-                    // Take the item or whatever the firstaction may be
-                    m_OpenPanelObject.QuickAction();
+                    if (m_OpenPanelObject != null)
+                    {
+                        m_OpenPanelObject.QuickAction();
+                    }
                 }
             }
         }
@@ -161,17 +165,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Find the tile player is standing on and cuts the grasstile
-    public void SlashTile(ObjectData objectData)
+    private void CheckTileStatus(ObjectData droppedSeed)
     {
-        m_IsSlashing = true;
         GameObject standingTile = FindStandingTile();
         GrassTile grassTile = standingTile.GetComponent<GrassTile>();
-
+        // m_Animator.SetBool("Planting", true);
         if (standingTile.tag == "GroundTile")
         {
-            grassTile.Cut();
-            grassTile.PlantSeed(objectData);
+            grassTile.CheckIfSeedPlantable(droppedSeed);
         }
     }
 
@@ -206,20 +207,23 @@ public class PlayerController : MonoBehaviour
                 highestPriorityItem = item;
             }
         }
-
         return highestPriorityItem;
     }
 
-    // Flips the player to the right direction and sets the bool so its only called 1 frame
     private void FlipPlayerRight(bool faceRight)
     {
         m_FacingRight = faceRight;
         m_SpriteRenderer.flipX = !faceRight;
     }
 
-    private void PlayerDoneSlashing()
+    private void StopPlantAnimation()
     {
-        m_IsSlashing = false;
+        m_Animator.SetBool("Planting", false);
+    }
+
+    private void StartPlantAnimation(ObjectData plantedSeed)
+    {
+        m_Animator.SetBool("Planting", true);
     }
 
     // Finds the tile the player is currently standing on
@@ -240,16 +244,6 @@ public class PlayerController : MonoBehaviour
         return this.transform;
     }
 
-    public void Talk(string text, float talkLength)
-    {
-        PlayerTalkTuple playerTalkTuple = new PlayerTalkTuple();
-
-        playerTalkTuple.Text = text;
-        playerTalkTuple.Length = talkLength;
-
-        StartCoroutine("OpenTextBalloonCo", playerTalkTuple);
-    }
-
     public void Fish(bool isFishing)
     {
         m_Animator.SetBool("Fishing", isFishing);
@@ -258,6 +252,18 @@ public class PlayerController : MonoBehaviour
         {
             FlipPlayerRight(isFishing);
         }
+    }
+
+    private void PlayerEat(ObjectData eatenObject)
+    {
+        m_Animator.SetBool("Eating", true);
+        m_EatText.enabled = true;
+    }
+
+    private void StopEating()
+    {
+        m_Animator.SetBool("Eating", false);
+        m_EatText.enabled = false;
     }
 
     private void PlayerCaughtFish()
@@ -270,26 +276,6 @@ public class PlayerController : MonoBehaviour
         m_CatchText.enabled = true;
         yield return new WaitForSeconds(0.5f);
         m_CatchText.enabled = false;
-    }
-
-    private IEnumerator OpenTextBalloonCo(PlayerTalkTuple playerTalkTuple)
-    {
-        if (m_HasButtonPanelOpen)
-        {
-            m_OpenButtonPanel.SetActive(false);
-        }
-
-        m_Text.text = playerTalkTuple.Text;
-        m_TextBalloon.SetActive(true);
-
-        yield return new WaitForSeconds(playerTalkTuple.Length);
-
-        m_TextBalloon.SetActive(false);
-
-        if (m_HasButtonPanelOpen)
-        {
-            m_OpenButtonPanel.SetActive(true);
-        }
     }
 
 }

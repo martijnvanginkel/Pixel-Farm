@@ -19,16 +19,16 @@ public class Cow : Animal
         base.MoveAnimal();
     }
 
-    private void EatGrass()
-    {
-        GameObject standingTile = FindStandingTile();
-        GrassTile grassTile = standingTile.GetComponent<GrassTile>();
+    //private void EatGrass()
+    //{
+    //    GameObject standingTile = FindStandingTile();
+    //    GrassTile grassTile = standingTile.GetComponent<GrassTile>();
 
-        if (grassTile.IsTileOnDefault())
-        {
-            grassTile.Cut();
-        }
-    }
+    //    if (grassTile.IsTileOnDefault())
+    //    {
+    //        grassTile.Cut();
+    //    }
+    //}
 
     // Finds the tile the cow is currently standing on
     private GameObject FindStandingTile()
@@ -41,9 +41,9 @@ public class Cow : Animal
     // Gets triggered a second into the cows idle animation
     private void SecondInIdleAnimation()
     {
-        if (base.RandomBool(1f)) // Chance of eating grass
-        {
-            EatGrass();
-        }
+        //if (base.RandomBool(1f)) // Chance of eating grass
+        //{
+        //    EatGrass();
+        //}
     }
 }
