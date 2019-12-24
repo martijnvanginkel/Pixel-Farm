@@ -116,6 +116,7 @@ public class GrassTile : InteractableObject
     public void CheckHealth()
     {
         m_HealthUI.SetActive(true);
+        ShowButtonPanel(false);
     }
 
     public override void ShowButtonPanel(bool showPanel)

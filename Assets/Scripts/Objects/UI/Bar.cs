@@ -30,7 +30,6 @@ public class Bar : MonoBehaviour
     private Color m_NormalColor;
     private Color m_DangerColor;
 
-    // Start is called before the first frame update
     protected virtual void Start()
     {
         SetAmountText(m_CurrentValue);

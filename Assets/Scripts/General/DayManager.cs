@@ -27,7 +27,7 @@ public class DayManager : MonoBehaviour
     private Color m_LightOverlayColor;
 
     // 1f = 1 minute, 0.2f = 5 minutes, 3f = 20 seconds
-    private float m_AnimationSpeed = 3.5f;
+    private float m_AnimationSpeed = 1f;
 
     [SerializeField] private Camera m_MainCamera;
     private Color m_NightCameraColor;
@@ -110,7 +110,6 @@ public class DayManager : MonoBehaviour
 
     public void PlayerGoesToBed()
     {
-
         //PlayerController.Instance.AllowInput = false;
         //m_PlayerGoingToSleep = true;
         //m_DayTime = false;

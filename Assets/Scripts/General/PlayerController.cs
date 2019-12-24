@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
                 else
                 {
                     // Take the item or whatever the firstaction may be
-//                    m_OpenPanelObject.QuickAction();
+                    m_OpenPanelObject.QuickAction();
                 }
             }
         }

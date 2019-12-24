@@ -12,30 +12,29 @@ public class EnergyBar : Bar
     protected override void Start()
     {
         base.Start();
-        //SetEnergyText(m_CurrentValue);
     }
 
     private void OnEnable()
     {
-        InteractableObject.OnPlayerAction += ActionDecrease;
+        //InteractableObject.OnPlayerAction += ActionDecrease;
         DayManager.OnEndOfDay += base.ResetEnergy;
     }
 
     private void OnDisable()
     {
-        InteractableObject.OnPlayerAction -= ActionDecrease;
+        //InteractableObject.OnPlayerAction -= ActionDecrease;
         DayManager.OnEndOfDay -= base.ResetEnergy;
     }
+
+    //protected override void Update()
+    //{
+    //    base.Update();
+
+    //}
 
     private void ActionDecrease()
     {
         base.DecreaseValue(m_ActionDecreaseAmount);
-
-        //if(m_NewValue == 0)
-        //{
-        //    OnOutOfEnergy?.Invoke();
-        //}
-        //base.DecreaseValue(m_ActionDecreaseAmount);
     }
 
     public override void IncreaseValue(float increaseValue)

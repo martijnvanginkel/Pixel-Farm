@@ -65,7 +65,7 @@ public abstract class InteractableObject : MonoBehaviour
         PlayerController.Instance.OpenButtonPanel = m_ButtonPanel; // Assign the buttonpanel so the player can turn it off when talking
     }
 
-    public void QuickAction()
+    public virtual void QuickAction()
     {
         Debug.Log("Quick Action");
     }

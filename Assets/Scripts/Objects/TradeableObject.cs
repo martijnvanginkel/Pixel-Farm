@@ -23,4 +23,9 @@ public abstract class TradeableObject : InteractableObject
             Debug.Log("Cant pick up backpack is full");
         }
     }
+
+    public override void QuickAction()
+    {
+        TakeItem();
+    }
 }
