@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46a2a93d55fe14bf7a99b4e79e7d977d, type: 3}
+  m_Name: Milk
+  m_EditorClassIdentifier: 
+  Name: Milk
+  Description: A nice full glass
+  Icon: {fileID: 21300000, guid: 430baf7541a55456b966e4677fc05ae4, type: 3}
+  PrefabSprite: {fileID: 21300000, guid: f9cab2e4ce4da485abef7c71b0e86d8c, type: 3}
+  Prefab: {fileID: 298156382074339750, guid: ec74cc846a3024f7bae60d7c5ac5cb07, type: 3}
+  ItemCategory: Food
+  DataCategory: 
+  SocialValue: 0
+  NatureValue: 0
+  DefaultStoreAmount: 0
+  BuyingCost: 0
+  SellingCost: 0
+  ReceiveType: 
+  HarvestedPlantData: {fileID: 0}
+  HarvestAmount: 0
+  EatingValue: 5

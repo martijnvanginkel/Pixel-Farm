@@ -4,7 +4,21 @@ using UnityEngine;
 
 public class Cow : Animal
 {
+
     private LayerMask m_TileLayer;
+    private bool m_IsMilkedToday;
+    [SerializeField] private ObjectData m_MilkGlassData;
+    [SerializeField] private TMPro.TextMeshProUGUI m_TextBubble;
+
+    private void OnEnable()
+    {
+        DayManager.OnEndOfDay += ResetCowNipple;
+    }
+
+    private void OnDisable()
+    {
+        DayManager.OnEndOfDay -= ResetCowNipple;
+    }
 
     protected override void Start()
     {
@@ -17,6 +31,40 @@ public class Cow : Animal
     {
         base.ResetTimer();
         base.MoveAnimal();
+    }
+
+    public void Milk()
+    {
+        ShowButtonPanel(false);
+        if (m_IsMilkedToday)
+        {
+            Talk("I'm empty", 2f);
+        }
+        else
+        {
+            Talk("That feels nice", 2f);
+            Inventory.Instance.AddItem(m_MilkGlassData, 1);
+            m_IsMilkedToday = true;
+        }
+    }
+
+    private void ResetCowNipple()
+    {
+        m_IsMilkedToday = false;
+    }
+
+    private void Talk(string text, float length)
+    {
+        StartCoroutine(TalkCo(text, length));
+    }
+
+    private IEnumerator TalkCo(string text, float length)
+    {
+        m_TextBubble.text = text;
+        m_TextBubble.enabled = true;
+        yield return new WaitForSeconds(length);
+        m_TextBubble.enabled = false;
+        m_TextBubble.text = "";
     }
 
     //private void EatGrass()
