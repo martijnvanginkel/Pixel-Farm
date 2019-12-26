@@ -102,8 +102,6 @@
     <Compile Include="Assets\Scripts\Objects\Plants\Tree.cs" />
     <Compile Include="Assets\Scripts\Objects\Seeds\Seed.cs" />
     <Compile Include="Assets\Scripts\Objects\Sky &amp; Water\Cloud.cs" />
-    <Compile Include="Assets\Scripts\Objects\Sky &amp; Water\WaterManager.cs" />
-    <Compile Include="Assets\Scripts\Objects\Sky &amp; Water\WaterTile.cs" />
     <Compile Include="Assets\Scripts\Objects\Tiles\FishingSpot.cs" />
     <Compile Include="Assets\Scripts\Objects\Tiles\GrassTile.cs" />
     <Compile Include="Assets\Scripts\Objects\Tiles\HouseTile.cs" />

@@ -25,7 +25,7 @@ public class FishingBar : MonoBehaviour
     {
         if (m_UIOpen)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.W))
             {
                 if (m_InCatchRange) // If the mouse gets clicked inside the catchrange catch a fish, otherwish only stop the game
                 {
