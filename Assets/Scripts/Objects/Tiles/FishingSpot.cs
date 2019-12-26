@@ -75,12 +75,19 @@ public class FishingSpot : InteractableObject
         Instantiate(m_RandomFishPrefab, m_FishSpawnPoint);
     }
 
+    public override void QuickAction()
+    {
+        Debug.Log("override");
+        StartFishing();
+    }
+
     protected override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             m_PlayerOnObject = true;
             ShowButtonPanel(true);
+            PlayerController.Instance.SetOpenPanelObject(this);
         }
     }
 

@@ -15,6 +15,7 @@ MonoBehaviour:
   Name: Pumpkin seeds
   Description: Will grow an orange looking vegetable
   Icon: {fileID: 21300000, guid: c6f11437db76f461884362cafd259b22, type: 3}
+  PrefabSprite: {fileID: 0}
   Prefab: {fileID: 54266557467475932, guid: 7f000de4246af415fb620735661587c3, type: 3}
   ItemCategory: Seeds
   DataCategory: 
@@ -26,4 +27,4 @@ MonoBehaviour:
   ReceiveType: 
   HarvestedPlantData: {fileID: 11400000, guid: b9652eb266768460484564e2d94cae7b, type: 2}
   HarvestAmount: 0
-  EatingValue: 0
+  EatingValue: 10

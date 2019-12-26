@@ -35,6 +35,12 @@ public abstract class DigitalItem : MonoBehaviour
     }
 
     [SerializeField] protected Image m_BackGroundImage;
+    public Image BackGroundImage
+    {
+        get { return m_BackGroundImage; }
+        set { m_BackGroundImage = value; }
+    }
+
     [SerializeField] protected TMPro.TextMeshProUGUI m_SlotAmountText;
     [SerializeField] protected GameObject m_DescriptionBox;
     [SerializeField] protected TMPro.TextMeshProUGUI m_DescriptionTitle;
@@ -44,17 +50,15 @@ public abstract class DigitalItem : MonoBehaviour
     protected Color m_SlotNotTakenColor = new Color(1f, 1f, 1f, 0f);
     protected Color m_SlotTakenColor = new Color(1f, 1f, 1f, 1f);
 
-    private void Start()
+    protected virtual void Start()
     {
         m_SlotImage = GetComponent<Image>();
     }
 
     public virtual void FillSlot(ObjectData objectData, int amount)
     {
+        //m_BackGroundImage.enabled = true;
         m_ObjectData = objectData;
-
-        Debug.Log(objectData + "objectdata fillslot");
-        //m_SlotImage.color = m_SlotTakenColor;
         m_SlotImage.sprite = objectData.Icon;
         SetAmount(amount);
         m_SlotIsTaken = true;
@@ -62,11 +66,17 @@ public abstract class DigitalItem : MonoBehaviour
 
     public virtual void ResetSlot()
     {
+        //m_BackGroundImage.enabled = false;
         m_ObjectData = null;
         //m_SlotImage.color = m_SlotNotTakenColor;
         SetImage(null);
         m_SlotIsTaken = false;
         SetAmount(0);
+    }
+
+    public void EnableBackground(bool enable)
+    {
+        m_BackGroundImage.enabled = enable;
     }
 
     public void SetImage(Sprite image)

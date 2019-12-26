@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour
                 else
                 {
                     if (m_OpenPanelObject != null)
-                    {
+                    {    
                         m_OpenPanelObject.QuickAction();
                     }
                 }
@@ -185,14 +185,19 @@ public class PlayerController : MonoBehaviour
         {
             collidingItem = m_CollidingItems[0];
             collidingItem.ShowButtonPanel(true);
-            m_OpenPanelObject = collidingItem;
+            SetOpenPanelObject(collidingItem);
         }
         else if (m_CollidingItems.Count > 1) // If more than 1 open the one with the highest layer
         {
             collidingItem = FindFirstItem();
             collidingItem.ShowButtonPanel(true);
-            m_OpenPanelObject = collidingItem;
+            SetOpenPanelObject(collidingItem);
         }
+    }
+
+    public void SetOpenPanelObject(InteractableObject panelObject)
+    {
+        m_OpenPanelObject = panelObject;
     }
 
     // Return the item with the highest sortinglayer in the list of colliding items

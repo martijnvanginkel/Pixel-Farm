@@ -1,27 +1,19 @@
 ﻿<Properties StartupConfiguration="{6969DE6D-0B9C-333F-1E0B-9000BAE8E4EE}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Objects/Characters/Cow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Objects/Characters/Npc.cs">
     <Files>
-      <File FileName="Assets/Scripts/General/PlayerController.cs" Line="279" Column="6" />
-      <File FileName="Assets/Scripts/Objects/Characters/Salesman.cs" />
-      <File FileName="Assets/Scripts/Objects/Characters/Npc.cs" />
-      <File FileName="Assets/Scripts/Objects/UI/Inventory.cs" />
-      <File FileName="Assets/Scripts/Objects/UI/InventorySlot.cs" />
-      <File FileName="Assets/Scripts/Objects/UI/EnergyBar.cs" />
-      <File FileName="Assets/Scripts/Objects/UI/Bar.cs" />
-      <File FileName="Assets/Scripts/Objects/Tiles/FishingSpot.cs" />
-      <File FileName="Assets/Scripts/Objects/Tiles/GrassTile.cs" />
-      <File FileName="Assets/Scripts/Objects/Characters/Cow.cs" Line="5" Column="26" />
-      <File FileName="Assets/Scripts/Objects/UI/SlotsHolder.cs" />
-      <File FileName="Assets/Scripts/Objects/UI/DigitalItem.cs" />
-      <File FileName="Assets/Scripts/General/DayManager.cs" Line="6" Column="14" />
-      <File FileName="Assets/Scripts/Objects/Characters/Animal.cs" Line="5" Column="47" />
-      <File FileName="Assets/Scripts/Objects/TradeableObject.cs" Line="6" Column="59" />
-      <File FileName="Assets/Scripts/Objects/InteractableObject.cs" Line="6" Column="23" />
+      <File FileName="../../the_balance_game/Assets/Scripts/Objects/Characters/Npc.cs" Line="59" Column="39" />
+      <File FileName="../../the_balance_game/Assets/Scripts/Objects/Characters/Wife.cs" />
+      <File FileName="../../the_balance_game/Assets/Scripts/Objects/Characters/Salesman.cs" Line="1" Column="1" />
+      <File FileName="../../the_balance_game/Assets/Scripts/Objects/TalkingObject.cs" />
+      <File FileName="Assets/Scripts/Dialogue/DialogueManager.cs" Line="300" Column="59" />
+      <File FileName="Assets/Scripts/Dialogue/UpdateNode.cs" Line="13" Column="1" />
+      <File FileName="Assets/Scripts/Objects/Characters/Npc.cs" Line="42" Column="1" />
+      <File FileName="Assets/Scripts/Dialogue/JsonLoader.cs" Line="28" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="f7b92243-c47b-4d76-aed1-7840d7695752" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="8172aa9a-34d5-463f-b373-ede4add43062" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -102,11 +102,9 @@ public class Inventory : SlotsHolder
             if (Input.GetKeyDown(m_KeyCodes[i]))
             {
                 int numberPressed = i + 1;
-
                 SetSlotSelected(m_InventoryList[i]);
             }
         }
-
         if (Input.GetKeyDown(KeyCode.S)) 
         {
             m_HoldingDropKeyDown = true;
@@ -127,7 +125,6 @@ public class Inventory : SlotsHolder
         }
     }
 
-    // Checks if item is food and otherwise drops the item on the floor
     private void CheckIfItemIsFood()
     {
         // If the selected item is null or is not of the category food, drop the item and reset timer values
@@ -138,7 +135,6 @@ public class Inventory : SlotsHolder
         }
         else
         {
-            // Otherwise start the timer
             m_HoldingDropKeyTime -= Time.deltaTime; 
 
             // When the timer is below 0, set the key back to not being pressed, gain the health value and remove the item 
@@ -146,8 +142,7 @@ public class Inventory : SlotsHolder
             {
                 ResetDropKey();
                 OnFoodEaten?.Invoke(m_SelectedSlot.ObjectData);
-                //m_EnergyBar.IncreaseValue(m_SelectedSlot.ObjectData.EatingValue);
-                RemoveItem(m_SelectedSlot);
+                RemoveSingleItem(m_SelectedSlot);
             }
         }
     }
@@ -171,7 +166,6 @@ public class Inventory : SlotsHolder
             {
                 Debug.Log("Seed dropped");
                 OnSeedDropped?.Invoke(slot.ObjectData);
-                //PlayerController.Instance.SlashTile(slot.ObjectData);
             }
             else
             {
@@ -179,7 +173,7 @@ public class Inventory : SlotsHolder
                 float height = tile.GetComponent<Renderer>().bounds.size.y;
                 Instantiate(slot.ObjectData.Prefab, new Vector3(PlayerController.Instance.GetPlayerPosition().position.x, tile.transform.position.y + height / 2, tile.transform.position.z), transform.rotation);
                 OnItemDropped?.Invoke(slot.ObjectData);
-                RemoveItem(m_SelectedSlot);
+                RemoveSingleItem(m_SelectedSlot);
             }
         }
     }

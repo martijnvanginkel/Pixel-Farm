@@ -20,7 +20,7 @@ public class Store : MonoBehaviour
     }
 
     private List<DigitalItem> m_StoreItemList = new List<DigitalItem>();
-    public List<DigitalItem> StoreItemList    
+    public List<DigitalItem> StoreItemList
     {
         get { return m_StoreItemList; }
         set { m_StoreItemList = value; }
@@ -58,13 +58,14 @@ public class Store : MonoBehaviour
     private void OnEnable()
     {
         DayManager.OnEndOfDay += CloseStorePanel;
+        InventorySlot.OnInvSlotClicked += SellItem;
     }
 
     private void OnDisable()
     {
         DayManager.OnEndOfDay -= CloseStorePanel;
+        InventorySlot.OnInvSlotClicked -= SellItem;
     }
-
 
     public void OpenStorePanel()
     {
@@ -88,7 +89,7 @@ public class Store : MonoBehaviour
 
     private bool PlayerCanAfford(float price)
     {
-        if(price <= m_MoneyBar.CurrentValue)
+        if (price <= m_MoneyBar.CurrentValue)
         {
             return true;
         }
@@ -123,9 +124,13 @@ public class Store : MonoBehaviour
 
     public void SellItem(InventorySlot item)
     {
+        if (!m_StoreIsOpen)
+        {
+            return;
+        }
         m_MoneyBar.GainMoney(item.ObjectData);
         AddItemToStore(item.ObjectData);
-        Inventory.Instance.RemoveItem(item);
+        Inventory.Instance.RemoveSingleItem(item);
     }
 
     private void AddItemToStore(ObjectData objectData)

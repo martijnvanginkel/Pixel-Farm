@@ -38,7 +38,19 @@ public abstract class SlotsHolder : MonoBehaviour
         }
     }
 
-    public void RemoveItem(DigitalItem item)
+    public void RemoveMultipleItems(DigitalItem item, int amount)
+    {
+        if (item.SlotAmount > amount)
+        {
+            item.DecreaseAmount(amount);
+        }
+        else
+        {
+            EmptySlot(item);
+        }
+    }
+
+    public void RemoveSingleItem(DigitalItem item)
     {
         if (item.SlotAmount > 1) // If it has more than one, decrease the amount
         {
@@ -145,7 +157,7 @@ public abstract class SlotsHolder : MonoBehaviour
 
     public void SlotsAreAllTaken()
     {
-        StartCoroutine("BackPackFullCo");
+        StartCoroutine("SlotsAreAllTakenCo");
     }
 
     private IEnumerator SlotsAreAllTakenCo()

@@ -1,0 +1,18 @@
+﻿[
+  {
+    "Name": "Solomun",
+    "UpdateNodes": [
+      {
+        "ID": 1,
+        "Targets": [
+          {
+            "Name": "Hank",
+            "NextNodeID": 8
+          }
+        ]
+      }
+    ]
+  }
+]
+
+

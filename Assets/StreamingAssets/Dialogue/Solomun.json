@@ -1,0 +1,199 @@
+﻿[
+  {
+    "ID": 1,
+    "Sentences": [
+      "Hey broer, goed je te zien!"
+    ],
+    "DialogueOptions": [
+
+
+    ],
+    "FollowingNodeID" : 1,
+    "UpdatesStory": false
+  },
+  {
+    "ID": 2,
+    "Sentences": [
+      "Hey broer, wat doe je helemaal hier?"
+    ],
+    "DialogueOptions": [
+      {
+        "NextNodeID": 3,
+        "OptionText": "Je hebt mijn kip gestolen!"
+      },
+      {
+        "NextNodeID": 4,
+        "OptionText": "Moet je mij niet iets vertellen?"
+      }
+    ],
+    "FollowingNodeID": -1,
+    "UpdatesStory": false
+  },
+  {
+    "ID": 3,
+    "Sentences": [
+      "Waar heb je het over?"
+    ],
+    "DialogueOptions": [
+      {
+        "NextNodeID": 5,
+        "OptionText": "Je weet best waar ik het over heb"
+      }
+    ],
+    "FollowingNodeID": -1,
+    "UpdatesStory": false
+  },
+  {
+    "ID": 4,
+    "Sentences": [
+      "Nu je het zegt, je raadt nooit wie ik vandaag zag, die goede oude Solomun!"
+    ],
+    "DialogueOptions": [
+      {
+        "NextNodeID": 5,
+        "OptionText": "Draai er niet om heen Hank"
+      }
+    ],
+    "FollowingNodeID": -1,
+    "UpdatesStory": false
+  },
+  {
+    "ID": 5,
+    "Sentences": [
+      "Wat bedoel je Joe?"
+    ],
+    "DialogueOptions": [
+      {
+        "NextNodeID": 6,
+        "OptionText": "Ik weet dat je liegt, je hebt mijn kip gestolen!"
+      },
+      {
+        "NextNodeID": 6,
+        "OptionText": "Waarom zou je mijn kip stelen Hank?"
+      }
+    ],
+    "FollowingNodeID": -1,
+    "UpdatesStory": false
+  },
+  {
+    "ID": 6,
+    "Sentences": [
+      "Ik zou nooit iets van je stelen Joe",
+      "Echt niet!"
+    ],
+    "DialogueOptions": [
+
+    ],
+    "FollowingNodeID": 7,
+    "UpdatesStory": true
+  },
+  {
+    "ID": 7,
+    "Sentences": [
+      "Wat doe je hier? Ik heb je kip niet!"
+    ],
+    "DialogueOptions": [
+
+    ],
+    "FollowingNodeID": 7,
+    "UpdatesStory": false
+  },
+  {
+    "ID": 8,
+    "Sentences": [
+      "Wat doe je hier?"
+    ],
+    "DialogueOptions": [
+      {
+        "NextNodeID": 10,
+        "OptionText": "Ik heb iets van je nodig"
+      },
+      {
+        "NextNodeID": 11,
+        "OptionText": "Solomun stuurde me"
+      }
+
+    ],
+    "FollowingNodeID": -1,
+    "UpdatesStory": false
+  },
+  {
+    "ID": 9,
+    "Sentences": [
+      "Wat doe je hier?"
+    ],
+    "DialogueOptions": [
+      {
+        "NextNodeID": 10,
+        "OptionText": "Ik heb iets van je nodig"
+      },
+      {
+        "NextNodeID": 11,
+        "OptionText": "Solomun stuurde me"
+      }
+
+    ],
+    "FollowingNodeID": -1,
+    "UpdatesStory": false
+  },
+  {
+    "ID": 10,
+    "Sentences": [
+      "Nogmaals, ik heb je kip niet Joe"
+    ],
+    "DialogueOptions": [
+      {
+        "NextNodeID": 12,
+        "OptionText": "Ik heb een ingredient nodig, geen kip"
+      }
+    ],
+    "FollowingNodeID": -1,
+    "UpdatesStory": false
+  },
+  {
+    "ID": 11,
+    "Sentences": [
+      "Solomun geeft mij ook de schuld?"
+    ],
+    "DialogueOptions": [
+      {
+        "NextNodeID": 12,
+        "OptionText": "Nee, Solomun heeft een ingredient van je nodig"
+      }
+    ],
+    "FollowingNodeID": -1,
+    "UpdatesStory": false
+  },
+  {
+    "ID": 12,
+    "Sentences": [
+      "Maar ik heb geen idee wat dat moet zijn!"
+    ],
+    "DialogueOptions": [
+      {
+        "NextNodeID": 13,
+        "OptionText": "Denk harder na Hank!"
+      },
+      {
+        "NextNodeID": 13,
+        "OptionText": "*Zucht*"
+      }
+    ],
+    "FollowingNodeID": -1,
+    "UpdatesStory": false
+  },
+  {
+    "ID": 13,
+    "Sentences": [
+      "Wacht eens even.. wat is dat?"
+    ],
+    "DialogueOptions": [
+
+    ],
+    "FollowingNodeID": -1,
+    "UpdatesStory": true
+  }
+]
+
+
+

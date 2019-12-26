@@ -60,6 +60,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Dialogue\DialogueManager.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\DialogueNode.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\DialogueOption.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\DialogueUpdate.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\JsonLoader.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\OptionButton.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\UpdateNode.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\UpdateTarget.cs" />
     <Compile Include="Assets\Scripts\General\CameraController.cs" />
     <Compile Include="Assets\Scripts\General\DayManager.cs" />
     <Compile Include="Assets\Scripts\General\GameManager.cs" />
@@ -83,7 +91,7 @@
     <Compile Include="Assets\Scripts\Objects\Food\Mushroom.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableObject.cs" />
     <Compile Include="Assets\Scripts\Objects\Items\Bed.cs" />
-    <Compile Include="Assets\Scripts\Objects\Items\CompostBin.cs" />
+    <Compile Include="Assets\Scripts\Objects\Items\CraftingTable.cs" />
     <Compile Include="Assets\Scripts\Objects\Items\WateringCan.cs" />
     <Compile Include="Assets\Scripts\Objects\Plants\Flowers\Bluezy.cs" />
     <Compile Include="Assets\Scripts\Objects\Plants\Flowers\Daisy.cs" />
@@ -101,8 +109,9 @@
     <Compile Include="Assets\Scripts\Objects\Tiles\HouseTile.cs" />
     <Compile Include="Assets\Scripts\Objects\TradeableObject.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\Bar.cs" />
-    <Compile Include="Assets\Scripts\Objects\UI\CompostBinUI.cs" />
-    <Compile Include="Assets\Scripts\Objects\UI\CompostSlot.cs" />
+    <Compile Include="Assets\Scripts\Objects\UI\CraftingResultSlot.cs" />
+    <Compile Include="Assets\Scripts\Objects\UI\CraftingSlot.cs" />
+    <Compile Include="Assets\Scripts\Objects\UI\CraftingTableUI.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\DigitalItem.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\EnergyBar.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\Inventory.cs" />
@@ -112,6 +121,7 @@
     <Compile Include="Assets\Scripts\Objects\UI\Store.cs" />
     <Compile Include="Assets\Scripts\Objects\UI\StoreSlot.cs" />
     <Compile Include="Assets\Scripts\Random\RandomFish.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\CraftingRecipe.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\FishData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\FoodData.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Scripts\NpcData.cs" />

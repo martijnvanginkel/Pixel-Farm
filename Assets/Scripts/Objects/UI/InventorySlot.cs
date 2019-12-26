@@ -12,6 +12,9 @@ public class InventorySlot : DigitalItem
         set { m_IsSelected = value; }
     }
 
+    public delegate void InvSlotClicked(InventorySlot inventorySlot);
+    public static event InvSlotClicked OnInvSlotClicked;
+
     [SerializeField] private TMPro.TextMeshProUGUI m_HotKeyText;
     public TMPro.TextMeshProUGUI HotKeyText
     {
@@ -56,19 +59,23 @@ public class InventorySlot : DigitalItem
     // If a player clicks on an inventory slot, check if the store is open or a compostbin before selecting
     public void ClickedOnSlot()
     {
-        if (Store.Instance.StoreIsOpen)
+        //if (Store.Instance.StoreIsOpen)
+        //{
+        //    if (m_SlotIsTaken)
+        //    {
+        //        Store.Instance.SellItem(this);
+        //    }
+        //}
+        //if (GameManager.Instance.CompostUIIsOpen)
+        //{
+        //    if (m_SlotIsTaken)
+        //    {
+        //        GameManager.Instance.OpenCompostBin.AddItemToBin(this);
+        //    }
+        //}
+        if (m_SlotIsTaken)
         {
-            if (m_SlotIsTaken)
-            {
-                Store.Instance.SellItem(this);
-            }
-        }
-        if (GameManager.Instance.CompostUIIsOpen)
-        {
-            if (m_SlotIsTaken)
-            {
-                GameManager.Instance.OpenCompostBin.AddItemToBin(this);
-            }
+            OnInvSlotClicked?.Invoke(this);
         }
         else
         {

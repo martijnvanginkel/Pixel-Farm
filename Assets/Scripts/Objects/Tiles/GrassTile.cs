@@ -79,7 +79,7 @@ public class GrassTile : InteractableObject
         if (m_CurrentState == State.Default)
         {
             PlantSeed(droppedSeed);
-            Inventory.Instance.RemoveItem(Inventory.Instance.SelectedSlot);
+            Inventory.Instance.RemoveSingleItem(Inventory.Instance.SelectedSlot);
         }
     }
 
